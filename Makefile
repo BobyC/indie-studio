@@ -5,7 +5,7 @@
 ## Login   <homes_d@epitech.net>
 ## 
 ## Started on  Tue Apr  5 14:44:24 2016 David Homes
-## Last update Mon Apr 25 19:16:24 2016 Rigolat Sébastien
+## Last update Wed Apr 27 16:59:39 2016 Anaïs Foncel
 ##
 
 NAME		=	indie_studio
@@ -14,6 +14,7 @@ CXX		=	g++
 
 RM		=	rm -f
 
+CFLAGS		+=	-I./include/
 CFLAGS		+=	-W
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
@@ -26,7 +27,8 @@ LDLIBS		+=
 
 DIR		=	srcs/
 
-SRC		=	main.cpp
+SRC		=	main.cpp	\
+			Errors.cpp
 
 SRCS		=	$(addprefix $(DIR), $(SRC))
 
