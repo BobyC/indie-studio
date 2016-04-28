@@ -5,10 +5,10 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Wed Apr 27 16:42:29 2016 Anaïs Foncel
-// Last update Wed Apr 27 16:57:40 2016 Anaïs Foncel
+// Last update Thu Apr 28 12:49:51 2016 Anaïs Foncel
 //
 
-#include "Errors.hpp"
+#include "Errors.hh"
 
 Errors::Exceptions::~Exceptions() throw() {}
 
