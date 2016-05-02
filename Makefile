@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Mon May  2 00:10:32 2016 Rigolat Sébastien
+## Last update Mon May  2 17:40:01 2016 Anaïs Foncel
 ##
 
 NAME		=	indie_studio
@@ -13,6 +13,9 @@ NAME		=	indie_studio
 CXX		=	g++
 
 RM		=	rm -f
+
+PATH_OBJS	=	./objs/
+PATH_SRCS	=	./srcs/
 
 CFLAGS		+=	-W
 CFLAGS		+=	-Wall
@@ -34,16 +37,14 @@ LDLIBS		+=	-lXcursor
 LDLIBS		+=	-lIrrlicht
 LDLIBS		+=	-lpthread
 
-DIR		=	srcs/
-
 SRC		=	main.cpp	\
 			Errors.cpp
 
-SRCS		=	$(addprefix $(DIR), $(SRC))
+OBJS		=	$(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
 
-OBJS		=	$(SRCS:.cpp=.o)
+FIRST           :=	$(shell test -d $(PATH_OBJS) || mkdir $(PATH_OBJS))
 
-%.o:		%.cpp
+$(PATH_OBJS)%.o : $(PATH_SRCS)%.cpp
 		@echo "g++ -c -o $@ $^"
 		@$(CXX) -c -o $@ $^ $(CFLAGS) $(LDFLAGS) $(LDLIBS)
 
