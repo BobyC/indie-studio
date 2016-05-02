@@ -1,11 +1,11 @@
 ##
-## Makefile for  in /home/homes_d/rendu/cpp_plazza
+## Makefile for indie studio in /home/rigola_s/rendu/C++/cpp_indie_studio
 ## 
-## Made by David Homes
-## Login   <homes_d@epitech.net>
+## Made by Rigolat Sébastien
+## Login   <rigola_s@epitech.net>
 ## 
-## Started on  Tue Apr  5 14:44:24 2016 David Homes
-## Last update Wed Apr 27 16:59:39 2016 Anaïs Foncel
+## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
+## Last update Mon May  2 00:10:32 2016 Rigolat Sébastien
 ##
 
 NAME		=	indie_studio
@@ -14,16 +14,25 @@ CXX		=	g++
 
 RM		=	rm -f
 
-CFLAGS		+=	-I./include/
 CFLAGS		+=	-W
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
 CFLAGS		+=	-Werror
 CFLAGS		+=	-std=gnu++11
+CFLAGS		+=	-g
 
-LDFLAGS		+=	
+LDFLAGS		+=	-I./include/
+LDFLAGS		+=	-Llib/
+LDFLAGS		+=	-L/usr/lib64
+LDFLAGS		+=	-L/usr/X11R6/lib
 
-LDLIBS		+=	
+LDLIBS		+=	-lGL
+LDLIBS		+=	-lXxf86vm
+LDLIBS		+=	-lXext
+LDLIBS		+=	-lX11
+LDLIBS		+=	-lXcursor
+LDLIBS		+=	-lIrrlicht
+LDLIBS		+=	-lpthread
 
 DIR		=	srcs/
 
@@ -40,6 +49,7 @@ OBJS		=	$(SRCS:.cpp=.o)
 
 $(NAME):	$(OBJS)
 		$(CXX) -o $(NAME) $(OBJS) $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
+		@echo -e "\e[1;31mDON'T FORGET TO REMOVE THE DEBUG FLAG BEFORE LAST PUSH !\e[0;m"
 
 all:		$(NAME)
 
