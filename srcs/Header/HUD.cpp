@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:39 2016 Anaïs Foncel
-// Last update Mon May  2 18:33:35 2016 Anaïs Foncel
+// Last update Tue May  3 15:00:47 2016 Anaïs Foncel
 //
 
 #include "HUD.hh"
@@ -16,6 +16,11 @@ HUD::HUD()
 }
 
 HUD::~HUD()
+{
+
+}
+
+void		display() const
 {
 
 }

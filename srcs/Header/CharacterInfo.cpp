@@ -5,27 +5,122 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:50 2016 Anaïs Foncel
-// Last update Mon May  2 19:34:06 2016 Anaïs Foncel
+// Last update Tue May  3 15:49:28 2016 Anaïs Foncel
 //
 
 #include "CharacterInfo.hh"
 
-CharacterInfo::CharacterInfo()
+/*
+** CONSTRUTOR
+*/
+CharacterInfo::CharacterInfo(std::string const &name, int const &color)
 {
-
+  _name = name;
+  _color = color;
+  _score = 0;
+  _shield = false;
+  _jump = false;
+  _movebomb = false;
+  _deflagration = 1;
+  _countbomb = 1;
 }
 
+/*
+** DESTRUCTOR
+*/
 CharacterInfo::~CharacterInfo()
 {
 
 }
 
-std::string	CharacterInfo::getName() const
+/*
+** SETTER
+*/
+void			CharacterInfo::setName(std::string const &name)
+{
+  _name = name;
+}
+
+void			CharacterInfo::setColor(int const &color)
+{
+  _color = color;
+}
+
+void			CharacterInfo::setScore(int const &score)
+{
+  _score = score;
+}
+
+/*
+** FOR BONUS
+*/
+void			CharacterInfo::setShield(bool const &available)
+{
+  _shield = available;
+}
+
+void			CharacterInfo::setJump(bool const &available)
+{
+  _jump = available;
+}
+
+void			CharacterInfo::setMoveBomb(bool const &available)
+{
+  _movebomb = available;
+}
+
+void			CharacterInfo::setDeflagration(int const &number)
+{
+  _deflagration = number;
+}
+
+void			CharacterInfo::setCountBomb(int const &number)
+{
+  _countbomb = number;
+}
+
+/*
+** GETTER
+*/
+std::string		CharacterInfo::getName() const
 {
   return (_name);
 }
 
-Score		CharacterInfo::getScore() const
+int			CharacterInfo::getColor() const
+{
+  return (_color);
+}
+
+int			CharacterInfo::getScore() const
 {
   return (_score);
+}
+
+/*
+** FOR BONUS
+*/
+bool			CharacterInfo::getShield() const
+{
+  return (_shield);
+}
+
+bool			CharacterInfo::getJump() const
+{
+  return (_jump);
+}
+
+bool			CharacterInfo::getMoveBomb() const
+{
+  return (_movebomb);
+}
+
+int			CharacterInfo::getDeflagration() const
+{
+  return (_deflagration);
+}
+
+int			CharacterInfo::getCountBomb() const
+{
+  return (_countbomb);
 }
