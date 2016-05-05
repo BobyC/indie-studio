@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:39 2016 Anaïs Foncel
-// Last update Thu May  5 18:26:36 2016 Anaïs Foncel
+// Last update Thu May  5 20:01:53 2016 Anaïs Foncel
 //
 
 #include "HUD.hh"
@@ -33,18 +33,23 @@ HUD::~HUD()
 void		HUD::displayScore(CharacterInfo const character) const
 {
   gui::IGUIFont	*font;
+  std::string	inter;
+  core::stringw	res;
   int		score;
   int		posX;
   int		posY;
 
+
   score = character.getScore();
+  inter = std::to_string(score);;
+  res = core::stringw(inter.c_str());
 
   posX = (character.getId() - 1) * _size_mHUD_X;
   posY = ((_size_HUD_Y / 4) / 3) * 2;
 
   font = _device->getGUIEnvironment()->getBuiltInFont();
   if (font)
-  font->draw(score, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
+  font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
 
@@ -54,18 +59,19 @@ void		HUD::displayScore(CharacterInfo const character) const
 void		HUD::displayName(CharacterInfo const character) const
 {
   gui::IGUIFont	*font;
+  core::stringw	res;
   int		posX;
   int		posY;
   std::string	name;
 
   name = character.getName();
-
+  res = core::stringw(name.c_str());
   posX = (character.getId() - 1) * _size_mHUD_X;
   posY = 0;
 
   font = _device->getGUIEnvironment()->getBuiltInFont();
   if (font)
-  font->draw(name, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
+  font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
 
@@ -75,6 +81,8 @@ void		HUD::displayName(CharacterInfo const character) const
 void		HUD::displayBonusBomb(CharacterInfo const character) const
 {
   gui::IGUIFont	*font;
+  std::string	inter;
+  core::stringw	res;
   int		posX_Image;
   int		posY_Image;
   int		posX;
@@ -89,19 +97,22 @@ void		HUD::displayBonusBomb(CharacterInfo const character) const
   posY = ((_size_HUD_Y / 4) / 3) + SIZE_IMAGE;
 
   num = character.getCountBomb();
-
+  inter = std::to_string(num);
+  res = core::stringw(inter.c_str());
   // _bonus.setImage(std::string NAME OF FILE);
   // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
   // _bonus._img.clear();
 
   font = _device->getGUIEnvironment()->getBuiltInFont();
   if (font)
-  font->draw(num, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
+  font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
 void		HUD::displayBonusDeflagration(CharacterInfo const character) const
 {
   gui::IGUIFont	*font;
+  std::string	inter;
+  core::stringw	res;
   int		posX_Image;
   int		posY_Image;
   int		posX;
@@ -115,14 +126,15 @@ void		HUD::displayBonusDeflagration(CharacterInfo const character) const
   posY = ((_size_HUD_Y / 4) / 3) + SIZE_IMAGE;
 
   num = character.getDeflagration();
-
+  inter = std::to_string(num);
+  res = core::stringw(inter.c_str());
   // _bonus.setImage(std::string NAME OF FILE);
   // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
   // _bonus._img.clear();
 
   font = _device->getGUIEnvironment()->getBuiltInFont();
   if (font)
-  font->draw(num, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
+  font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
 void		HUD::displayBonusThird(CharacterInfo const character) const
@@ -145,7 +157,7 @@ void		HUD::displayBonus(CharacterInfo const character) const
 {
   displayBonusBomb(character);
   displayBonusDeflagration(character);
-  if (character.getThirdBonus() == true)
+  if (character.getJump() == true)
     displayBonusThird(character);
 }
 
@@ -155,10 +167,10 @@ void		HUD::displayBonus(CharacterInfo const character) const
 */
 void		HUD::display() const
 {
-  for (unsigned int i = 0, i < _character.size(), ++i)
+  for (unsigned int i = 0; i < _characters.size(); ++i)
     {
-      displayName(_character[i]);
-      displayBonus(_character[i]);
-      displayScore(_character[i]);
+      displayName(_characters[i]);
+      displayBonus(_characters[i]);
+      displayScore(_characters[i]);
     }
 }
