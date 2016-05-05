@@ -5,14 +5,21 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:39 2016 Anaïs Foncel
-// Last update Wed May  4 17:58:06 2016 Anaïs Foncel
+// Last update Thu May  5 18:26:36 2016 Anaïs Foncel
 //
 
 #include "HUD.hh"
 
-HUD::HUD()
+HUD::HUD(video::VideoDriver const *driver, IrrlichtDevice const *device, std::vector<int> const &size)
 {
-
+  _driver = driver;
+  _device = device;
+  _characters = NULL;
+  _bonus(_driver);
+  _size_winX = size.x;
+  _size_winY = size.y;
+  _size_HUD_Y = _size_winY / 4;
+  _size_mHUD_X = _size_winX / 4;
 }
 
 HUD::~HUD()
@@ -20,50 +27,138 @@ HUD::~HUD()
 
 }
 
-void		HUD::displayScore(int i) const
+/*
+** DISPLAY SCORE
+*/
+void		HUD::displayScore(CharacterInfo const character) const
 {
-  // _characters[i].getScore();
+  gui::IGUIFont	*font;
+  int		score;
+  int		posX;
+  int		posY;
+
+  score = character.getScore();
+
+  posX = (character.getId() - 1) * _size_mHUD_X;
+  posY = ((_size_HUD_Y / 4) / 3) * 2;
+
+  font = _device->getGUIEnvironment()->getBuiltInFont();
+  if (font)
+  font->draw(score, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-void		HUD::displayName(int i) const
+
+/*
+** DISPLAY NAME
+*/
+void		HUD::displayName(CharacterInfo const character) const
 {
-  // _characters[i].getName();
+  gui::IGUIFont	*font;
+  int		posX;
+  int		posY;
+  std::string	name;
+
+  name = character.getName();
+
+  posX = (character.getId() - 1) * _size_mHUD_X;
+  posY = 0;
+
+  font = _device->getGUIEnvironment()->getBuiltInFont();
+  if (font)
+  font->draw(name, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-void		HUD::displayBonusBomb(int i) const
+
+/*
+** DISPLAY TYPE OF BONUS
+*/
+void		HUD::displayBonusBomb(CharacterInfo const character) const
 {
-  // _characters[i].setImage(std::string NAME OF FILE);
-  // _characters[i].displayImage();
-  // _characters[i].getCountBomb();
+  gui::IGUIFont	*font;
+  int		posX_Image;
+  int		posY_Image;
+  int		posX;
+  int		posY;
+  int		num;
+
+  posX_Image = (character.getId() - 1) * _size_mHUD_X;
+  posY_Image = ((_size_HUD_Y / 4) / 3);
+
+
+  posX = (character.getId() - 1) * _size_mHUD_X;
+  posY = ((_size_HUD_Y / 4) / 3) + SIZE_IMAGE;
+
+  num = character.getCountBomb();
+
+  // _bonus.setImage(std::string NAME OF FILE);
+  // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
+  // _bonus._img.clear();
+
+  font = _device->getGUIEnvironment()->getBuiltInFont();
+  if (font)
+  font->draw(num, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-void		HUD::displayBonusDeflagration(int i) const
+void		HUD::displayBonusDeflagration(CharacterInfo const character) const
 {
-  // _characters[i].setImage(std::string NAME OF FILE);
-  // _characters[i].displayImage();
-  // _characters[i].getDeflagration();
+  gui::IGUIFont	*font;
+  int		posX_Image;
+  int		posY_Image;
+  int		posX;
+  int		posY;
+  int		num;
+
+  posX_Image = ((character.getId() - 1) * _size_mHUD_X) + (_size_mHUD_X / 3);
+  posY_Image = ((_size_HUD_Y / 4) / 3);
+
+  posX = ((character.getId() - 1) * _size_mHUD_X) + (_size_mHUD_X / 3);
+  posY = ((_size_HUD_Y / 4) / 3) + SIZE_IMAGE;
+
+  num = character.getDeflagration();
+
+  // _bonus.setImage(std::string NAME OF FILE);
+  // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
+  // _bonus._img.clear();
+
+  font = _device->getGUIEnvironment()->getBuiltInFont();
+  if (font)
+  font->draw(num, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-void		HUD::displayBonusThird(int i) const
+void		HUD::displayBonusThird(CharacterInfo const character) const
 {
-  // _characters[i].setImage(std::string NAME OF FILE);
-  // _characters[i].displayImage();
+  int		posX_Image;
+  int		posY_Image;
+
+  posX_Image = ((character.getId() - 1) * _size_mHUD_X) + (2 * (_size_mHUD_X / 3));
+  posY_Image = ((_size_HUD_Y / 4) / 3);
+  // _bonus.setImage(std::string NAME OF FILE);
+  // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
+  // _bonus._img.clear();
 }
 
-void		HUD::displayBonus(int i) const
+
+/*
+** DISPLAY BONUS
+*/
+void		HUD::displayBonus(CharacterInfo const character) const
 {
-  // displayBonusBomb(i);
-  // displayBonusDeflagration(i);
-  // if (_characters[i].getThirdBonus() == true)
-     // displayBonusThird(i);
+  displayBonusBomb(character);
+  displayBonusDeflagration(character);
+  if (character.getThirdBonus() == true)
+    displayBonusThird(character);
 }
 
+
+/*
+** GENERAL DISPLAY
+*/
 void		HUD::display() const
 {
-  // for (int i = 0, i < NB_CHARACTERS, ++i)
-  // {
-  // displayName(i);
-  // displayBonus(i);
-  // displayScore(i);
-  // }
+  for (unsigned int i = 0, i < _character.size(), ++i)
+    {
+      displayName(_character[i]);
+      displayBonus(_character[i]);
+      displayScore(_character[i]);
+    }
 }

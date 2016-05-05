@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:50 2016 Anaïs Foncel
-// Last update Wed May  4 18:13:45 2016 Anaïs Foncel
+// Last update Thu May  5 15:53:27 2016 Anaïs Foncel
 //
 
 #include "CharacterInfo.hh"
@@ -13,11 +13,11 @@
 /*
 ** CONSTRUTOR
 */
-CharacterInfo::CharacterInfo(video::IVideoDriver const *driver, std::string const &name, int const &color)
+CharacterInfo::CharacterInfo()
 {
-  _driver = driver;
-  _name = name;
-  _color = color;
+  _id = 0;
+  _name = "";
+  _color = 0xFFFFFF;
   _score = 0;
   _shield = false;
   _jump = false;
@@ -37,6 +37,11 @@ CharacterInfo::~CharacterInfo()
 /*
 ** SETTER
 */
+void			CharacterInfo::setId(int const &id)
+{
+  _id = id;
+}
+
 void			CharacterInfo::setName(std::string const &name)
 {
   _name = name;
@@ -50,11 +55,6 @@ void			CharacterInfo::setColor(int const &color)
 void			CharacterInfo::setScore(int const &score)
 {
   _score = score;
-}
-
-void			CharacterInfo::setImage(std::string const &name_of_file)
-{
-  _bonus.setImage(name_of_file);
 }
 
 /*
@@ -88,6 +88,11 @@ void			CharacterInfo::setCountBomb(int const &number)
 /*
 ** GETTER
 */
+int			CharacterInfo::getId() const
+{
+return (_id);
+}
+
 std::string		CharacterInfo::getName() const
 {
   return (_name);
@@ -129,9 +134,4 @@ int			CharacterInfo::getDeflagration() const
 int			CharacterInfo::getCountBomb() const
 {
   return (_countbomb);
-}
-
-void			CharacterInfo::displayImage() const
-{
-  _bonus.displayImage();
 }

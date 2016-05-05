@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:28:07 2016 Anaïs Foncel
-// Last update Wed May  4 17:49:50 2016 Anaïs Foncel
+// Last update Thu May  5 18:16:50 2016 Anaïs Foncel
 //
 
 #ifndef HUD_HH__
@@ -13,21 +13,33 @@
 
 # include "CharacterInfo.hh"
 
-# define NB_CHARACTERS	(4)
+# define SIZE_IMAGE	(40)
 
-class		HUD
+class		HUD// : public GUIElement
 {
 private:
-  CharacterInfo[NB_CHARACTERS]	_characters;
+  IrrlichtDevice		*_device;
+  video::IVideoDriver		*_driver;
+  std::vector<CharacterInfo>	_characters;
+  GUIBonus			_bonus;
+  int				_size_winX;
+  int				_size_winY;
+  int				_size_HUD_Y;
+  int				_size_mHUD_X;
 
 public:
-  HUD();
+  HUD(video::IVideoDriver *driver, IrrlichtDevice const *device, std::vector<int> const &size);
   ~HUD();
 
-  void			displayBonusBomb(int i) const;
-  void			displayBonusDeflagration(int i) const;
-  void			displayBonusThird(int i) const;
-  void			displayBonus(int i) const;
+  void			displayScore(CharacterInfo const character) const;
+  void			displayName(CharacterInfo const character) const;
+
+  void			displayBonusBomb(CharacterInfo const character) const;
+  void			displayBonusDeflagration(CharacterInfo const character) const;
+  void			displayBonusThird(CharacterInfo const character) const;
+
+  void			displayBonus(CharacterInfo const character) const;
+
   void			display() const;
 };
 

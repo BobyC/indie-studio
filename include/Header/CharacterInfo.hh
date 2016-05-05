@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:27:00 2016 Anaïs Foncel
-// Last update Wed May  4 18:14:36 2016 Anaïs Foncel
+// Last update Thu May  5 15:57:01 2016 Anaïs Foncel
 //
 
 #ifndef CHARACTERINFO_HH__
@@ -17,8 +17,7 @@
 class		CharacterInfo
 {
 private:
-  video::IVideoDriver	*_driver;
-  GUIBonus		_bonus(driver);
+  int			_id;
   std::string		_name;
   int			_color;
   int			_score;
@@ -29,13 +28,13 @@ private:
   int			_countbomb;
 
 public:
-  CharacterInfo(video::IVideoDriver const *driver, std::string const &name, int const &color);
+  CharacterInfo();
   ~CharacterInfo();
 
+  void			setId(int const &id);
   void			setName(std::string const &name);
   void			setColor(int const &color);
   void			setScore(int const &score);
-  void			setImage(std::string const &name_of_file);
 
   void			setShield(bool const &available);
   void			setJump(bool const &available);
@@ -43,6 +42,7 @@ public:
   void			setDeflagration(int const &number);
   void			setCountBomb(int const &number);
 
+  int			getId() const;
   std::string		getName() const;
   int			getColor() const;
   int			getScore() const;
@@ -52,8 +52,6 @@ public:
   bool			getMoveBomb() const;
   int			getDeflagration() const;
   int			getCountBomb() const;
-
-  void			displayImage() const;
 };
 
 #endif /* !CHARACTERINFO_HH__ */
