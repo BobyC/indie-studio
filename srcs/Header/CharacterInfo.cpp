@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:50 2016 Anaïs Foncel
-// Last update Tue May  3 15:49:28 2016 Anaïs Foncel
+// Last update Wed May  4 18:13:45 2016 Anaïs Foncel
 //
 
 #include "CharacterInfo.hh"
@@ -13,8 +13,9 @@
 /*
 ** CONSTRUTOR
 */
-CharacterInfo::CharacterInfo(std::string const &name, int const &color)
+CharacterInfo::CharacterInfo(video::IVideoDriver const *driver, std::string const &name, int const &color)
 {
+  _driver = driver;
   _name = name;
   _color = color;
   _score = 0;
@@ -49,6 +50,11 @@ void			CharacterInfo::setColor(int const &color)
 void			CharacterInfo::setScore(int const &score)
 {
   _score = score;
+}
+
+void			CharacterInfo::setImage(std::string const &name_of_file)
+{
+  _bonus.setImage(name_of_file);
 }
 
 /*
@@ -123,4 +129,9 @@ int			CharacterInfo::getDeflagration() const
 int			CharacterInfo::getCountBomb() const
 {
   return (_countbomb);
+}
+
+void			CharacterInfo::displayImage() const
+{
+  _bonus.displayImage();
 }
