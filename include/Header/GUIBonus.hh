@@ -5,11 +5,17 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:38:27 2016 Anaïs Foncel
-// Last update Thu May  5 16:22:00 2016 Anaïs Foncel
+// Last update Fri May  6 13:15:19 2016 Anaïs Foncel
 //
 
 #ifndef GUIBONUS_HH__
 # define GUIBONUS_HH__
+
+# include <irrlicht.h>
+# include <iostream>
+# include <string>
+
+using namespace irr;
 
 class		GUIBonus
 {
@@ -25,7 +31,7 @@ public:
 
   void			setImage(std::string const &name_image_file);
   video::ITexture	*getImage() const;
-  void			displayImage(float const &posX, float const &posY);
+  void			displayImage(int const &posX, int const &posY, int const &size) const;
 };
 
 #endif /* !GUIBONUS_HH__ */

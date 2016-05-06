@@ -5,12 +5,12 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:44:01 2016 Anaïs Foncel
-// Last update Thu May  5 18:15:57 2016 Anaïs Foncel
+// Last update Fri May  6 13:20:08 2016 Anaïs Foncel
 //
 
 #include "GUIBonus.hh"
 
-GUIBonus::GUIBonus(video::IVideoDriver const *driver)
+GUIBonus::GUIBonus(video::IVideoDriver *driver)
 {
   _driver = driver;
   _img = NULL;
@@ -23,7 +23,7 @@ GUIBonus::~GUIBonus()
 
 void			GUIBonus::setImage(std::string const &name_image_file)
 {
-  _img = _driver->getTexture(name_image_file);
+  _img = _driver->getTexture(name_image_file.c_str());
 }
 
 video::ITexture		*GUIBonus::getImage() const

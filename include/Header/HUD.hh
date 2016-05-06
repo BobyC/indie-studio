@@ -5,15 +5,25 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:28:07 2016 Anaïs Foncel
-// Last update Thu May  5 18:16:50 2016 Anaïs Foncel
+// Last update Fri May  6 13:23:55 2016 Anaïs Foncel
 //
 
 #ifndef HUD_HH__
 # define HUD_HH__
 
+# include <iostream>
+# include <string>
+# include <vector>
+# include <irrlicht.h>
+# include <rect.h>
+// # include "driverChoice.h"
+# include <IrrlichtDevice.h>
 # include "CharacterInfo.hh"
+# include "GUIBonus.hh"
 
 # define SIZE_IMAGE	(40)
+
+using namespace irr;
 
 class		HUD// : public GUIElement
 {
@@ -28,7 +38,7 @@ private:
   int				_size_mHUD_X;
 
 public:
-  HUD(video::IVideoDriver *driver, IrrlichtDevice const *device, std::vector<int> const &size);
+  HUD(video::IVideoDriver const *driver, IrrlichtDevice const *device, std::vector<int> const &size);
   ~HUD();
 
   void			displayScore(CharacterInfo const character) const;
