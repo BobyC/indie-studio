@@ -5,19 +5,19 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:39 2016 Anaïs Foncel
-// Last update Thu May  5 20:01:53 2016 Anaïs Foncel
+// Last update Tue May 10 19:00:22 2016 Anaïs Foncel
 //
 
 #include "HUD.hh"
 
-HUD::HUD(video::VideoDriver const *driver, IrrlichtDevice const *device, std::vector<int> const &size)
+HUD::HUD(video::IVideoDriver *driver, IrrlichtDevice *device, std::vector<int> const &size)
 {
   _driver = driver;
   _device = device;
-  _characters = NULL;
-  _bonus(_driver);
-  _size_winX = size.x;
-  _size_winY = size.y;
+  //  _characters = NULL;
+  _bonus = new GUIBonus(_driver);
+  _size_winX = size[0];
+  _size_winY = size[1];
   _size_HUD_Y = _size_winY / 4;
   _size_mHUD_X = _size_winX / 4;
 }
@@ -99,9 +99,8 @@ void		HUD::displayBonusBomb(CharacterInfo const character) const
   num = character.getCountBomb();
   inter = std::to_string(num);
   res = core::stringw(inter.c_str());
-  // _bonus.setImage(std::string NAME OF FILE);
-  // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
-  // _bonus._img.clear();
+  _bonus->setImage("media/lightFalloff.png");
+  _bonus->displayImage(posX_Image, posY_Image, SIZE_IMAGE);
 
   font = _device->getGUIEnvironment()->getBuiltInFont();
   if (font)
@@ -128,9 +127,8 @@ void		HUD::displayBonusDeflagration(CharacterInfo const character) const
   num = character.getDeflagration();
   inter = std::to_string(num);
   res = core::stringw(inter.c_str());
-  // _bonus.setImage(std::string NAME OF FILE);
-  // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
-  // _bonus._img.clear();
+  _bonus->setImage("media/lightFalloff.png");
+  _bonus->displayImage(posX_Image, posY_Image, SIZE_IMAGE);
 
   font = _device->getGUIEnvironment()->getBuiltInFont();
   if (font)
@@ -144,9 +142,9 @@ void		HUD::displayBonusThird(CharacterInfo const character) const
 
   posX_Image = ((character.getId() - 1) * _size_mHUD_X) + (2 * (_size_mHUD_X / 3));
   posY_Image = ((_size_HUD_Y / 4) / 3);
-  // _bonus.setImage(std::string NAME OF FILE);
-  // _bonus.displayImage(posX_Image, posY_Image, SIZE_IMAGE);
-  // _bonus._img.clear();
+
+  _bonus->setImage("media/lightFalloff.png");
+  _bonus->displayImage(posX_Image, posY_Image, SIZE_IMAGE);
 }
 
 

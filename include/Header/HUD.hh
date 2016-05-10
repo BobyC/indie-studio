@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:28:07 2016 Anaïs Foncel
-// Last update Fri May  6 13:23:55 2016 Anaïs Foncel
+// Last update Tue May 10 18:54:48 2016 Anaïs Foncel
 //
 
 #ifndef HUD_HH__
@@ -16,8 +16,6 @@
 # include <vector>
 # include <irrlicht.h>
 # include <rect.h>
-// # include "driverChoice.h"
-# include <IrrlichtDevice.h>
 # include "CharacterInfo.hh"
 # include "GUIBonus.hh"
 
@@ -31,15 +29,11 @@ private:
   IrrlichtDevice		*_device;
   video::IVideoDriver		*_driver;
   std::vector<CharacterInfo>	_characters;
-  GUIBonus			_bonus;
+  GUIBonus			*_bonus;
   int				_size_winX;
   int				_size_winY;
   int				_size_HUD_Y;
   int				_size_mHUD_X;
-
-public:
-  HUD(video::IVideoDriver const *driver, IrrlichtDevice const *device, std::vector<int> const &size);
-  ~HUD();
 
   void			displayScore(CharacterInfo const character) const;
   void			displayName(CharacterInfo const character) const;
@@ -49,6 +43,10 @@ public:
   void			displayBonusThird(CharacterInfo const character) const;
 
   void			displayBonus(CharacterInfo const character) const;
+
+public:
+  HUD(video::IVideoDriver *driver, IrrlichtDevice *device, std::vector<int> const &size);
+  ~HUD();
 
   void			display() const;
 };
