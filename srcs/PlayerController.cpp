@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Sun May 29 02:32:22 2016 drozdz_b
+// Last update Sun May 29 02:49:35 2016 drozdz_b
 */
 
 #include "PlayerController.hpp"
@@ -66,13 +66,6 @@ void	PlayerController::setAxisControleZ(EKEY_CODE zneg, EKEY_CODE zpos)
 */
 void		PlayerController::doAction()
 {
-  u32		x;
-  u32		y;
-  u32		z;
-
-  x = 0;
-  y = 0;
-  z = 0;
   _now = _device->getTimer()->getTime();
   _frameDeltaTime = (f32)(_now - _last) / 1000.f;
   _last = _now;
