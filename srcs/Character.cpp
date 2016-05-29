@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Sun May 29 02:29:22 2016 drozdz_b
+** Last update Sun May 29 03:02:40 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -47,6 +47,11 @@ void	Character::setPosition(f32 x, f32 y, f32 z)
   this->_pos.Y += y;
   this->_pos.Z += z;
   this->_node->setPosition(this->_pos);
+}
+
+CharacterInfo&	Character::getInfo()
+{
+  return (this->_info);
 }
 
 /*
