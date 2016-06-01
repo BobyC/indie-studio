@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 // 
 // Started on  Fri May 27 14:39:22 2016 Sacha Sacha Monderer
-// Last update Wed Jun  1 16:33:40 2016 Sacha Sacha Monderer
+// Last update Wed Jun  1 16:43:36 2016 Sacha Sacha Monderer
 //
 
 #include "../include/Object.hh"
@@ -86,17 +86,6 @@ void	Object::setIsdead(bool d)
   this->_isdead = d;
 }
 
-#ifdef _MSC_VER
-// We'll also define this to stop MSVC complaining about sprintf().
-#define _CRT_SECURE_NO_WARNINGS
-#pragma comment(lib, "Irrlicht.lib")
-#endif
-
-/*#include <irrlicht.h>
-#include "driverChoice.h"
-*/
-using namespace irr;
-
 std::vector<Object>&	my_fill_map(std::vector<Object>& myMap, scene::ISceneManager& smgr)
 {
   int		y;
@@ -132,53 +121,4 @@ std::vector<Object>&	my_fill_map(std::vector<Object>& myMap, scene::ISceneManage
 	}
     }
   return (myMap);
-}
-
-int main()
-{
-  video::E_DRIVER_TYPE driverType = driverChoiceConsole();
-  std::vector<Object> myMap;
-  
-  if (driverType==video::EDT_COUNT)
-    return 1;
-
-  IrrlichtDevice* device = createDevice(driverType,
-					 core::dimension2d<u32>(640, 480), 16, false, false, false);
-  if (device == 0)
-    return 1;
-
-  video::IVideoDriver* driver = device->getVideoDriver();
-  scene::ISceneManager* smgr = device->getSceneManager();
-
-  myMap = my_fill_map(myMap, *smgr);
-
-   smgr->addCameraSceneNodeFPS();
-  int lastFPS = -1;
-  u32 then = device->getTimer()->getTime();
-
-  const f32 MOVEMENT_SPEED = 5.f;
-
-  while(device->run())
-    {
-      const u32 now = device->getTimer()->getTime();
-      const f32 frameDeltaTime = (f32)(now - then) / 1000.f;
-      then = now;
-      driver->beginScene(true, true, video::SColor(255,113,113,133));
-      smgr->drawAll();
-      // device->getGUIEnvironment()->drawAll();
-      driver->endScene();
-      int fps = driver->getFPS();
-      if (lastFPS != fps)
-        {
-	  core::stringw tmp(L"Map Bomberman[");
-	  tmp += driver->getName();
-	  tmp += L"] fps: ";
-	  tmp += fps;
-
-	  device->setWindowCaption(tmp.c_str());
-	  lastFPS = fps;
-        }
-    }
-  device->drop();
-  return 0;
 }
