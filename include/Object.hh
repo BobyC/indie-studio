@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 // 
 // Started on  Fri May 27 14:33:04 2016 Sacha Sacha Monderer
-// Last update Wed Jun  1 16:24:21 2016 Sacha Sacha Monderer
+// Last update Wed Jun  1 16:29:12 2016 Sacha Sacha Monderer
 //
 
 #ifndef OBJECT_HH_
@@ -46,5 +46,7 @@ public:
   bool			getDestruct() const;
   bool			getIsdead() const;
 };
+
+std::vector<Object>&	my_fill_map(std::vector<Object>&, scene::ISceneManager&);
 
 #endif /* OBJECT_HH_ */
