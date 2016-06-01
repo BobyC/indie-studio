@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-** Last update Sun May 29 03:02:52 2016 drozdz_b
+** Last update Wed Jun 01 16:02:28 2016 drozdz_b
 */
 
 #ifndef CHARACTER_HPP_
@@ -18,25 +18,22 @@
 
 using namespace irr;
 
-class Character
+class Character : public Object
 {
 
 private:
-  scene::ISceneNode*	_node;
-  core::vector3df			_pos;
-  CharacterInfo				_info;
+  //scene::ISceneNode*	_node;
+  //core::vector3df			_pos;
+  //CharacterInfo				_info;
 
 public:
   Character(scene::ISceneNode* node);
   ~Character();
 
-  const core::vector3df&	getPosition() const;
   CharacterInfo&					getInfo();
-  void 	setPosition(f32 x, f32 y);
-  void 	setPosition(f32 x, f32 y, f32 z);
 
-  void	move(f32 x, f32 y);
-  void	move(f32 x, f32 y, f32 z);
+  virtual void	move(f32 x, f32 y);
+  virtual void	move(f32 x, f32 y, f32 z);
 };
 
 #endif
