@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-** Last update Thu Jun 02 17:04:24 2016 drozdz_b
+** Last update Thu Jun 02 18:18:45 2016 drozdz_b
 */
 
 #ifndef CHARACTER_HPP_
@@ -27,6 +27,8 @@ private:
   //core::vector3df			_pos;
   CharacterInfo				_info;
   core::vector3d<f32>			_size;
+  bool	_moving;
+    bool	_movingPreced;
 
 public:
   Character(scene::ISceneNode* node);
@@ -38,6 +40,8 @@ public:
 
   virtual void	move(f32 x, f32 y);
   virtual void	move(f32 x, f32 y, f32 z);
+  virtual void	 stati();
+  virtual void		updateAnim();
 };
 
 #endif

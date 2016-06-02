@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Thu Jun 02 17:06:36 2016 drozdz_b
+** Last update Thu Jun 02 18:30:43 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -36,9 +36,11 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
   {
       _node->setMaterialTexture(0, driver->getTexture("Bomber.PCX"));
       _node->setMaterialFlag(video::EMF_LIGHTING, false);
-      _node->setScale(core::vector3df(0.4, 0.4, 0.4));
+      _node->setScale(core::vector3df(0.2, 0.2, 0.2));
       _node->setPosition(core::vector3df(0, 10, 0));
-      _node->setFrameLoop(1000, 1200);
+      _node->setFrameLoop(400, 600);
+      _moving = false;
+      _movingPreced = false;
   }
 }
 
@@ -67,6 +69,10 @@ void	Character::move(f32 x, f32 y)
   if (x < 0)
     _node->setRotation(core::vector3df(0, 150, 0));
 
+    if (_moving)
+      _movingPreced = true;
+    _moving = true;
+
   this->_pos = this->_node->getPosition();
   this->_pos.X += x;
   this->_pos.Y += y;
@@ -84,9 +90,32 @@ void	Character::move(f32 x, f32 y, f32 z)
   if (z < 0)
     _node->setRotation(core::vector3df(0, 60, 0));
 
+  if (_moving)
+    _movingPreced = true;
+  _moving = true;
+
   this->_pos = this->_node->getPosition();
   this->_pos.X += x;
   this->_pos.Y += y;
   this->_pos.Z += z;
   this->_node->setPosition(this->_pos);
+}
+
+void	Character::stati()
+{
+  if (!_moving)
+    _movingPreced = false;
+  _moving = false;
+}
+
+void	Character::updateAnim()
+{
+  if (_moving && _movingPreced == false)
+  {
+    _node->setFrameLoop(160, 180);
+  }
+  else if (!_moving && _movingPreced)
+  {
+      _node->setFrameLoop(400, 600);
+  }
 }

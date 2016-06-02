@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Thu Jun 02 16:19:51 2016 drozdz_b
+** Last update Thu Jun 02 18:16:03 2016 drozdz_b
 */
 
 #include "PlayerController.hpp"
@@ -82,12 +82,15 @@ void		PlayerController::doAction()
     _character->move(-(_speed * _frameDeltaTime), 0);
   else if (_receiver->KeyIsDown(_map[MOVE_XP]))
     _character->move((_speed * _frameDeltaTime), 0);
-  if (_receiver->KeyIsDown(_map[MOVE_YN]))
+  else if (_receiver->KeyIsDown(_map[MOVE_YN]))
     _character->move(0, -(_speed * _frameDeltaTime));
   else if (_receiver->KeyIsDown(_map[MOVE_YP]))
     _character->move(0, (_speed * _frameDeltaTime));
-  if (_receiver->KeyIsDown(_map[MOVE_ZN]))
+  else if (_receiver->KeyIsDown(_map[MOVE_ZN]))
     _character->move(0, 0, -(_speed * _frameDeltaTime));
   else if (_receiver->KeyIsDown(_map[MOVE_ZP]))
     _character->move(0, 0, (_speed * _frameDeltaTime));
+  else
+    _character->stati();
+  _character->updateAnim();
 }
