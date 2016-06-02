@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Wed Jun 01 16:04:10 2016 drozdz_b
+** Last update Wed Jun 01 21:59:41 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -17,6 +17,12 @@
 Character::Character(scene::ISceneNode* node)
 : Object(node)
 {
+}
+
+Character::Character(scene::ISceneNode* node, video::IVideoDriver * driver)
+: Object(node, driver)
+{
+  this->_isdead = true;
 }
 
 Character::~Character()

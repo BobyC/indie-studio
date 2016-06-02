@@ -5,23 +5,27 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:51 2016 drozdz_b
-** Last update Wed Jun 01 16:49:56 2016 drozdz_b
+** Last update Wed Jun 01 21:38:39 2016 drozdz_b
 */
 
 #ifndef PLAN_HPP_
 #define PLAN_HPP_
 
-#include "Object.hpp"
+#include <list>
+
+#include "Object.hh"
 
 class Plan : public Object
 {
-private:
-  ISceneNode			*parent;
-  ISceneManager		*smgr;
+protected:
+  scene::ISceneManager		*_smgr;
+  std::list<Object*>			_objects;
 
 public:
-  void		addObject(const Object& obj);
+  Plan(scene::ISceneNode *, scene::ISceneManager *);
+
+  void		addObject(Object* obj);
   void		checkChild();
-}
+};
 
 #endif

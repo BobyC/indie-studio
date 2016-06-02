@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-** Last update Wed Jun 01 16:02:28 2016 drozdz_b
+** Last update Wed Jun 01 21:58:34 2016 drozdz_b
 */
 
 #ifndef CHARACTER_HPP_
@@ -15,6 +15,7 @@
 #include <map>
 
 #include "CharacterInfo.hh"
+#include "Object.hh"
 
 using namespace irr;
 
@@ -24,10 +25,11 @@ class Character : public Object
 private:
   //scene::ISceneNode*	_node;
   //core::vector3df			_pos;
-  //CharacterInfo				_info;
+  CharacterInfo				_info;
 
 public:
   Character(scene::ISceneNode* node);
+  Character(scene::ISceneNode* node, video::IVideoDriver *driver);
   ~Character();
 
   CharacterInfo&					getInfo();

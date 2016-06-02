@@ -1,29 +1,41 @@
 //
 // map.cpp for indie_studio in /home/monder_s/C++/indie
-// 
+//
 // Made by Sacha Sacha Monderer
 // Login   <monder_s@epitech.net>
-// 
+//
 // Started on  Fri May 27 14:39:22 2016 Sacha Sacha Monderer
 // Last update Wed Jun  1 16:43:36 2016 Sacha Sacha Monderer
 //
 
-#include "../include/Object.hh"
+#include "Object.hh"
 
 Object::Object(scene::ISceneNode *node)
 {
   this->_node = node;
   this->_node->getPosition();
+  this->_isdead = true;
+}
+
+Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
+{
+  this->_node = node;
+  this->_node->getPosition();
+
+  _node->setPosition(core::vector3df(0,0,20));
+  _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
+  _node->setMaterialFlag(video::EMF_LIGHTING, false);
+  this->_isdead = true;
 }
 
 Object::~Object()
 {
-  this->_node->remove();
+//    this->_node->remove();
 }
 
-scene::ISceneNode& Object::getNode() const
+scene::ISceneNode* Object::getNode() const
 {
-  return (*this->_node);
+  return (this->_node);
 }
 
 int	 Object::getMyType() const
@@ -100,7 +112,7 @@ std::vector<Object>&	my_fill_map(std::vector<Object>& myMap, scene::ISceneManage
 	  if (c != '\n')
 	    {
 	      Object	cube(smgr.addCubeSceneNode());
-	      
+
 	      cube.setType(c - 48);
 	      myMap.push_back(cube);
 	    }
