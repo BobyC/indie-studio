@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:48:26 2016 drozdz_b
-** Last update Sun May 29 02:05:30 2016 drozdz_b
+** Last update Thu Jun 02 16:17:56 2016 drozdz_b
 */
 
 #ifndef PLAYERCONTROLLER_HPP_
@@ -44,6 +44,7 @@ private:
   u32															_now;
   u32															_last;
   f32															_frameDeltaTime;
+  f32															_speed;
 
 public:
   PlayerController();

@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-** Last update Wed Jun 01 21:58:34 2016 drozdz_b
+** Last update Thu Jun 02 17:04:24 2016 drozdz_b
 */
 
 #ifndef CHARACTER_HPP_
@@ -23,13 +23,15 @@ class Character : public Object
 {
 
 private:
-  //scene::ISceneNode*	_node;
+  scene::IAnimatedMeshSceneNode*	_node;
   //core::vector3df			_pos;
   CharacterInfo				_info;
+  core::vector3d<f32>			_size;
 
 public:
   Character(scene::ISceneNode* node);
   Character(scene::ISceneNode* node, video::IVideoDriver *driver);
+  Character(scene::ISceneManager* smgr, video::IVideoDriver * driver);
   ~Character();
 
   CharacterInfo&					getInfo();

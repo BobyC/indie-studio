@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-// Last update Sun May 29 02:49:35 2016 drozdz_b
+** Last update Thu Jun 02 16:19:51 2016 drozdz_b
 */
 
 #include "PlayerController.hpp"
@@ -17,12 +17,13 @@ PlayerController::PlayerController()
 {
   this->_action_player = NONE;
   this->_character = NULL;
-  this->_map[MOVE_XN] = KEY_KEY_CODES_COUNT;
-  this->_map[MOVE_XP] = KEY_KEY_CODES_COUNT;
+  this->_map[MOVE_XN] = KEY_KEY_Q;
+  this->_map[MOVE_XP] = KEY_KEY_D;
   this->_map[MOVE_YN] = KEY_KEY_CODES_COUNT;
   this->_map[MOVE_YP] = KEY_KEY_CODES_COUNT;
-  this->_map[MOVE_ZN] = KEY_KEY_CODES_COUNT;
-  this->_map[MOVE_ZP] = KEY_KEY_CODES_COUNT;
+  this->_map[MOVE_ZN] = KEY_KEY_S;
+  this->_map[MOVE_ZP] = KEY_KEY_Z;
+  _speed = 10.f;
 }
 
 PlayerController::PlayerController(Character* character,
@@ -33,6 +34,13 @@ PlayerController::PlayerController(Character* character,
   this->_receiver = receiver;
   this->_device = device;
   this->_last = this->_device->getTimer()->getTime();
+  this->_map[MOVE_XN] = KEY_KEY_Q;
+  this->_map[MOVE_XP] = KEY_KEY_D;
+  this->_map[MOVE_YN] = KEY_KEY_CODES_COUNT;
+  this->_map[MOVE_YP] = KEY_KEY_CODES_COUNT;
+  this->_map[MOVE_ZN] = KEY_KEY_S;
+  this->_map[MOVE_ZP] = KEY_KEY_Z;
+  _speed = 10.f;
 }
 
 PlayerController::~PlayerController()
@@ -71,15 +79,15 @@ void		PlayerController::doAction()
   _last = _now;
 
   if (_receiver->KeyIsDown(_map[MOVE_XN]))
-    _character->move(-(5.f * _frameDeltaTime), 0);
+    _character->move(-(_speed * _frameDeltaTime), 0);
   else if (_receiver->KeyIsDown(_map[MOVE_XP]))
-    _character->move((5.f * _frameDeltaTime), 0);
+    _character->move((_speed * _frameDeltaTime), 0);
   if (_receiver->KeyIsDown(_map[MOVE_YN]))
-    _character->move(0, -(5.f * _frameDeltaTime));
+    _character->move(0, -(_speed * _frameDeltaTime));
   else if (_receiver->KeyIsDown(_map[MOVE_YP]))
-    _character->move(0, (5.f * _frameDeltaTime));
+    _character->move(0, (_speed * _frameDeltaTime));
   if (_receiver->KeyIsDown(_map[MOVE_ZN]))
-    _character->move(0, 0, -(5.f * _frameDeltaTime));
+    _character->move(0, 0, -(_speed * _frameDeltaTime));
   else if (_receiver->KeyIsDown(_map[MOVE_ZP]))
-    _character->move(0, 0, (5.f * _frameDeltaTime));
+    _character->move(0, 0, (_speed * _frameDeltaTime));
 }

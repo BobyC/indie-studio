@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:51 2016 drozdz_b
-** Last update Wed Jun 01 21:38:39 2016 drozdz_b
+** Last update Thu Jun 02 16:15:03 2016 drozdz_b
 */
 
 #ifndef PLAN_HPP_

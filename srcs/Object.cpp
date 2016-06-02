@@ -13,8 +13,7 @@
 Object::Object(scene::ISceneNode *node)
 {
   this->_node = node;
-  this->_node->getPosition();
-  this->_isdead = true;
+  this->_isdead = false;
 }
 
 Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
@@ -25,7 +24,7 @@ Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
   _node->setPosition(core::vector3df(0,0,20));
   _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
   _node->setMaterialFlag(video::EMF_LIGHTING, false);
-  this->_isdead = true;
+  this->_isdead = false;
 }
 
 Object::~Object()

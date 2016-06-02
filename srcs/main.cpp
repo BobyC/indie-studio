@@ -33,7 +33,11 @@ int			main()
   E_DRIVER_TYPE				driverType = EDT_OPENGL;
   params.DriverType = driverType;
   params.WindowSize = dimension2d<u32>(640, 480);
-  IrrlichtDevice	*device = createDeviceEx(params);
+
+  KeyReceiver receiver;
+
+  IrrlichtDevice	*device = createDevice(driverType,
+            core::dimension2d<u32>(640, 480), 16, false, false, false, &receiver);
 
   if (!device)
     return 1;
@@ -47,21 +51,14 @@ int			main()
   core::dimension2d<u32>   tileCount(50, 50);
 
   IMesh			*plane = smgr->getGeometryCreator()->createPlaneMesh(tileSize, tileCount);
-  //IAnimatedMesh		*mesh = smgr->getMesh();
-
-  // if (!mesh)
-  //   {
-  //     device->drop();
-  //     return 1;
-  //   }
-
   IMeshSceneNode	*node = smgr->addMeshSceneNode(plane);
 
   Plan plan(node, smgr);
 
   IMesh *cube = smgr->getGeometryCreator()->createCubeMesh();
 
-  Character obj(smgr->addMeshSceneNode(cube));
+  Character obj(smgr, driver);
+  PlayerController player(&obj, &receiver, device);
 
   plan.addObject(&obj);
   plan.checkChild();
@@ -91,6 +88,7 @@ int			main()
   while (device->run())
     {
       driver->beginScene(true, true, 0);
+      player.doAction();
       smgr->drawAll();
       guienv->drawAll();
       driver->endScene();
