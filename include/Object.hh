@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri May 27 14:33:04 2016 Sacha Sacha Monderer
-// Last update Wed Jun  1 16:29:12 2016 Sacha Sacha Monderer
+// Last update Thu Jun  2 16:05:28 2016 Sacha Sacha Monderer
 //
 
 #ifndef OBJECT_HH_
@@ -32,7 +32,7 @@ protected:
 
 public:
   Object(scene::ISceneNode*);
-  Object(scene::ISceneNode*, video::IVideoDriver *driver);
+  //  Object(scene::ISceneNode*, video::IVideoDriver *driver);
   ~Object();
 
   void			setPosition(f32, f32, f32);

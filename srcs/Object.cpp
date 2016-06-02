@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri May 27 14:39:22 2016 Sacha Sacha Monderer
-// Last update Wed Jun  1 16:43:36 2016 Sacha Sacha Monderer
+// Last update Thu Jun  2 16:05:41 2016 Sacha Sacha Monderer
 //
 
 #include "Object.hh"
@@ -14,19 +14,17 @@ Object::Object(scene::ISceneNode *node)
 {
   this->_node = node;
   this->_node->getPosition();
-  this->_isdead = true;
+  this->_isdead = false;
 }
 
-Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
+/*Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
 {
   this->_node = node;
   this->_node->getPosition();
-
-  _node->setPosition(core::vector3df(0,0,20));
   _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
   _node->setMaterialFlag(video::EMF_LIGHTING, false);
-  this->_isdead = true;
-}
+  this->_isdead = false;
+  }*/
 
 Object::~Object()
 {
@@ -77,9 +75,9 @@ void	 Object::setType(int type)
 void	Object::setPosition(f32 x, f32 y, f32 z)
 {
   this->_pos = this->_node->getPosition();
-  this->_pos.X += x;
-  this->_pos.Y += y;
-  this->_pos.Z += z;
+  this->_pos.X = x;
+  this->_pos.Y = y;
+  this->_pos.Z = z;
   this->_node->setPosition(this->_pos);
 }
 
