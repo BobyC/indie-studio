@@ -13,17 +13,38 @@
 Box::Box(scene::ISceneNode *node) : Object(node)
 {
   this->_node = node;
-  this->_node->getPosition();
-  this->_isdead = false;
+  if (this->_node)
+  {
+    this->_node->getPosition();
+    this->_isdead = false;
+  }
 }
 
 Box::Box(scene::ISceneNode *node, video::IVideoDriver *driver) : Object(node, driver)
 {
   this->_node = node;
+  if (this->_node)
+  {
+    this->_node->getPosition();
+    this->_node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
+    this->_node->setMaterialFlag(video::EMF_LIGHTING, false);
+    this->_isdead = false;
+  }
+}
+
+Box::Box(scene::ISceneManager *smgr, video::IVideoDriver *driver) : Object(NULL)
+{
+  scene::IMesh *cube = smgr->getGeometryCreator()->createCubeMesh();
+  this->_node = smgr->addMeshSceneNode(cube);
   this->_node->getPosition();
-  this->_node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
-  this->_node->setMaterialFlag(video::EMF_LIGHTING, false);
-  this->_isdead = false;
+  if (this->_node)
+  {
+    this->_node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
+    this->_node->setMaterialFlag(video::EMF_LIGHTING, false);
+    _node->setScale(core::vector3df(1, 1, 1));
+    _node->setPosition(core::vector3df(0, 5, 0));
+    this->_isdead = false;
+  }
 }
 
 Box::~Box()

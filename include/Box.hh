@@ -18,6 +18,7 @@ class Box : public Object
 public:
   Box(scene::ISceneNode*);
   Box(scene::ISceneNode*, video::IVideoDriver*);
+  Box(scene::ISceneManager*, video::IVideoDriver *driver);
   ~Box();
 };
 

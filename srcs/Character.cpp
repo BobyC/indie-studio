@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Thu Jun 02 18:30:43 2016 drozdz_b
+** Last update Fri Jun 03 12:27:50 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -32,16 +32,38 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
   //bomber->setFrameLoop(0, 10);
   _node = smgr->addAnimatedMeshSceneNode(bomber);
   _size = core::vector3df(1, 1, 1);
+  _col = smgr->getSceneCollisionManager();
   if (_node)
   {
       _node->setMaterialTexture(0, driver->getTexture("Bomber.PCX"));
       _node->setMaterialFlag(video::EMF_LIGHTING, false);
       _node->setScale(core::vector3df(0.2, 0.2, 0.2));
-      _node->setPosition(core::vector3df(0, 10, 0));
+      _node->setPosition(core::vector3df(-10, 5, -10));
       _node->setFrameLoop(400, 600);
       _moving = false;
       _movingPreced = false;
   }
+}
+
+void		Character::setCollision(scene::ISceneNode *mapNode,
+  scene::IMesh *mesh, scene::ISceneManager *smgr)
+{
+//  scene::ISceneNode *mapNode = obj.getNode();
+  scene::ITriangleSelector *selector =
+    smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
+  if (selector)
+  {
+    mapNode->setTriangleSelector(selector);
+    scene::ISceneNodeAnimator	*anim =
+      smgr->createCollisionResponseAnimator(selector, mapNode,
+        core::vector3df(1,1,1),core::vector3df(0,0,0),
+        core::vector3df(0,0,0));
+    selector->drop();
+    _node->addAnimator(anim);
+    anim->drop();
+  }
+
+
 }
 
 /*Character::Character(scene::ISceneNode* node, video::IVideoDriver * driver)
@@ -64,41 +86,41 @@ CharacterInfo&	Character::getInfo()
 */
 void	Character::move(f32 x, f32 y)
 {
-  if (x > 0)
-    _node->setRotation(core::vector3df(0, -30, 0));
-  if (x < 0)
-    _node->setRotation(core::vector3df(0, 150, 0));
+    if (x > 0)
+      _node->setRotation(core::vector3df(0, -30, 0));
+    if (x < 0)
+      _node->setRotation(core::vector3df(0, 150, 0));
 
     if (_moving)
       _movingPreced = true;
     _moving = true;
 
-  this->_pos = this->_node->getPosition();
-  this->_pos.X += x;
-  this->_pos.Y += y;
-  this->_node->setPosition(this->_pos);
+    this->_pos = this->_node->getPosition();
+    this->_pos.X += x;
+    this->_pos.Y += y;
+    this->_node->setPosition(this->_pos);
 }
 
 void	Character::move(f32 x, f32 y, f32 z)
 {
-  if (x > 0)
-    _node->setRotation(core::vector3df(0, -30, 0));
-  if (x < 0)
-    _node->setRotation(core::vector3df(0, 30, 0));
-  if (z > 0)
-    _node->setRotation(core::vector3df(0, -60, 0));
-  if (z < 0)
-    _node->setRotation(core::vector3df(0, 60, 0));
+    if (x > 0)
+      _node->setRotation(core::vector3df(0, -30, 0));
+    if (x < 0)
+      _node->setRotation(core::vector3df(0, 30, 0));
+    if (z > 0)
+      _node->setRotation(core::vector3df(0, -60, 0));
+    if (z < 0)
+      _node->setRotation(core::vector3df(0, 60, 0));
 
-  if (_moving)
-    _movingPreced = true;
-  _moving = true;
+    if (_moving)
+      _movingPreced = true;
+    _moving = true;
 
-  this->_pos = this->_node->getPosition();
-  this->_pos.X += x;
-  this->_pos.Y += y;
-  this->_pos.Z += z;
-  this->_node->setPosition(this->_pos);
+    this->_pos = this->_node->getPosition();
+    this->_pos.X += x;
+    this->_pos.Y += y;
+    this->_pos.Z += z;
+    this->_node->setPosition(this->_pos);
 }
 
 void	Character::stati()
