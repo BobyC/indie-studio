@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:51 2016 drozdz_b
-** Last update Thu Jun 02 16:15:03 2016 drozdz_b
+** Last update Fri Jun 03 17:25:02 2016 drozdz_b
 */
 
 #ifndef PLAN_HPP_
@@ -23,9 +23,8 @@ protected:
 
 public:
   Plan(scene::ISceneNode *, scene::ISceneManager *);
-
-  void		addObject(Object* obj);
-  void		checkChild();
+  Plan(scene::ISceneManager* smgr, video::IVideoDriver * driver);
+  ~Plan();
 };
 
 #endif

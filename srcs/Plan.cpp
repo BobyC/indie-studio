@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:39 2016 drozdz_b
-** Last update Thu Jun 02 15:15:43 2016 drozdz_b
+** Last update Fri Jun 03 17:24:50 2016 drozdz_b
 */
 
 #include "Plan.hpp"
@@ -16,27 +16,19 @@ Plan::Plan(scene::ISceneNode *node, scene::ISceneManager *smgr)
   this->_smgr = smgr;
 }
 
-void	  Plan::addObject(Object* obj)
+Plan::Plan(scene::ISceneManager* smgr, video::IVideoDriver * driver)
+: Object(NULL)
 {
-  this->_node->addChild(obj->getNode());
-  this->_objects.push_back(obj);
+  scene::IMesh			*plane =
+    smgr->getGeometryCreator()->createPlaneMesh(tileSize, tileCount);
+  _node = smgr->addMeshSceneNode(plane);
+
+  if(_node)
+  {
+    _node->setMaterialTexture(0, driver->getTexture("WoodChips01_D.tga"));
+  }
 }
 
-void		Plan::checkChild()
+Plan::~Plan()
 {
-  std::list<Object*>::iterator it = this->_objects.begin();
-  std::list<Object*>::iterator it2;
-
-  while (it != this->_objects.end())
-  {
-    if((*it)->getIsdead())
-    {
-      this->_node->removeChild((*it)->getNode());
-      it2 = this->_objects.erase(it);
-//    delete (*it);
-      it = it2;
-    }
-    else
-      ++it;
-  }
 }
