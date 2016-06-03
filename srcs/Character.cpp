@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Fri Jun 03 12:27:50 2016 drozdz_b
+** Last update Fri Jun 03 15:00:30 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -40,6 +40,7 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
       _node->setScale(core::vector3df(0.2, 0.2, 0.2));
       _node->setPosition(core::vector3df(-10, 5, -10));
       _node->setFrameLoop(400, 600);
+      _node->setAnimationSpeed(30);
       _moving = false;
       _movingPreced = false;
   }
@@ -135,9 +136,11 @@ void	Character::updateAnim()
   if (_moving && _movingPreced == false)
   {
     _node->setFrameLoop(160, 180);
+    _node->setAnimationSpeed(100);
   }
   else if (!_moving && _movingPreced)
   {
       _node->setFrameLoop(400, 600);
+      _node->setAnimationSpeed(30);
   }
 }
