@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri May 27 14:39:22 2016 Sacha Sacha Monderer
-// Last update Fri Jun  3 19:40:09 2016 Nicolas Pujol
+// Last update Fri Jun  3 20:48:56 2016 Nicolas Pujol
 //
 
 #include "../include/Object.hh"
@@ -13,7 +13,6 @@
 Object::Object(scene::ISceneNode *node)
 {
   this->_node = node;
-  this->_node->getPosition();
   this->_isdead = false;
 }
 

@@ -5,7 +5,7 @@
 // Login   <drozdz_b@epitech.net>
 //
 // Started on  Wed May  4 14:00:27 2016 drozdz_b
-// Last update Fri Jun  3 20:32:17 2016 Nicolas Pujol
+// Last update Fri Jun  3 20:48:46 2016 Nicolas Pujol
 //
 
 #include <iostream>
@@ -48,8 +48,8 @@ int			main()
   IVideoDriver		*driver = device->getVideoDriver();
   ISceneManager		*smgr = device->getSceneManager();
   IGUIEnvironment	*guienv = device->getGUIEnvironment();
-  core::dimension2d<f32> tileSize(1, 1);
-  core::dimension2d<u32>   tileCount(50, 50);
+  //core::dimension2d<f32> tileSize(1, 1);
+  //core::dimension2d<u32>   tileCount(50, 50);
 
   printf("Before plan\n");
   Plan plan(smgr, driver);
