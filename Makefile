@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Mon May  2 17:40:01 2016 Anaïs Foncel
+## Last update Thu May 19 14:28:42 2016 Rigolat Sébastien
 ##
 
 NAME		=	indie_studio
@@ -34,7 +34,6 @@ LDLIBS		+=	-lXxf86vm
 LDLIBS		+=	-lXext
 LDLIBS		+=	-lX11
 LDLIBS		+=	-lXcursor
-LDLIBS		+=	-lIrrlicht
 LDLIBS		+=	-lpthread
 
 SRC		=	main.cpp	\
