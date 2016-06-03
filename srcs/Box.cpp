@@ -1,23 +1,23 @@
 //
 // Box.cpp for indie_studio in /home/monder_s/C++/cpp_indie_studio/srcs
-// 
+//
 // Made by Sacha Sacha Monderer
 // Login   <monder_s@epitech.net>
-// 
+//
 // Started on  Thu Jun  2 15:56:21 2016 Sacha Sacha Monderer
 // Last update Thu Jun  2 16:05:03 2016 Sacha Sacha Monderer
 //
 
 #include "Box.hh"
 
-Box::Box(scene::ISceneNode *node)
+Box::Box(scene::ISceneNode *node) : Object(node)
 {
   this->_node = node;
   this->_node->getPosition();
   this->_isdead = false;
 }
 
-Box::Box(scene::ISceneNode *node, video::IVideoDriver *driver)
+Box::Box(scene::ISceneNode *node, video::IVideoDriver *driver) : Object(node, driver)
 {
   this->_node = node;
   this->_node->getPosition();
@@ -28,5 +28,4 @@ Box::Box(scene::ISceneNode *node, video::IVideoDriver *driver)
 
 Box::~Box()
 {
-  ;
 }
