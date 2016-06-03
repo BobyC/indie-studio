@@ -18,6 +18,8 @@
 #include "PlayerController.hpp"
 #include "Plan.hpp"
 #include "Object.hh"
+#include "Box.hh"
+#include "Fire.hpp"
 
 using namespace irr;
 using namespace core;
@@ -36,8 +38,9 @@ int			main()
 
   KeyReceiver receiver;
 
+  //            core::dimension2d<u32>(640, 480), 16, false, false, false, &receiver);
   IrrlichtDevice	*device = createDevice(driverType,
-            core::dimension2d<u32>(640, 480), 16, false, false, false, &receiver);
+            core::dimension2d<u32>(1024, 980), 16, false, false, false, &receiver);
 
   if (!device)
     return 1;
@@ -50,25 +53,17 @@ int			main()
   core::dimension2d<f32> tileSize(1, 1);
   core::dimension2d<u32>   tileCount(50, 50);
 
-  IMesh			*plane = smgr->getGeometryCreator()->createPlaneMesh(tileSize, tileCount);
-  IMeshSceneNode	*node = smgr->addMeshSceneNode(plane);
-
-  Plan plan(node, smgr);
-
-  IMesh *cube = smgr->getGeometryCreator()->createCubeMesh();
-
+  Plan plan(smgr, driver);
+    //IMesh *cube = smgr->getGeometryCreator()->createCubeMesh();
+    Box box(smgr, driver);
+    Fire fire(smgr, driver);
+    fire.setPosition(0,0,-20);
   Character obj(smgr, driver);
+  obj.setCollision(box.getNode(),
+  smgr->getGeometryCreator()->createCubeMesh(), smgr);
+
+//  obj.setCollision(node, plane, smgr);
   PlayerController player(&obj, &receiver, device);
-
-  plan.addObject(&obj);
-  plan.checkChild();
-
-  if (node)
-    {
-      node->setMaterialFlag(EMF_LIGHTING, false);
-      // node->setMD2Animation(EMAT_STAND);
-      node->setMaterialTexture(0, driver->getTexture("WoodChips01_D.tga"));
-    }
 
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, false);
 
@@ -84,10 +79,12 @@ int			main()
 
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, true);
 
-  smgr->addCameraSceneNode(0, vector3df(0, 30, -40), vector3df(0, 5, 0));
+//  smgr->addCameraSceneNode(0, vector3df(0, 30, -40), vector3df(0, 5, 0));
+  smgr->addCameraSceneNode(0, vector3df(10, 30, -40), vector3df(0, 10, 0));
   while (device->run())
     {
       driver->beginScene(true, true, 0);
+            fire.burn();
       player.doAction();
       smgr->drawAll();
       guienv->drawAll();
