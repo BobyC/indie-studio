@@ -5,10 +5,10 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Thu Jun  2 15:56:21 2016 Sacha Sacha Monderer
-// Last update Thu Jun  2 16:05:03 2016 Sacha Sacha Monderer
+// Last update Fri Jun  3 19:32:20 2016 Nicolas Pujol
 //
 
-#include "Box.hh"
+#include "../include/Box.hh"
 
 Box::Box(scene::ISceneNode *node) : Object(node)
 {
@@ -16,18 +16,6 @@ Box::Box(scene::ISceneNode *node) : Object(node)
   if (this->_node)
   {
     this->_node->getPosition();
-    this->_isdead = false;
-  }
-}
-
-Box::Box(scene::ISceneNode *node, video::IVideoDriver *driver) : Object(node, driver)
-{
-  this->_node = node;
-  if (this->_node)
-  {
-    this->_node->getPosition();
-    this->_node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
-    this->_node->setMaterialFlag(video::EMF_LIGHTING, false);
     this->_isdead = false;
   }
 }

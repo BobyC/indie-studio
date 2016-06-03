@@ -5,33 +5,26 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri May 27 14:39:22 2016 Sacha Sacha Monderer
-// Last update Thu Jun  2 16:05:41 2016 Sacha Sacha Monderer
+// Last update Fri Jun  3 19:40:09 2016 Nicolas Pujol
 //
 
-#include "Object.hh"
+#include "../include/Object.hh"
 
 Object::Object(scene::ISceneNode *node)
 {
   this->_node = node;
-<<<<<<< HEAD
-=======
   this->_node->getPosition();
->>>>>>> 54d097ff86bdbd538f8110cf7216fe11bd9c6a81
   this->_isdead = false;
 }
 
-/*Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
-{
-  this->_node = node;
-  this->_node->getPosition();
-  _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
-  _node->setMaterialFlag(video::EMF_LIGHTING, false);
-  this->_isdead = false;
-<<<<<<< HEAD
-}
-=======
-  }*/
->>>>>>> 54d097ff86bdbd538f8110cf7216fe11bd9c6a81
+//Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
+// {
+//   this->_node = node;
+//   this->_node->getPosition();
+//   _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
+//   _node->setMaterialFlag(video::EMF_LIGHTING, false);
+//   this->_isdead = false;
+//}
 
 Object::~Object()
 {

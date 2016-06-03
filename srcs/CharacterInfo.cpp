@@ -1,14 +1,14 @@
 //
 // CharacterInfo.cpp for  in /home/foncel_a/rendu/TEK2/CPP/CPP2/cpp_indie_studio/include/Header
-// 
+//
 // Made by Anaïs Foncel
 // Login   <foncel_a@epitech.net>
-// 
+//
 // Started on  Mon May  2 18:32:50 2016 Anaïs Foncel
-// Last update Thu May  5 15:53:27 2016 Anaïs Foncel
+// Last update Fri Jun  3 19:29:32 2016 Nicolas Pujol
 //
 
-#include "CharacterInfo.hh"
+#include "../include/CharacterInfo.hh"
 
 /*
 ** CONSTRUTOR

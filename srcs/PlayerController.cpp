@@ -5,10 +5,10 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Thu Jun 02 18:16:03 2016 drozdz_b
+// Last update Fri Jun  3 19:29:13 2016 Nicolas Pujol
 */
 
-#include "PlayerController.hpp"
+#include "../include/PlayerController.hpp"
 
 /*
 ** Construtors & Destructor

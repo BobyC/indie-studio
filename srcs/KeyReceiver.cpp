@@ -5,10 +5,10 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Sun May 29 01:02:54 2016 drozdz_b
-** Last update Sun May 29 01:16:38 2016 drozdz_b
+// Last update Fri Jun  3 19:28:58 2016 Nicolas Pujol
 */
 
-#include "KeyReceiver.hpp"
+#include "../include/KeyReceiver.hpp"
 
 KeyReceiver::KeyReceiver()
 {

@@ -5,7 +5,7 @@
 ## Login   <drozdz_b@epitech.net>
 ##
 ## Started on  Sat Mar 19 16:37:34 2016 drozdz_b
-## Last update Fri Jun  3 17:13:33 2016 drozdz_b
+## Last update Fri Jun  3 19:58:46 2016 Nicolas Pujol
 ##
 
 SRC	=	main.cpp		\
@@ -15,7 +15,8 @@ SRC	=	main.cpp		\
 		CharacterInfo.cpp	\
 		Object.cpp		\
 		Plan.cpp		\
-		Box.cpp
+		Box.cpp			
+
 
 NAME	=	testIrrlitch
 
@@ -28,7 +29,7 @@ CC	=	g++
 $CFLAGS	+= -g
 
 $(NAME):	$(OBJ)
-		$(CC) -o $(NAME) $(SRC) -lIrrlicht -lGL -lX11 -lXxf86vm -g
+		$(CC) -o $(NAME) $(SRC) libIrrlicht.a -lGL -lX11 -lXxf86vm -g
 
 all:	$(NAME)
 

@@ -5,10 +5,10 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:39 2016 drozdz_b
-** Last update Fri Jun 03 17:39:47 2016 drozdz_b
+// Last update Fri Jun  3 19:30:49 2016 Nicolas Pujol
 */
 
-#include "Plan.hpp"
+#include "../include/Plan.hpp"
 
 Plan::Plan(scene::ISceneNode *node, scene::ISceneManager *smgr)
 : Object(node)

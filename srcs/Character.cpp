@@ -5,10 +5,10 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Fri Jun 03 15:00:30 2016 drozdz_b
+// Last update Fri Jun  3 17:18:04 2016 Nicolas Pujol
 */
 
-#include "Character.hpp"
+#include "../include/Character.hpp"
 
 /*
 ** Construtors & Destructor
@@ -17,12 +17,6 @@
 Character::Character(scene::ISceneNode* node)
 : Object(node)
 {
-}
-
-Character::Character(scene::ISceneNode* node, video::IVideoDriver * driver)
-: Object(node, driver)
-{
-
 }
 
 Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
@@ -63,8 +57,6 @@ void		Character::setCollision(scene::ISceneNode *mapNode,
     _node->addAnimator(anim);
     anim->drop();
   }
-
-
 }
 
 /*Character::Character(scene::ISceneNode* node, video::IVideoDriver * driver)
