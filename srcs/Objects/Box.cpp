@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Thu Jun  2 15:56:21 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 18:44:39 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 00:45:04 2016 Sacha Sacha Monderer
 //
 
 #include "Box.hh"
@@ -29,7 +29,7 @@ Box::Box(scene::ISceneManager *smgr, video::IVideoDriver *driver) : Object(NULL)
   this->_node->getPosition();
   if (this->_node)
   {
-    this->_node->setMaterialTexture(0, driver->getTexture("../../irrlicht-1.8.3/media/wall.bmp"));
+    this->_node->setMaterialTexture(0, driver->getTexture("imgs/wall.bmp"));
     this->_node->setMaterialFlag(video::EMF_LIGHTING, false);
     this->_isdead = false;
   }

@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:39 2016 drozdz_b
-// Last update Sat Jun  4 18:46:02 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 00:47:18 2016 Sacha Sacha Monderer
 */
 
 #include "Plan.hpp"
@@ -29,7 +29,7 @@ Plan::Plan(scene::ISceneManager* smgr, video::IVideoDriver * driver)
   if(_node)
   {
     _node->setMaterialFlag(video::EMF_LIGHTING, false);
-    _node->setMaterialTexture(0, driver->getTexture("WoodChips01_D.tga"));
+    _node->setMaterialTexture(0, driver->getTexture("imgs/WoodChips01_D.tga"));
     _node->setPosition(core::vector3df(4.5f, 0, 4.5f));
     // _node->setRotation(core::vector3df(90, 0, 0));
   }

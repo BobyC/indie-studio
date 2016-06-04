@@ -5,14 +5,15 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri May 27 14:39:22 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 22:20:32 2016 drozdz_b
+// Last update Sun Jun  5 01:23:12 2016 Sacha Sacha Monderer
 //
 
 #include "Object.hh"
 
 Object::Object(scene::ISceneNode *node)
 {
-  this->_node = node;
+  if (node)
+    this->_node = node;
   this->_isdead = false;
 }
 
@@ -97,41 +98,23 @@ void	Object::setIsdead(bool d)
   this->_isdead = d;
 }
 
-std::vector<Object>&	my_fill_map(std::vector<Object>& myMap, scene::ISceneManager& smgr)
+scene::IAnimatedMeshSceneNode* Object::getNodeAnim() const
 {
-  int		y;
-  int		x;
-  std::ifstream file("map.txt", std::ios::in);
-  char		c;
+  return (this->_nodeAnim);
+}
 
-  if (file)
-    {
-      while (file.get(c))
-	{
-	  if (c != '\n')
-	    {
-	      Object	cube(smgr.addCubeSceneNode());
+void    Object::setPosAnim(f32 x, f32 y, f32 z)
+{
+  this->_pos = this->_nodeAnim->getPosition();
+  this->_pos.X = x;
+  this->_pos.Y = y;
+  this->_pos.Z = z;
+  this->_nodeAnim->setPosition(this->_pos);
+}
 
-	      cube.setType(c - 48);
-	      myMap.push_back(cube);
-	    }
-	}
-      x = 0;
-      y = 0;
-      std::vector<Object>::iterator it = myMap.begin();
-      while (y != 25)
-	{
-	  while (x != 25)
-	    {
-	      it->setPosition(x, y, 30);
-	      it++;
-	      x++;
-	    }
-	  x = 0;
-	  y++;
-	}
-    }
-  return (myMap);
+void    Object::setNodeAnim(scene::IAnimatedMeshSceneNode* n)
+{
+  this->_nodeAnim = n;
 }
 
 void		Object::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr)

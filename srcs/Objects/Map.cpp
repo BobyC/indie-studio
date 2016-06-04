@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 // 
 // Started on  Fri Jun  3 16:46:32 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 18:47:29 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 01:26:19 2016 Sacha Sacha Monderer
 //
 
 #include "Map.hh"
@@ -17,7 +17,7 @@ Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
 {
   int           y;
   int           x;
-  std::ifstream file("map.txt", std::ios::in);
+  std::ifstream file("imgs/map.txt", std::ios::in);
   char          c;
   std::string	str;
   int		n;
@@ -39,20 +39,10 @@ Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
       this->_map.push_back(new Plan(smgr, driver));
       while (str[x] != '\0')
 	{
-	  if (str[x] == '0')
-	    {
-	      //vide
-	    }
-	  else if (str[x] == '1' || str[x] == '2')
-	    {
-	      //mur 1 & mur destruc 2
-	      this->_map.push_back(new Box(smgr, driver));
-	    }
+	  if (str[x] == '1' || str[x] == '2')
+	    this->_map.push_back(new Box(smgr, driver));
 	  else if (str[x] == '3')
-	    {
-	      //joueur
-	      this->_map.push_back(new Character(smgr, driver));
-	    }
+	    this->_map.push_back(new Character(smgr, driver));
 	  x++;
 	}
       x = 0;
@@ -83,6 +73,7 @@ Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
           x = 0;
           y++;
         }
+      std::cout << "here" << std::endl;
       smgr->addCameraSceneNode(0, core::vector3df(5, 9, -2), core::vector3df(5,0, 5), true);
     }
 }

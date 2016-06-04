@@ -5,13 +5,13 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-// Last update Sat Jun  4 22:17:56 2016 drozdz_b
+// Last update Sun Jun  5 00:49:43 2016 Sacha Sacha Monderer
 */
 
 #ifndef CHARACTER_HPP_
 #define CHARACTER_HPP_
 
-#include <irr/irrlicht.h>
+#include <irrlicht.h>
 #include <map>
 #include <list>
 

@@ -5,7 +5,7 @@
 // Login   <drozdz_b@epitech.net>
 //
 // Started on  Wed May  4 14:00:27 2016 drozdz_b
-// Last update Sat Jun  4 17:41:38 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 01:03:27 2016 Sacha Sacha Monderer
 //
 
 #include <iostream>
@@ -78,19 +78,20 @@ int			main()
   //     node->setMaterialTexture(0, driver->getTexture("WoodChips01_D.tga"));
   //   }
 
-  Map	map(smgr, driver);
+   Map	map(smgr, driver);
 
+   //smgr->addCameraSceneNodeFPS();
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, false);
 
   scene::ISceneNode* skybox=smgr->addSkyBoxSceneNode(
-						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_up.jpg"),
-						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_dn.jpg"),
-						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_lf.jpg"),
-						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_rt.jpg"),
-						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_ft.jpg"),
-						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_bk.jpg"));
+						     driver->getTexture("imgs/irrlicht2_up.jpg"),
+						     driver->getTexture("imgs/irrlicht2_dn.jpg"),
+						     driver->getTexture("imgs/irrlicht2_lf.jpg"),
+						     driver->getTexture("imgs/irrlicht2_rt.jpg"),
+						     driver->getTexture("imgs/irrlicht2_ft.jpg"),
+						     driver->getTexture("imgs/irrlicht2_bk.jpg"));
 
-  scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../../irrlicht-1.8.3/media/skydome.jpg"),16,8,0.95f,2.0f);
+  scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("imgs/skydome.jpg"),16,8,0.95f,2.0f);
 
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, true);
 

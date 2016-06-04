@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Sat Jun  4 17:14:21 2016 Rigolat Sébastien
+## Last update Sun Jun  5 01:11:23 2016 Sacha Sacha Monderer
 ##
 
 NAME		=	indie_studio
@@ -19,7 +19,7 @@ PATH_SRCS	=	./srcs/
 CFLAGS		+=	-W
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
-CFLAGS		+=	-Werror
+##CFLAGS		+=	-Werror
 CFLAGS		+=	-std=gnu++11
 CFLAGS		+=	-g
 
@@ -60,7 +60,7 @@ SRC		=	main_core_test.cpp			\
 			GUI/CharacterInfo.cpp			\
 			GUI/PlayMenu.cpp			\
 			Core/Core.cpp				\
-			Core/Map.cpp				\
+			Objects/Map.cpp				\
 			Objects/Fire.cpp			\
 			Objects/Box.cpp				\
 			Objects/Plan.cpp			\
