@@ -5,19 +5,19 @@
 // Login   <drozdz_b@epitech.net>
 //
 // Started on  Wed May  4 14:00:27 2016 drozdz_b
-// Last update Fri Jun  3 20:48:46 2016 Nicolas Pujol
+// Last update Sat Jun  4 03:08:01 2016 Rigolat Sébastien
 //
 
 #include <iostream>
-#include <irr/irrlicht.h>
 
-#include "../include/Character.hpp"
-#include "../include/KeyReceiver.hpp"
-#include "../include/PlayerController.hpp"
-#include "../include/Plan.hpp"
-#include "../include/Object.hh"
-#include "../include/Box.hh"
-#include "../include/Fire.hpp"
+#include "irrlicht.h"
+#include "Character.hpp"
+#include "KeyReceiver.hpp"
+#include "PlayerController.hpp"
+#include "Plan.hpp"
+#include "Object.hh"
+#include "Box.hh"
+#include "Fire.hpp"
 
 using namespace irr;
 using namespace core;
@@ -81,6 +81,8 @@ int			main()
 
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, true);
 
+  (void)skybox;
+  (void)skydome;
   //smgr->addCameraSceneNode(0, vector3df(0, 30, -40), vector3df(0, 5, 0));
   smgr->addCameraSceneNode(0, vector3df(10, 30, -40), vector3df(0, 10, 0));
   while (device->run())

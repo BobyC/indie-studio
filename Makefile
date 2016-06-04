@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Thu May 19 14:28:42 2016 Rigolat Sébastien
+## Last update Sat Jun  4 03:21:04 2016 Rigolat Sébastien
 ##
 
 NAME		=	indie_studio
@@ -14,7 +14,6 @@ CXX		=	g++
 
 RM		=	rm -f
 
-PATH_OBJS	=	./objs/
 PATH_SRCS	=	./srcs/
 
 CFLAGS		+=	-W
@@ -25,9 +24,15 @@ CFLAGS		+=	-std=gnu++11
 CFLAGS		+=	-g
 
 LDFLAGS		+=	-I./include/
-LDFLAGS		+=	-Llib/
-LDFLAGS		+=	-L/usr/lib64
-LDFLAGS		+=	-L/usr/X11R6/lib
+LDFLAGS		+=	-I./include/Common/Managers
+LDFLAGS		+=	-I./include/GUI
+LDFLAGS		+=	-I./include/Controllers
+LDFLAGS		+=	-I./include/Objects
+LDFLAGS		+=	-I./include/Irrlicht
+
+LDLIBS		+=	-Llib/
+LDLIBS		+=	-L/usr/lib64
+LDLIBS		+=	-L/usr/X11R6/lib
 
 LDLIBS		+=	-lGL
 LDLIBS		+=	-lXxf86vm
@@ -35,26 +40,45 @@ LDLIBS		+=	-lXext
 LDLIBS		+=	-lX11
 LDLIBS		+=	-lXcursor
 LDLIBS		+=	-lpthread
+LDLIBS		+=	-lIrrlicht
 
-SRC		=	main.cpp	\
+SRC		=	Fire.cpp				\
+			Core.cpp				\
+			Common/Managers/MenuManager.cpp		\
+			main_core_test.cpp			\
+			GUI/HUD.cpp				\
+			GUI/OptionMenu.cpp			\
+			GUI/PlaySubMenu.cpp			\
+			GUI/GUIBonus.cpp			\
+			GUI/MainMenu.cpp			\
+			GUI/CreditsMenu.cpp			\
+			GUI/PauseMenu.cpp			\
+			GUI/AGUIMenu.cpp			\
+			GUI/CharacterInfo.cpp			\
+			GUI/PlayMenu.cpp			\
+			Objects/Box.cpp				\
+			Objects/Plan.cpp			\
+			Objects/Character.cpp			\
+			Objects/Bomb.cpp			\
+			Objects/Object.cpp			\
+			Map.cpp					\
+			Controllers/KeyReceiver.cpp		\
+			Controllers/PlayerController.cpp	\
 			Errors.cpp
 
-OBJS		=	$(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
+SRCS		=	$(addprefix $(PATH_SRCS), $(SRC))
 
-FIRST           :=	$(shell test -d $(PATH_OBJS) || mkdir $(PATH_OBJS))
+OBJS		=	$(SRCS:.cpp=.o)
 
-$(PATH_OBJS)%.o : $(PATH_SRCS)%.cpp
+%.o : 		%.cpp
 		@echo "g++ -c -o $@ $^"
 		@$(CXX) -c -o $@ $^ $(CFLAGS) $(LDFLAGS) $(LDLIBS)
 
 $(NAME):	$(OBJS)
-		$(CXX) -o $(NAME) $(OBJS) $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
+		$(CXX) -o $(NAME) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS)
 		@echo -e "\e[1;31mDON'T FORGET TO REMOVE THE DEBUG FLAG BEFORE LAST PUSH !\e[0;m"
 
 all:		$(NAME)
-
-mvo:
-		mv $(OBJS) $(OBJS_DIR)
 
 clean:
 		$(RM) $(OBJS)

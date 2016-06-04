@@ -5,9 +5,12 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Fri Jun 03 17:45:34 2016 drozdz_b
-** Last update Fri Jun 03 17:50:55 2016 drozdz_b
+// Last update Sat Jun  4 03:09:37 2016 Rigolat Sébastien
 */
 
+#include "Fire.hpp"
+
+/*
 Fire::Fire(scene::ISceneNode *node, scene::ISceneManager *smgr)
 : Object(node)
 {
@@ -39,3 +42,4 @@ Fire::~Fire()
 {
 
 }
+*/
