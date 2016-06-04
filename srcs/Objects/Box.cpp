@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Thu Jun  2 15:56:21 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 03:14:50 2016 Rigolat Sébastien
+// Last update Sat Jun  4 16:11:20 2016 Sacha Sacha Monderer
 //
 
 #include "Box.hh"
@@ -17,20 +17,20 @@ Box::Box(scene::ISceneNode *node) : Object(node)
   {
     this->_node->getPosition();
     this->_isdead = false;
+    this->_destructible = false;
   }
 }
 
 Box::Box(scene::ISceneManager *smgr, video::IVideoDriver *driver) : Object(NULL)
 {
-  scene::IMesh *cube = smgr->getGeometryCreator()->createCubeMesh();
+  core::vector3df   size(1, 1, 0.5f);
+  scene::IMesh *cube = smgr->getGeometryCreator()->createCubeMesh(size);
   this->_node = smgr->addMeshSceneNode(cube);
   this->_node->getPosition();
   if (this->_node)
   {
-    this->_node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
+    this->_node->setMaterialTexture(0, driver->getTexture("../../irrlicht-1.8.3/media/wall.bmp"));
     this->_node->setMaterialFlag(video::EMF_LIGHTING, false);
-    _node->setScale(core::vector3df(1, 1, 1));
-    _node->setPosition(core::vector3df(0, 5, 0));
     this->_isdead = false;
   }
 }

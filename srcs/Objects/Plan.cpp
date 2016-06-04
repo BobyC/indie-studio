@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:39 2016 drozdz_b
-// Last update Sat Jun  4 03:15:14 2016 Rigolat Sébastien
+// Last update Sat Jun  4 16:46:49 2016 Sacha Sacha Monderer
 */
 
 #include "Plan.hpp"
@@ -20,15 +20,18 @@ Plan::Plan(scene::ISceneManager* smgr, video::IVideoDriver * driver)
 : Object(NULL)
 {
   core::dimension2d<f32> tileSize(1, 1);
-  core::dimension2d<u32>   tileCount(50, 50);
+  core::dimension2d<u32>   tileCount(10, 10);
   scene::IMesh			*plane =
     smgr->getGeometryCreator()->createPlaneMesh(tileSize, tileCount);
+  
   _node = smgr->addMeshSceneNode(plane);
 
   if(_node)
   {
     _node->setMaterialFlag(video::EMF_LIGHTING, false);
     _node->setMaterialTexture(0, driver->getTexture("WoodChips01_D.tga"));
+    _node->setPosition(core::vector3df(4.5f, 4.5f, 0));
+    _node->setRotation(core::vector3df(90, 0, 0));
   }
 }
 

@@ -5,16 +5,17 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-// Last update Sat Jun  4 03:02:24 2016 Rigolat Sébastien
+// Last update Sat Jun  4 17:21:48 2016 Sacha Sacha Monderer
 */
 
 #ifndef CHARACTER_HPP_
 #define CHARACTER_HPP_
 
-# include <irrlicht.h>
-# include <map>
-# include "CharacterInfo.hh"
-# include "Object.hh"
+#include <irrlicht.h>
+#include <map>
+
+#include "CharacterInfo.hh"
+#include "Object.hh"
 
 using namespace irr;
 
@@ -22,7 +23,7 @@ class Character : public Object
 {
 
 private:
-  scene::IAnimatedMeshSceneNode*	_node;
+  //scene::IAnimatedMeshSceneNode*	_nodeAnim;
   //core::vector3df			_pos;
   CharacterInfo				_info;
   core::vector3d<f32>			_size;
@@ -32,7 +33,6 @@ private:
 
 public:
   Character(scene::ISceneNode* node);
-  Character(scene::ISceneNode* node, video::IVideoDriver *driver);
   Character(scene::ISceneManager* smgr, video::IVideoDriver * driver);
   ~Character();
 

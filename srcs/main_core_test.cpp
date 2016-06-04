@@ -5,7 +5,7 @@
 // Login   <drozdz_b@epitech.net>
 //
 // Started on  Wed May  4 14:00:27 2016 drozdz_b
-// Last update Sat Jun  4 03:12:36 2016 Rigolat Sébastien
+// Last update Sat Jun  4 17:41:38 2016 Sacha Sacha Monderer
 //
 
 #include <iostream>
@@ -16,7 +16,8 @@
 #include "Plan.hpp"
 #include "Object.hh"
 #include "Box.hh"
-#include "Bomb.hh"
+#include "Map.hh"
+//#include "Bomb.hh"
 
 using namespace irr;
 using namespace core;
@@ -53,22 +54,22 @@ int			main()
   // IMesh			*plane = smgr->getGeometryCreator()->createPlaneMesh(tileSize, tileCount);
   // IMeshSceneNode	*node = smgr->addMeshSceneNode(plane);
 
-  Plan plan(smgr, driver);
+  //  Plan plan(smgr, driver);
 
     //IMesh *cube = smgr->getGeometryCreator()->createCubeMesh();
-    Box box(smgr, driver);
-    Box box2(smgr, driver);
+    //Box box(smgr, driver);
+    //Box box2(smgr, driver);
     //Bomb bomb(smgr, driver);
-    box2.setPosition(0,0,-20);
+    //box2.setPosition(0,0,-20);
     //bomb.setPosition(0,0, -20);
-  Character obj(smgr, driver);
-  obj.setCollision(box.getNode(),
-  smgr->getGeometryCreator()->createCubeMesh(), smgr);
-  obj.setCollision(box2.getNode(),
-  smgr->getGeometryCreator()->createCubeMesh(), smgr);
+  //Character obj(smgr, driver);
+  //obj.setCollision(box.getNode(),
+  //smgr->getGeometryCreator()->createCubeMesh(), smgr);
+  //obj.setCollision(box2.getNode(),
+  //smgr->getGeometryCreator()->createCubeMesh(), smgr);
 
 //  obj.setCollision(node, plane, smgr);
-  PlayerController player(&obj, &receiver, device);
+  //layerController player(&obj, &receiver, device);
 
   // if (node)
   //   {
@@ -77,28 +78,30 @@ int			main()
   //     node->setMaterialTexture(0, driver->getTexture("WoodChips01_D.tga"));
   //   }
 
+  Map	map(smgr, driver);
+
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, false);
 
   scene::ISceneNode* skybox=smgr->addSkyBoxSceneNode(
-						     driver->getTexture("../irrlicht-1.8.3/media/irrlicht2_up.jpg"),
-						     driver->getTexture("../irrlicht-1.8.3/media/irrlicht2_dn.jpg"),
-						     driver->getTexture("../irrlicht-1.8.3/media/irrlicht2_lf.jpg"),
-						     driver->getTexture("../irrlicht-1.8.3/media/irrlicht2_rt.jpg"),
-						     driver->getTexture("../irrlicht-1.8.3/media/irrlicht2_ft.jpg"),
-						     driver->getTexture("../irrlicht-1.8.3/media/irrlicht2_bk.jpg"));
+						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_up.jpg"),
+						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_dn.jpg"),
+						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_lf.jpg"),
+						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_rt.jpg"),
+						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_ft.jpg"),
+						     driver->getTexture("../../irrlicht-1.8.3/media/irrlicht2_bk.jpg"));
 
-  scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../irrlicht-1.8.3/media/skydome.jpg"),16,8,0.95f,2.0f);
+  scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../../irrlicht-1.8.3/media/skydome.jpg"),16,8,0.95f,2.0f);
 
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, true);
 
   (void)skybox;
   (void)skydome;
 //  smgr->addCameraSceneNode(0, vector3df(0, 30, -40), vector3df(0, 5, 0));
-  smgr->addCameraSceneNode(0, vector3df(10, 30, -40), vector3df(0, 10, 0));
+  //smgr->addCameraSceneNode(0, vector3df(10, 30, -40), vector3df(0, 10, 0));
   while (device->run())
     {
       driver->beginScene(true, true, 0);
-      player.doAction();
+      //player.doAction();
       smgr->drawAll();
       guienv->drawAll();
       driver->endScene();
