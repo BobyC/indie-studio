@@ -5,13 +5,14 @@
 // Login   <monder_s@epitech.net>
 // 
 // Started on  Fri Jun  3 16:42:32 2016 Sacha Sacha Monderer
-// Last update Fri Jun  3 18:03:41 2016 Sacha Sacha Monderer
+// Last update Sat Jun  4 18:29:03 2016 Sacha Sacha Monderer
 //
 
 #ifndef MAP_HH_
 # define MAP_HH_
 
 #include "Object.hh"
+#include "PlayerController.hpp"
 
 class	Map
 {
