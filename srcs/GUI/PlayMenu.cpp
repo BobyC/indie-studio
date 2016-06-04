@@ -9,7 +9,6 @@
 //
 
 #include "MenuManager.hpp"
-#include <iomanip>
 
 PlayMenu::PlayMenu(SAppContext const &context)
 	: AGUIMenu(context)

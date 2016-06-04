@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Sat Jun  4 15:20:08 2016 Rigolat Sébastien
+## Last update Sat Jun  4 17:14:21 2016 Rigolat Sébastien
 ##
 
 NAME		=	indie_studio
@@ -38,13 +38,13 @@ LDLIBS		+=	-Llib/
 LDLIBS		+=	-L/usr/lib64
 LDLIBS		+=	-L/usr/X11R6/lib
 
+LDLIBS		+=	-lIrrlicht
 LDLIBS		+=	-lGL
 LDLIBS		+=	-lXxf86vm
 LDLIBS		+=	-lXext
 LDLIBS		+=	-lX11
 LDLIBS		+=	-lXcursor
 LDLIBS		+=	-lpthread
-LDLIBS		+=	-lIrrlicht
 
 SRC		=	main_core_test.cpp			\
 			Common/Managers/MenuManager.cpp		\
@@ -68,9 +68,7 @@ SRC		=	main_core_test.cpp			\
 			Objects/Bomb.cpp			\
 			Objects/Object.cpp			\
 			Controllers/KeyReceiver.cpp		\
-			Controllers/PlayerController.cpp	\
-			IA/LuaScript.cpp			\
-			IA/IAController.cpp
+			Controllers/PlayerController.cpp
 
 SRCS		=	$(addprefix $(PATH_SRCS), $(SRC))
 
@@ -81,7 +79,8 @@ OBJS		=	$(SRCS:.cpp=.o)
 		@$(CXX) -c -o $@ $^ $(CFLAGS) $(LDFLAGS) $(LDLIBS)
 
 $(NAME):	$(OBJS)
-		$(CXX) -o $(NAME) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS)
+		@$(CXX) -o $(NAME) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS)
+		@echo -e "g++ -o $(NAME)"
 		@echo -e "\e[1;31mDON'T FORGET TO REMOVE THE DEBUG FLAG BEFORE LAST PUSH !\e[0;m"
 
 all:		$(NAME)
