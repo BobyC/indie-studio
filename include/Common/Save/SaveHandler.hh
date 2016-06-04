@@ -5,13 +5,11 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Thu May 26 22:00:34 2016 Nicolas Pujol
-// Last update Thu May 26 23:12:11 2016 Nicolas Pujol
+// Last update Sat Jun  4 15:11:41 2016 Rigolat Sébastien
 //
 
 #pragma once
 
-# include "Save.hh"
-# include "json.hpp"
 # include <map>
 # include <chrono>
 # include <ctime>
@@ -20,6 +18,8 @@
 # include <iostream>
 # include <fstream>
 # include <streambuf>
+# include "Save.hh"
+# include "json.hpp"
 
 class					SaveHandler {
 

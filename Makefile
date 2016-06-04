@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Sat Jun  4 14:58:26 2016 Rigolat Sébastien
+## Last update Sat Jun  4 15:20:08 2016 Rigolat Sébastien
 ##
 
 NAME		=	indie_studio
@@ -26,11 +26,13 @@ CFLAGS		+=	-g
 LDFLAGS		+=	-I./include/
 LDFLAGS		+=	-I./include/Common/Managers
 LDFLAGS		+=	-I./include/Common/Save
+LDFLAGS		+=	-I./include/Common/Error
 LDFLAGS		+=	-I./include/IA
 LDFLAGS		+=	-I./include/GUI
 LDFLAGS		+=	-I./include/Controllers
 LDFLAGS		+=	-I./include/Objects
 LDFLAGS		+=	-I./include/Irrlicht
+LDFLAGS		+=	-I./include/Core
 
 LDLIBS		+=	-Llib/
 LDLIBS		+=	-L/usr/lib64
@@ -44,32 +46,30 @@ LDLIBS		+=	-lXcursor
 LDLIBS		+=	-lpthread
 LDLIBS		+=	-lIrrlicht
 
-SRC		=	main_core_test.cpp	\
-			Common/Managers/MenuManager.cpp	\
-			Common/Save/Save.cpp	\
-			Common/Save/SaveHandler.cpp	\
-			Common/Error/Errors.cpp	\
-			GUI/HUD.cpp	\
-			GUI/OptionMenu.cpp	\
-			GUI/PlaySubMenu.cpp	\
-			GUI/GUIBonus.cpp	\
-			GUI/MainMenu.cpp	\
-			GUI/CreditsMenu.cpp	\
-			GUI/PauseMenu.cpp	\
-			GUI/AGUIMenu.cpp	\
-			GUI/CharacterInfo.cpp	\
-			GUI/PlayMenu.cpp	\
-			Core/Core.cpp	\
-			Core/Map.cpp	\
-			Objects/Fire.cpp	\
-			Objects/Box.cpp	\
-			Objects/Plan.cpp	\
-			Objects/Character.cpp	\
-			Objects/Bomb.cpp	\
-			Objects/Object.cpp	\
-			Controllers/KeyReceiver.cpp	\
+SRC		=	main_core_test.cpp			\
+			Common/Managers/MenuManager.cpp		\
+			Common/Error/Errors.cpp			\
+			GUI/HUD.cpp				\
+			GUI/OptionMenu.cpp			\
+			GUI/PlaySubMenu.cpp			\
+			GUI/GUIBonus.cpp			\
+			GUI/MainMenu.cpp			\
+			GUI/CreditsMenu.cpp			\
+			GUI/PauseMenu.cpp			\
+			GUI/AGUIMenu.cpp			\
+			GUI/CharacterInfo.cpp			\
+			GUI/PlayMenu.cpp			\
+			Core/Core.cpp				\
+			Core/Map.cpp				\
+			Objects/Fire.cpp			\
+			Objects/Box.cpp				\
+			Objects/Plan.cpp			\
+			Objects/Character.cpp			\
+			Objects/Bomb.cpp			\
+			Objects/Object.cpp			\
+			Controllers/KeyReceiver.cpp		\
 			Controllers/PlayerController.cpp	\
-			IA/LuaScript.cpp	\
+			IA/LuaScript.cpp			\
 			IA/IAController.cpp
 
 SRCS		=	$(addprefix $(PATH_SRCS), $(SRC))

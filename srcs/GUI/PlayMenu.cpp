@@ -9,6 +9,7 @@
 //
 
 #include "MenuManager.hpp"
+#include <iomanip>
 
 PlayMenu::PlayMenu(SAppContext const &context)
 	: AGUIMenu(context)
@@ -45,6 +46,7 @@ void PlayMenu::initGUIelements()
 
 void				PlayMenu::initKeyMap()
 {
+
 	_mMap[KEY_UP] = &PlayMenu::upKeyPressed;
 	_mMap[KEY_DOWN] = &PlayMenu::downKeyPressed;
 	_mMap[KEY_RETURN] = &PlayMenu::enterKeyPressed;

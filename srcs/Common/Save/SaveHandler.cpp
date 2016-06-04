@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Thu May 26 21:59:55 2016 Nicolas Pujol
-// Last update Thu May 26 23:08:58 2016 Nicolas Pujol
+// Last update Sat Jun  4 15:16:31 2016 Rigolat Sébastien
 //
 
 #include "SaveHandler.hh"
@@ -81,7 +81,7 @@ void				SaveHandler::preload()
   std::string buffer((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 
   auto o = nlohmann::json::parse(buffer);
-  for (int i = 0; i < o.size(); i++) {
+  for (size_t i = 0; i < o.size(); i++) {
     _saves[o[i]["player"]] = new Save(o[i]["player"], o[i]["date"], o[i]["map"], o[i]["score"]);
   }
 }
