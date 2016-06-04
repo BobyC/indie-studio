@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-// Last update Sat Jun  4 18:42:31 2016 Sacha Sacha Monderer
+// Last update Sat Jun  4 22:28:28 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -13,7 +13,6 @@
 /*
 ** Construtors & Destructor
 */
-
 Character::Character(scene::ISceneNode* node)
 : Object(node)
 {
@@ -24,41 +23,22 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
 {
   scene::IAnimatedMesh *bomber = smgr->getMesh("tris.md2");
   //bomber->setFrameLoop(0, 10);
-  _nodeAnim = smgr->addAnimatedMeshSceneNode(bomber);
+  _node = smgr->addAnimatedMeshSceneNode(bomber);
   _size = core::vector3df(1, 1, 1);
   _col = smgr->getSceneCollisionManager();
-  if (_nodeAnim)
+  _smgr = smgr;
+  _driver = driver;
+  if (_node)
   {
-      _nodeAnim->setMaterialTexture(0, driver->getTexture("Bomber.PCX"));
-      _nodeAnim->setMaterialFlag(video::EMF_LIGHTING, false);
-      _nodeAnim->setScale(core::vector3df(0.03f, 0.03f, 0.03f));
-      //      _nodeAnim->setRotation(core::vector3df(90, 0, 0));
-      _nodeAnim->setFrameLoop(400, 600);
-      _nodeAnim->setAnimationSpeed(30);
+      _node->setMaterialTexture(0, driver->getTexture("Bomber.PCX"));
+      _node->setMaterialFlag(video::EMF_LIGHTING, false);
+      _node->setScale(core::vector3df(0.2, 0.2, 0.2));
+      _node->setPosition(core::vector3df(-10, 5, -10));
+      _node->setFrameLoop(400, 600);
+      _node->setAnimationSpeed(30);
       _moving = false;
       _movingPreced = false;
   }
-}
-
-void		Character::setCollision(scene::ISceneNode *mapNode,
-  scene::IMesh *mesh, scene::ISceneManager *smgr)
-{
-//  scene::ISceneNode *mapNode = obj.getNode();
-  scene::ITriangleSelector *selector =
-    smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
-  if (selector)
-  {
-    mapNode->setTriangleSelector(selector);
-    scene::ISceneNodeAnimator	*anim =
-      smgr->createCollisionResponseAnimator(selector, mapNode,
-        core::vector3df(1,1,1),core::vector3df(0,0,0),
-        core::vector3df(0,0,0));
-    selector->drop();
-    _node->addAnimator(anim);
-    anim->drop();
-  }
-
-
 }
 
 /*Character::Character(scene::ISceneNode* node, video::IVideoDriver * driver)
@@ -129,12 +109,65 @@ void	Character::updateAnim()
 {
   if (_moving && _movingPreced == false)
   {
-    _nodeAnim->setFrameLoop(160, 180);
-    _nodeAnim->setAnimationSpeed(100);
+    _node->setFrameLoop(160, 180);
+    _node->setAnimationSpeed(100);
   }
   else if (!_moving && _movingPreced)
   {
-      _nodeAnim->setFrameLoop(400, 600);
-      _nodeAnim->setAnimationSpeed(30);
+      _node->setFrameLoop(400, 600);
+      _node->setAnimationSpeed(30);
+  }
+}
+
+void	Character::putBomb()
+{
+  Bomb	*bomb = new Bomb(_smgr, _driver);
+  core::vector3df	pos;
+
+  if (bomb)
+  {
+    _bombList.push_back(bomb);
+    bomb->getNode()->setPosition(_node->getPosition() + core::vector3df(5, -2, 5));
+    bomb->addCollision(this);
+  }
+}
+
+void	Character::update()
+{
+  std::list<Bomb *>::iterator	it;
+  this->updateAnim();
+}
+
+void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr)
+{
+  scene::ITriangleSelector *selector =
+    smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
+  if (selector)
+  {
+    mapNode->setTriangleSelector(selector);
+    scene::ISceneNodeAnimator	*anim =
+      smgr->createCollisionResponseAnimator(selector, mapNode,
+        core::vector3df(1,1,1),core::vector3df(0,0,0),
+        core::vector3df(0,0,0));
+    selector->drop();
+    _node->addAnimator(anim);
+    anim->drop();
+  }
+}
+
+void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr, core::vector3df	vect)
+{
+  scene::ITriangleSelector *selector =
+    smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
+  if (selector)
+  {
+    mapNode->setTriangleSelector(selector);
+    scene::ISceneNodeAnimator	*anim =
+      smgr->createCollisionResponseAnimator(selector, mapNode,
+        vect,core::vector3df(0,0,0),
+        core::vector3df(0,0,0));
+    selector->drop();
+    _node->addAnimator(anim);
+    anim->drop();
   }
 }

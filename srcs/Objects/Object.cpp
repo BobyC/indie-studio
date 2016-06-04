@@ -5,29 +5,27 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri May 27 14:39:22 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 17:28:13 2016 Sacha Sacha Monderer
+// Last update Sat Jun  4 22:20:32 2016 drozdz_b
 //
 
 #include "Object.hh"
 
 Object::Object(scene::ISceneNode *node)
 {
-  //this->_node = node;
-    //  this->_node->getPosition();
+  this->_node = node;
   this->_isdead = false;
 }
 
-/*Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
+Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
 {
   this->_node = node;
   this->_node->getPosition();
+
+  _node->setPosition(core::vector3df(0,0,20));
   _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
   _node->setMaterialFlag(video::EMF_LIGHTING, false);
   this->_isdead = false;
-<<<<<<< HEAD
 }
-=======
-  }*/
 
 Object::~Object()
 {
@@ -64,11 +62,6 @@ bool	Object::getIsdead() const
   return (this->_isdead);
 }
 
-scene::IAnimatedMeshSceneNode* Object::getNodeAnim() const
-{
-  return (this->_nodeAnim);
-}
-
 void	 Object::setTexture(video::IVideoDriver& driver, const std::string &text)
 {
   this->_node->setMaterialTexture(0, driver.getTexture(text.c_str()));
@@ -83,19 +76,10 @@ void	 Object::setType(int type)
 void	Object::setPosition(f32 x, f32 y, f32 z)
 {
   this->_pos = this->_node->getPosition();
-  this->_pos.X = x;
-  this->_pos.Y = y;
-  this->_pos.Z = z;
+  this->_pos.X += x;
+  this->_pos.Y += y;
+  this->_pos.Z += z;
   this->_node->setPosition(this->_pos);
-}
-
-void    Object::setPosAnim(f32 x, f32 y, f32 z)
-{
-  this->_pos = this->_nodeAnim->getPosition();
-  this->_pos.X = x;
-  this->_pos.Y = y;
-  this->_pos.Z = z;
-  this->_nodeAnim->setPosition(this->_pos);
 }
 
 void	Object::setBlockable(bool b)
@@ -113,7 +97,73 @@ void	Object::setIsdead(bool d)
   this->_isdead = d;
 }
 
-void	Object::setNodeAnim(scene::IAnimatedMeshSceneNode* n)
+std::vector<Object>&	my_fill_map(std::vector<Object>& myMap, scene::ISceneManager& smgr)
 {
-  this->_nodeAnim = n;
+  int		y;
+  int		x;
+  std::ifstream file("map.txt", std::ios::in);
+  char		c;
+
+  if (file)
+    {
+      while (file.get(c))
+	{
+	  if (c != '\n')
+	    {
+	      Object	cube(smgr.addCubeSceneNode());
+
+	      cube.setType(c - 48);
+	      myMap.push_back(cube);
+	    }
+	}
+      x = 0;
+      y = 0;
+      std::vector<Object>::iterator it = myMap.begin();
+      while (y != 25)
+	{
+	  while (x != 25)
+	    {
+	      it->setPosition(x, y, 30);
+	      it++;
+	      x++;
+	    }
+	  x = 0;
+	  y++;
+	}
+    }
+  return (myMap);
+}
+
+void		Object::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr)
+{
+  scene::ITriangleSelector *selector =
+    smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
+  if (selector)
+  {
+    mapNode->setTriangleSelector(selector);
+    scene::ISceneNodeAnimator	*anim =
+      smgr->createCollisionResponseAnimator(selector, mapNode,
+        core::vector3df(1,1,1),core::vector3df(0,0,0),
+        core::vector3df(0,0,0));
+    selector->drop();
+    _node->addAnimator(anim);
+    anim->drop();
+  }
+}
+
+void		Object::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr, core::vector3df	vect)
+{
+  scene::ITriangleSelector *selector =
+    smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
+  if (selector)
+  {
+    mapNode->setTriangleSelector(selector);
+    scene::ISceneNodeAnimator	*anim =
+      smgr->createCollisionResponseAnimator(selector, mapNode,
+        vect,core::vector3df(0,0,0),
+        core::vector3df(0,0,0));
+    selector->drop();
+    _node->addAnimator(anim);
+    anim->drop();
+  }
 }
