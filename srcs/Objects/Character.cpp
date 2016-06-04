@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-// Last update Sat Jun  4 03:15:32 2016 Rigolat Sébastien
+// Last update Sat Jun  4 14:22:24 2016 Rigolat Sébastien
 */
 
 #include "Character.hpp"
@@ -22,14 +22,14 @@ Character::Character(scene::ISceneNode* node)
 Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
 : Object(NULL)
 {
-  scene::IAnimatedMesh *bomber = smgr->getMesh("tris.md2");
+  scene::IAnimatedMesh *bomber = smgr->getMesh("imgs/tris.md2");
   //bomber->setFrameLoop(0, 10);
   _node = smgr->addAnimatedMeshSceneNode(bomber);
   _size = core::vector3df(1, 1, 1);
   _col = smgr->getSceneCollisionManager();
   if (_node)
   {
-      _node->setMaterialTexture(0, driver->getTexture("Bomber.PCX"));
+      _node->setMaterialTexture(0, driver->getTexture("imgs/Bomber.PCX"));
       _node->setMaterialFlag(video::EMF_LIGHTING, false);
       _node->setScale(core::vector3df(0.2, 0.2, 0.2));
       _node->setPosition(core::vector3df(-10, 5, -10));
