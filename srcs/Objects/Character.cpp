@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-// Last update Sat Jun  4 17:35:02 2016 Sacha Sacha Monderer
+// Last update Sat Jun  4 18:42:31 2016 Sacha Sacha Monderer
 */
 
 #include "Character.hpp"
@@ -32,7 +32,7 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
       _nodeAnim->setMaterialTexture(0, driver->getTexture("Bomber.PCX"));
       _nodeAnim->setMaterialFlag(video::EMF_LIGHTING, false);
       _nodeAnim->setScale(core::vector3df(0.03f, 0.03f, 0.03f));
-      _nodeAnim->setRotation(core::vector3df(90, 0, 0));
+      //      _nodeAnim->setRotation(core::vector3df(90, 0, 0));
       _nodeAnim->setFrameLoop(400, 600);
       _nodeAnim->setAnimationSpeed(30);
       _moving = false;

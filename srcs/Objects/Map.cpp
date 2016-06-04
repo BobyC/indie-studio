@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 // 
 // Started on  Fri Jun  3 16:46:32 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 17:40:06 2016 Sacha Sacha Monderer
+// Last update Sat Jun  4 18:47:29 2016 Sacha Sacha Monderer
 //
 
 #include "Map.hh"
@@ -65,9 +65,11 @@ Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
 	      if (str[n] != '0')
 		{
 		  if (str[n] == '3')
-		    (*it)->setPosAnim(x, y, 1);
+		    {
+		      (*it)->setPosAnim(x, 1, y);
+		    }
 		  else
-		    (*it)->setPosition(x, y, 0.5f);
+		    (*it)->setPosition(x, 0.5f, y);
 		  (*it)->setType(str[n] - 48);
 		  if (str[n] == '2')
 		    {
@@ -81,7 +83,7 @@ Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
           x = 0;
           y++;
         }
-      smgr->addCameraSceneNode(0, core::vector3df(5, -2, 9), core::vector3df(5,5, 0), true);
+      smgr->addCameraSceneNode(0, core::vector3df(5, 9, -2), core::vector3df(5,0, 5), true);
     }
 }
 

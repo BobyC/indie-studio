@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Thu Jun  2 15:56:21 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 16:11:20 2016 Sacha Sacha Monderer
+// Last update Sat Jun  4 18:44:39 2016 Sacha Sacha Monderer
 //
 
 #include "Box.hh"
@@ -23,7 +23,7 @@ Box::Box(scene::ISceneNode *node) : Object(node)
 
 Box::Box(scene::ISceneManager *smgr, video::IVideoDriver *driver) : Object(NULL)
 {
-  core::vector3df   size(1, 1, 0.5f);
+  core::vector3df   size(1, 0.5f, 1);
   scene::IMesh *cube = smgr->getGeometryCreator()->createCubeMesh(size);
   this->_node = smgr->addMeshSceneNode(cube);
   this->_node->getPosition();
