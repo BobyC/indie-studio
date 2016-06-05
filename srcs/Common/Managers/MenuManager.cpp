@@ -52,6 +52,7 @@ void Manager::MenuManager::pause()
 
 void Manager::MenuManager::unPause()
 {
+	std::cout << "poil lolilol" << std::endl;
 	onPause = false;
 	_current->setVisible(false);
 }

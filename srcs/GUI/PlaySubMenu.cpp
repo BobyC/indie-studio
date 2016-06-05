@@ -84,10 +84,9 @@ void				PlaySubMenu::onStart()
 	names.push_back(_names.at(0)->getText());
 	names.push_back(_names.at(1)->getText());
 
-	//Manager::MenuManager::getInstance()->switchMenu(PAUSE_MENU);
-	//Manager::MenuManager::getInstance()->getCurrent()->setVisible(false);
+	Manager::MenuManager::getInstance()->switchMenu(PAUSE_MENU);
+	Manager::MenuManager::getInstance()->getCurrent()->setVisible(false);
 	Manager::GameManager::generateGame(device, names, "map.txt");
-	this->setVisible(false);
 	onPause = false;
 }
 

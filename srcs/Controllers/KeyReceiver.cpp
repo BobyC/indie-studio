@@ -26,6 +26,14 @@ KeyReceiver::~KeyReceiver()
 {
 }
 
+void			KeyReceiver::setFalse()
+{
+	std::vector<bool>::iterator it;
+
+	for (it = _keyIsDown.begin(); it != _keyIsDown.end(); ++it)
+		(*it) = false;
+}
+
 bool 			KeyReceiver::OnEvent(const SEvent& event)
 {
   if (event.EventType == irr::EET_KEY_INPUT_EVENT)

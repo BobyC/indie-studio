@@ -27,6 +27,7 @@ public:
 
   virtual bool	OnEvent(const SEvent& event);
   virtual bool					KeyIsDown(EKEY_CODE keyCode) const;
+  void							setFalse();
 };
 
 #endif

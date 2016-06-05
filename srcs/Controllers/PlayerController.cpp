@@ -41,7 +41,7 @@ PlayerController::PlayerController(Character* character,
   this->_map[MOVE_ZN] = KEY_KEY_S;
   this->_map[MOVE_ZP] = KEY_KEY_Z;
   this->_map[ACTION] = KEY_KEY_G;
-    this->_map[MENU] = KEY_ESCAPE;
+	//this->_map[MENU] = KEY_ESCAPE;
   _speed = 10.f;
 }
 
@@ -62,7 +62,7 @@ PlayerController::PlayerController(Character* character,
     this->_map[MOVE_ZN] = KEY_KEY_S;
     this->_map[MOVE_ZP] = KEY_KEY_Z;
     this->_map[ACTION] = KEY_KEY_G;
-    this->_map[MENU] = KEY_ESCAPE;
+	this->_map[MENU] = KEY_ESCAPE;
   }
   else
   {
@@ -73,7 +73,7 @@ PlayerController::PlayerController(Character* character,
     this->_map[MOVE_ZN] = KEY_DOWN;
     this->_map[MOVE_ZP] = KEY_UP;
     this->_map[ACTION] = KEY_KEY_M;
-    this->_map[MENU] = KEY_ESCAPE;
+	this->_map[MENU] = KEY_ESCAPE;
     }
   _speed = 10.f;
 }
@@ -127,6 +127,9 @@ void		PlayerController::doAction()
   if (_receiver->KeyIsDown(_map[ACTION]))
     _character->putBomb(_device);
   if (_receiver->KeyIsDown(_map[MENU]))
-    Manager::MenuManager::getInstance()->pause();  
+	{
+		_receiver->setFalse();
+		Manager::MenuManager::getInstance()->pause();
+	  }
   _character->updateAnim();
 }
