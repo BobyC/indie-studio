@@ -180,6 +180,25 @@ inline bool			AGUIMenu::keyInputTreatment(const SEvent &e)
 inline void			AGUIMenu::initGUIelements()
 {
 	_driver = _context.device->getVideoDriver();
-	_background = Environment->addImage(_driver->getTexture("imgs/fire.bmp"), core::position2di(0, 0), true, this);
+	_background = Environment->addImage(core::rect<s32>(0, 0, 1024, 980), this);
+	_background->setImage(_driver->getTexture("imgs/Background.png"));
+	_background->setScaleImage(true);
 	_selector = Environment->addImage(_driver->getTexture("imgs/cursor_tmp.png"), core::position2di(0, 0), true, this);
+}
+
+void					AGUIMenu::setButtonImage(int ID, std::string const &path)
+{
+	core::list<IGUIElement*>::Iterator it;
+
+	for (it = Children.begin(); it != Children.end(); ++it)
+		{
+			if (ID == (*it)->getID())
+				{
+					gui::IGUIButton *tmp = reinterpret_cast<gui::IGUIButton *>((*it));
+					tmp->setImage(_driver->getTexture(path.c_str()));
+					tmp->setMaxSize(core::dimension2du(200, 70));
+					tmp->setScaleImage(true);
+					return;
+				}
+		}
 }

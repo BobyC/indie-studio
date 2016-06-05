@@ -40,7 +40,8 @@ enum ButtonType
 	INC,
 	DEC,
 	SAVE,
-	CONTINUE
+	CONTINUE,
+	BACKGROUND
 	};
 
 typedef struct			SAppContext
@@ -107,6 +108,7 @@ class AGUIMenu : public gui::IGUIElement
 		virtual void				moveSelector();
 		virtual bool				keyInputTreatment(const SEvent &e);
 		virtual void				initGUIelements();
+		virtual void				setButtonImage(int ID, std::string const &path);
 };
 
 #endif // !AGUIMenu_HH_

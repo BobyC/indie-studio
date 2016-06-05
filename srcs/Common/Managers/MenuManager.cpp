@@ -52,7 +52,6 @@ void Manager::MenuManager::pause()
 
 void Manager::MenuManager::unPause()
 {
-	std::cout << "poil lolilol" << std::endl;
 	onPause = false;
 	_current->setVisible(false);
 }
@@ -70,9 +69,7 @@ void												Manager::MenuManager::initMenus()
 			PAUSE_MENU
 	*/
 	SAppContext context(_device, gui::EGUIET_ELEMENT,
-						MAIN_MENU,
-						_device->getGUIEnvironment()->getRootGUIElement(),
-						core::rect<s32>(0, 0, 1920, 1080));
+						MAIN_MENU, _device->getGUIEnvironment()->getRootGUIElement(), core::rect<s32>(0, 0, 1024, 980));
 
 	_current = _menuMap[MAIN_MENU] = new MainMenu(context);
 

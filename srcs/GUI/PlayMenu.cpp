@@ -22,23 +22,20 @@ PlayMenu::~PlayMenu() {}
 
 void PlayMenu::initGUIelements()
 {
-	s32 X = 1920/ 2 - 100;
-	s32 Y = 1080 / 2 - 32;
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, 360, X + 100, 360 + 32),
+	s32 X = 1024 / 2;
+	s32 Y = 980 / 2;
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 50, X + 110, (Y + 50) + 30),
 						   this,
-						   LOAD_SAVE,
-						   L"Continue"));
-	//	->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, Y - 100, X + 100, (Y - 100) + 32),
+						   LOAD_SAVE));
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 100, X + 110, (Y + 100) + 30),
 						   this,
-						   NEW_GAME,
-						   L"New Game"));
-//	->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, Y - 60, X + 100, (Y - 60) + 32),
+						   NEW_GAME));
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 150, X + 110, (Y + 150) + 30),
 						   this,
-						   BACK,
-						   L"Return"));
-//	 ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
+						   BACK));
+	setButtonImage(LOAD_SAVE, "imgs/CONTINUE.png");
+	setButtonImage(NEW_GAME, "imgs/NEW_GAME.png");
+	setButtonImage(BACK, "imgs/EXIT.png");
 	_currentButton = getElementFromId(NEW_GAME);
 	moveSelector();
 }

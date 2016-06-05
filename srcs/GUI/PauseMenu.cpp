@@ -23,19 +23,19 @@ PauseMenu::~PauseMenu() {}
 
 void				PauseMenu::initGUIelements()
 {
-	s32 X = 1920/ 2 - 100;
-	s32 Y = 1080 / 2 - 32;
+	s32 X = 1024 / 2;
+	s32 Y = 980 / 2;
+
 	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, 360, X + 100, 360 + 32),
 						   this,
-						   CONTINUE,
-						   L"Continue"));
-	//	->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
+						   CONTINUE));
 	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, Y - 60, X + 100, (Y - 60) + 32),
 						   this,
-						   EXIT,
-						   L"Quit"));
-//	 ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
+						   EXIT));
+	setButtonImage(CONTINUE, "imgs/CONTINUE.png");
+	setButtonImage(EXIT, "imgs/EXIT.png");
 	_currentButton = getElementFromId(CONTINUE);
+	_background->setVisible(false);
 	moveSelector();
 }
 

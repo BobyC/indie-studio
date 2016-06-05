@@ -24,40 +24,39 @@ PlaySubMenu::~PlaySubMenu() {}
 
 void				PlaySubMenu::initGUIelements()
 {
-	s32 X = 1920/ 2 - 100;
-	s32 Y = 1080 / 2 - 32;
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, 360, X + 100, 360 + 32),
+	s32 X = 1024 / 2;
+	s32 Y = 980 / 2;
+
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 160, Y + 220, X,  (Y + 250)),
 						   this,
-						   PLAY,
-						   L"Start"));
-	//	->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, Y - 60, X + 100, (Y - 60) + 32),
+						   PLAY));
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X + 20, Y + 220, X + 180,  (Y + 250)),
 						   this,
-						   BACK,
-						   L"Return"));
-//	 ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
-	Environment->addStaticText(L"Nombre de joueur",
-								   core::rect<s32>(100, 200, 200, 400),
+						   BACK));
+	Environment->addStaticText(L"Nombre de joueur : ",
+								   core::rect<s32>(600, 540, 650, 650),
 								   false,
 								   true,
-								   this);
-//	test->setText(core::stringw(15).c_str()); => used to set a new text;
-	_names.push_back(Environment->addEditBox(L"Player 1", core::rect<s32>(500, 500, 550, 520), true, this));
-	_names.push_back(Environment->addEditBox(L"Player 2", core::rect<s32>(500, 540, 550, 560), true, this));
+								   this)->setOverrideColor(video::SColor(255, 255, 255, 255));
+	_names.push_back(Environment->addEditBox(L"Player 1", core::rect<s32>(400, 520, 550, 540), true, this));
+	_names.push_back(Environment->addEditBox(L"Player 2", core::rect<s32>(400, 550, 550, 570), true, this));
 	_names.at(1)->setVisible(false);
-	Environment->addButton(core::rect<s32>(500, 600, 600, 600 + 32),
+	Environment->addButton(core::rect<s32>(X + 150, 500, 700, 500 + 32),
 						   this,
-						   INC,
-							L"INC");
-	Environment->addButton(core::rect<s32>(500, 700, 600, 700 + 32),
+						   INC);
+	Environment->addButton(core::rect<s32>(X + 150, 570, 700, 570 + 32),
 						   this,
-						   DEC,
-						   L"DEC");
+						   DEC);
 	_nbTxt = Environment->addStaticText(core::stringw(_nbPlayer).c_str(),
-								   core::rect<s32>(500, 650, 600, 700),
+								   core::rect<s32>(670, 545, 700, 660),
 								   false,
 								   true,
 								   this);
+	_nbTxt->setOverrideColor(video::SColor(255, 255, 255, 255));
+	setButtonImage(PLAY, "imgs/START.png");
+	setButtonImage(BACK, "imgs/RETURN.png");
+	setButtonImage(INC, "imgs/PLUS.png");
+	setButtonImage(DEC, "imgs/MINUS.png");
 	_currentButton = getElementFromId(PLAY);
 	moveSelector();
 }

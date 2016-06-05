@@ -23,44 +23,27 @@ MainMenu::~MainMenu()
 
 }
 
-/*
-bool MainMenu::OnEvent(const SEvent &event)
-{
-	if (event.EventType == EET_GUI_EVENT)
-		{
-			onGUIEvent(event);
-			return true;
-		}
-	else if (event.EventType == EET_KEY_INPUT_EVENT)
-		return (keyInputTreatment(event));
-	return false;
-}
-*/
-
 void MainMenu::initGUIelements()
 {
-	s32 X = 1920/ 2 - 100;
-	s32 Y = 1080 / 2 - 32;
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, Y - 100, X + 100, (Y - 100) + 32),
+	s32 X = 1024 / 2;
+	s32 Y = 980 / 2;
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 50, X + 110, (Y + 50) + 30),
 						   this,
-						   PLAY,
-						   L"Play"));
-	//  ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, Y - 60, X + 100, (Y - 60) + 32),
+						   PLAY));
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 100, X + 110, (Y + 100) + 30),
 						   this,
-						   OPTION,
-						   L"Option"));
-	//			  ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, 320, X + 100, 320 + 32),
+						   OPTION));
+	/*
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 150, X + 110, (Y + 150) + 30),
 						   this,
-						   LEADER_BOARD,
-						   L"Leaderboard"));
-	//			  ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, 360, X + 100, 360 + 32),
+						   LEADER_BOARD));
+						   */
+	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 150, X + 110, (Y + 150) + 30),
 						   this,
-						   EXIT,
-						   L"Exit"));
-	//			  ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
+						   EXIT));
+	setButtonImage(PLAY, "imgs/PLAY.png");
+	setButtonImage(OPTION, "imgs/OPTIONS.png");
+	setButtonImage(EXIT, "imgs/EXIT.png");
 	_currentButton = getElementFromId(PLAY);
 	moveSelector();
 }

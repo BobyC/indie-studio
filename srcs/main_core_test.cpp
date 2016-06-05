@@ -33,7 +33,6 @@ int			main()
 
   E_DRIVER_TYPE				driverType = EDT_OPENGL;
   params.DriverType = driverType;
-  params.WindowSize = dimension2d<u32>(640, 480);
 
   IrrlichtDevice	*device = createDevice(driverType,
 			core::dimension2d<u32>(1024, 980), 16, false, false, false);
