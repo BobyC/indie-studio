@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri Jun  3 16:42:32 2016 Sacha Sacha Monderer
-// Last update Sun Jun  5 10:03:39 2016 drozdz_b
+// Last update Sun Jun  5 23:13:47 2016 Anaïs Foncel
 //
 
 #ifndef MAP_HH_
@@ -16,17 +16,17 @@
 
 class	Map
 {
-  std::list<Object*>	_map;
-  Object*							_plan;
+  std::list<Object*>			_map;
+  Object*				_plan;
   std::list<ICharacterController*>	_controllers;
-  KeyReceiver												*_receiver;
-  scene::ISceneManager							*_smgr;
-  std::string												_path;
-  video::IVideoDriver 						*_driver;
-  IrrlichtDevice 									*_device;
-  std::vector<int> 					_vect;
-  std::list<Object*>				_charList;
-  std::list<Object*>				_objList;
+  KeyReceiver				*_receiver;
+  scene::ISceneManager			*_smgr;
+  std::string				_path;
+  video::IVideoDriver 			*_driver;
+  IrrlichtDevice 			*_device;
+  std::vector<int> 			_vect;
+  std::list<Object*>			_charList;
+  std::list<Object*>			_objList;
 
 public:
   Map(scene::ISceneManager*, video::IVideoDriver*, IrrlichtDevice*, KeyReceiver*);
@@ -35,7 +35,7 @@ public:
   std::list<Object*> getMap() const;
   void	doAction();
 
-  void	load(const std::string& path = "map.txt");
+  void	load(const std::string& path = "map/map.txt");
   void	placeObjects();
   Object*	createObject(char c, int& nbChar, int& i);
   Object*	createCharacter(int& nbChar);

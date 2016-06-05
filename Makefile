@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Sun Jun  5 05:08:13 2016 Rigolat Sébastien
+## Last update Sun Jun  5 23:11:49 2016 Anaïs Foncel
 ##
 
 NAME		=	indie_studio
@@ -46,7 +46,7 @@ LDLIBS		+=	-lX11
 LDLIBS		+=	-lXcursor
 LDLIBS		+=	-lpthread
 
-SRC		=	main_core_test.cpp			\
+SRC		=	main.cpp				\
 			Common/Managers/MenuManager.cpp		\
 			Common/Managers/GameManager.cpp		\
 			Common/Error/Errors.cpp			\

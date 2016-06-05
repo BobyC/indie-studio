@@ -5,7 +5,7 @@
 // Login   <mollon_m@epitech.net>
 //
 // Started on  Thu Jun 02 16:27:18 2016 Maxime Mollonguet
-// Last update Sat Jun  4 16:28:45 2016 Maxime Mollonguet
+// Last update Sun Jun  5 23:06:36 2016 Anaïs Foncel
 //
 
 #include "LuaScript.hh"
@@ -30,7 +30,7 @@ LuaScript::~LuaScript()
   lua_close(script_lua);
 }
 
-int		LuaScript::launch()
+int		LuaScript::launch() const
 {
   int		sum;
 

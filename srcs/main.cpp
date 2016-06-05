@@ -5,7 +5,7 @@
 // Login   <drozdz_b@epitech.net>
 //
 // Started on  Wed May  4 14:00:27 2016 drozdz_b
-// Last update Sun Jun  5 20:38:42 2016 Nicolas Pujol
+// Last update Sun Jun  5 23:10:15 2016 Anaïs Foncel
 //
 
 #include <iostream>
@@ -17,7 +17,6 @@
 #include "Object.hh"
 #include "Box.hh"
 #include "Map.hh"
-//#include "Bomb.hh"
 #include "Core.hh"
 
 using namespace irr;
@@ -30,8 +29,8 @@ using namespace gui;
 int			main()
 {
   SIrrlichtCreationParameters		params;
-
   E_DRIVER_TYPE				driverType = EDT_OPENGL;
+
   params.DriverType = driverType;
 
   IrrlichtDevice	*device = createDevice(driverType,
@@ -39,12 +38,8 @@ int			main()
 
   if (!device)
     return 1;
-
   device->setWindowCaption(L"Indie Studio");
-
-	Core app(device);
-
-	app.run();
-
+  Core app(device);
+  app.run();
   return (0);
 }

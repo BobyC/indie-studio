@@ -5,7 +5,7 @@
 // Login   <mollon_m@epitech.net>
 //
 // Started on  Thu Jun 02 16:27:18 2016 Maxime Mollonguet
-// Last update Fri Jun  3 19:34:16 2016 Maxime Mollonguet
+// Last update Sun Jun  5 23:06:44 2016 Anaïs Foncel
 //
 
 #ifndef LUASCRIPT_HH_
@@ -32,7 +32,7 @@ public:
   LuaScript(const char *);
   ~LuaScript();
   LuaScript(const LuaScript &);
-  int		launch();
+  int		launch() const;
 
 public:
   LuaScript		&operator=(const LuaScript &) const;
