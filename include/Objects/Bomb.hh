@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Fri Jun  3 16:12:24 2016 Nicolas Pujol
-// Last update Sun Jun  5 22:10:10 2016 Maxime Mollonguet
+// Last update Sun Jun  5 23:23:27 2016 Maxime Mollonguet
 //
 
 #ifndef BOMB_HH_
@@ -13,7 +13,6 @@
 
 #include <list>
 
-//#include "Character.hpp"
 #include "Object.hh"
 
 class				Bomb : public Object
@@ -31,10 +30,7 @@ public:
   f32	getDistance(Object *);
   bool	common(Object *) const;
   void	explode2(std::list<Object*> cList);
-
 private:
-
-  //scene::IAnimatedMeshSceneNode *_node;
   scene::ISceneCollisionManager	*_col;
   core::vector3d<f32>		_size;
   scene::IMesh			*_mesh;

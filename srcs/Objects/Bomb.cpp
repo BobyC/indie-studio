@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Fri Jun  3 16:00:42 2016 Nicolas Pujol
-// Last update Sun Jun  5 22:46:28 2016 Maxime Mollonguet
+// Last update Sun Jun  5 23:24:16 2016 Maxime Mollonguet
 //
 
 #include "Bomb.hh"
@@ -25,7 +25,6 @@ Bomb::Bomb(scene::ISceneManager *smgr, video::IVideoDriver *driver, IrrlichtDevi
       _node->setMaterialTexture(0, driver->getTexture("imgs/Dynamite/D.png"));
       _node->setMaterialFlag(video::EMF_LIGHTING, false);
       _node->setScale(core::vector3df(0.5, 0.5, 0.5));
-//      _node->setPosition(core::vector3df(-10, 5, -10));
     }
 }
 
@@ -101,6 +100,7 @@ void	Bomb::explode(std::list<Object*> cList)
       this->_node->setPosition(core::vector3df(-12.f, -12.f, -12.f));
     }
 }
+
 void	Bomb::explode2(std::list<Object*> cList)
 {
   for (std::list<Object *>::iterator it = cList.begin(); it != cList.end(); ++it)

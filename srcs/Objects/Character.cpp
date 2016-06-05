@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-// Last update Sun Jun  5 22:56:08 2016 Nicolas Pujol
+// Last update Sun Jun  5 23:22:33 2016 Maxime Mollonguet
 */
 
 #include "Character.hpp"
