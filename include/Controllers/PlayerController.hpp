@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:48:26 2016 drozdz_b
-** Last update Sun Jun 05 12:20:33 2016 drozdz_b
+// Last update Sun Jun  5 23:37:07 2016 Nicolas Pujol
 */
 
 #ifndef PLAYERCONTROLLER_HPP_
@@ -38,7 +38,6 @@ class PlayerController : public ICharacterController
 {
 private:
   e_action_player									_action_player;
-//  std::vector<>		_vect;
   Character*											_character;
   KeyReceiver*									_receiver;
   IrrlichtDevice*									_device;
