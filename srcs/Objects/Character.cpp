@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Sun Jun 05 19:55:32 2016 drozdz_b
+// Last update Sun Jun  5 21:02:20 2016 Nicolas Pujol
 */
 
 #include "Character.hpp"
@@ -155,6 +155,7 @@ void	Character::putBomb(IrrlichtDevice *device)
   {
     _bombList.push_back(bomb);
     if (bomb->getNode()) {
+
       bomb->getNode()->setPosition(_nodeAnim->getPosition() + _vectorBomb);
     }
     bomb->addCollision(_charList);
@@ -208,7 +209,7 @@ void		Character::setCharacterList(std::list<Object*> list)
 
 Bomb*	Character::getBomb() const
 {
-  return (_bombList.front());
+  return !_bombList.size() ? NULL : _bombList.front();
 }
 
 std::list<Object*>		Character::getObjectList() const

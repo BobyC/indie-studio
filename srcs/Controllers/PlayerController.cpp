@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Sun Jun 05 20:03:36 2016 drozdz_b
+// Last update Sun Jun  5 21:00:59 2016 Nicolas Pujol
 */
 
 #include "PlayerController.hpp"
@@ -126,8 +126,6 @@ void		PlayerController::doAction()
   if (_receiver->KeyIsDown(_map[ACTION]))
     _character->putBomb(_device);
   _character->updateAnim();
-
-    if (_character->getBomb() != NULL)
-      _character->getBomb()->explode(_character->getObjectList());
-
+  if (_character->getBomb() != NULL)
+    _character->getBomb()->explode(_character->getObjectList());
 }

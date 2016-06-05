@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Fri Jun  3 16:00:42 2016 Nicolas Pujol
-// Last update Sun Jun  5 11:05:58 2016 Nicolas Pujol
+// Last update Sun Jun  5 21:00:38 2016 Nicolas Pujol
 //
 
 #include "Bomb.hh"
@@ -53,7 +53,7 @@ f32	Bomb::getDistance(Object *it)
   core::vector3df vectBomb;
   core::vector3df vectBloc;
 
-  if (_node)
+   if (_node)
     vectBomb = _node->getPosition();
 
   if (it->getNode())

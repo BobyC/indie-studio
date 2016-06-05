@@ -5,7 +5,7 @@
 // Login   <drozdz_b@epitech.net>
 //
 // Started on  Wed May  4 14:00:27 2016 drozdz_b
-// Last update Sun Jun  5 01:03:27 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 20:38:42 2016 Nicolas Pujol
 //
 
 #include <iostream>
