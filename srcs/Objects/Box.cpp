@@ -17,7 +17,7 @@ Box::Box(scene::ISceneNode *node) : Object(node)
   {
     this->_node->getPosition();
     this->_isdead = false;
-    this->_destructible = false;
+    this->_destructible = true;
   }
 }
 

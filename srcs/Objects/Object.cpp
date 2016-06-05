@@ -17,13 +17,14 @@ Object::Object(scene::ISceneNode *node)
   this->_isdead = false;
   this->_animated = false;
   this->_blockable = false;
+  this->_destructible = false;
 }
 
 Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
 {
   this->_node = node;
   this->_nodeAnim = NULL;
-  this->_node->getPosition();
+  this->_blockable = false;
   this->_animated = false;
   _node->setPosition(core::vector3df(0,0,20));
   _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
@@ -31,9 +32,22 @@ Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
   this->_isdead = false;
 }
 
+Object::Object(scene::ISceneManager *smgr, video::IVideoDriver *driver)
+{
+  (void)driver;
+  core::vector3df   size(1, 0.5f, 1);
+  scene::IMesh *cube = smgr->getGeometryCreator()->createCubeMesh(size);
+  this->_node = smgr->addMeshSceneNode(cube);
+  this->_blockable = false;
+  this->_isdead = false;
+}
+
 Object::~Object()
 {
-//    this->_node->remove();
+  if(_node)
+    this->_node->remove();
+  if (_nodeAnim)
+        this->_nodeAnim->remove();
 }
 
 bool		Object::isAnimated() const
@@ -43,10 +57,7 @@ bool		Object::isAnimated() const
 
 scene::ISceneNode* Object::getNode() const
 {
-  if (_node)
     return (this->_node);
-  else
-    return (NULL);
 }
 
 int	 Object::getMyType() const
@@ -54,7 +65,7 @@ int	 Object::getMyType() const
   return (this->_type);
 }
 
-const core::vector3df&	Object::getPosition() const
+core::vector3df	Object::getPosition() const
 {
   return (this->_pos);
 }
@@ -140,7 +151,6 @@ void		Object::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene
     smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
   if (selector)
   {
-    std::cout << "ok" << std::endl;
     mapNode->setTriangleSelector(selector);
     scene::ISceneNodeAnimator	*anim =
       smgr->createCollisionResponseAnimator(selector, mapNode,
@@ -172,4 +182,29 @@ void		Object::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene
 void		Object::setCharacterList(std::list<Object*> list)
 {
   _charList = list;
+}
+
+void		Object::setObjectList(std::list<Object*> list)
+{
+  _objList = list;
+}
+
+std::list<Object*>		Object::getObjectList() const
+{
+  return (_objList);
+}
+
+f32	Object::getDistance(core::vector3df vectBomb) const
+{
+  core::vector3df vectBloc;
+
+  if (_node)
+    vectBloc = _node->getPosition();
+  else if (_nodeAnim)
+    vectBloc = _nodeAnim->getPosition();
+  else
+    vectBloc = core::vector3df(0, 0, 0);
+
+  return (core::squareroot((vectBloc.X - vectBomb.X) * (vectBloc.X - vectBomb.X)) +
+			   ((vectBloc.Z - vectBomb.Z) * (vectBloc.Z - vectBomb.Z)));
 }

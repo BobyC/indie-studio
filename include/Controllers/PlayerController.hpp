@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:48:26 2016 drozdz_b
-** Last update Sun Jun 05 11:55:21 2016 drozdz_b
+** Last update Sun Jun 05 12:20:33 2016 drozdz_b
 */
 
 #ifndef PLAYERCONTROLLER_HPP_
@@ -17,7 +17,7 @@
 # include "Character.hpp"
 # include "ICharacterController.hpp"
 # include "KeyReceiver.hpp"
-# include "MenuManager.hpp"
+//# include "MenuManager.hpp"
 
 using namespace irr;
 

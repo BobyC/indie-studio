@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Sun Jun 05 11:56:28 2016 drozdz_b
+** Last update Sun Jun 05 20:03:36 2016 drozdz_b
 */
 
 #include "PlayerController.hpp"
@@ -41,7 +41,7 @@ PlayerController::PlayerController(Character* character,
   this->_map[MOVE_ZN] = KEY_KEY_S;
   this->_map[MOVE_ZP] = KEY_KEY_Z;
   this->_map[ACTION] = KEY_KEY_G;
-	//this->_map[MENU] = KEY_ESCAPE;
+    this->_map[MENU] = KEY_KEY_E;
   _speed = 10.f;
 }
 
@@ -62,7 +62,7 @@ PlayerController::PlayerController(Character* character,
     this->_map[MOVE_ZN] = KEY_KEY_S;
     this->_map[MOVE_ZP] = KEY_KEY_Z;
     this->_map[ACTION] = KEY_KEY_G;
-	this->_map[MENU] = KEY_ESCAPE;
+    this->_map[MENU] = KEY_ESCAPE;
   }
   else
   {
@@ -73,7 +73,6 @@ PlayerController::PlayerController(Character* character,
     this->_map[MOVE_ZN] = KEY_DOWN;
     this->_map[MOVE_ZP] = KEY_UP;
     this->_map[ACTION] = KEY_KEY_M;
-	this->_map[MENU] = KEY_ESCAPE;
     }
   _speed = 10.f;
 }
@@ -126,10 +125,9 @@ void		PlayerController::doAction()
     _character->stati();
   if (_receiver->KeyIsDown(_map[ACTION]))
     _character->putBomb(_device);
-  if (_receiver->KeyIsDown(_map[MENU]))
-	{
-		_receiver->setFalse();
-		Manager::MenuManager::getInstance()->pause();
-	  }
   _character->updateAnim();
+
+    if (_character->getBomb() != NULL)
+      _character->getBomb()->explode(_character->getObjectList());
+
 }

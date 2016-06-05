@@ -34,10 +34,12 @@ protected:
   bool			_isdead;
   bool			_animated;
   std::list<Object*> _charList;
+  std::list<Object*> _objList;
 
 public:
   Object(scene::ISceneNode*);
   Object(scene::ISceneNode*, video::IVideoDriver *driver);
+  Object(scene::ISceneManager *smgr, video::IVideoDriver *driver);
   ~Object();
 
   virtual void			setPosition(f32, f32, f32);
@@ -48,7 +50,7 @@ public:
   void			setIsdead(bool);
   void			setNodeAnim(scene::IAnimatedMeshSceneNode*);
   void			setTexture(video::IVideoDriver&, const std::string&);
-  const core::vector3df&	getPosition() const;
+  core::vector3df	getPosition() const;
   int			getMyType() const;
   scene::ISceneNode*	getNode() const;
   scene::IAnimatedMeshSceneNode* getNodeAnim() const;
@@ -59,6 +61,9 @@ public:
   virtual void  setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr, core::vector3df	vect);
   virtual bool	isAnimated() const;
   virtual void	setCharacterList(std::list<Object*> list);
+  virtual void	setObjectList(std::list<Object*> list);
+  virtual std::list<Object*>		getObjectList() const;
+  virtual f32 getDistance(core::vector3df vectBomb) const;
 };
 
 #endif /* OBJECT_HH_ */

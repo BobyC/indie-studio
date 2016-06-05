@@ -12,8 +12,7 @@
 
 Bomb::Bomb(scene::ISceneNode *node) : Object(node) {}
 
-Bomb::Bomb(scene::ISceneManager *smgr, video::IVideoDriver *driver, IrrlichtDevice *device) :
-  Object(NULL)
+Bomb::Bomb(scene::ISceneManager *smgr, video::IVideoDriver *driver, IrrlichtDevice *device) : Object(NULL)
 {
   _mesh = smgr->getMesh("imgs/Dynamite/dinamite.obj");
   _node = smgr->addMeshSceneNode(_mesh);
@@ -49,15 +48,17 @@ void	Bomb::addCollision(std::list<Object*> cList)
   }
 }
 
-f32	Bomb::getDistance(Object *it) const
+f32	Bomb::getDistance(Object *it)
 {
   core::vector3df vectBomb;
   core::vector3df vectBloc;
 
-  vectBomb = this->getNode()->getPosition();
-  vectBloc = it->getNode()->getPosition();
-  std::cout << "Bomb x = " << vectBomb.X << std::endl;
-  std::cout << "Bloc Z = " << vectBloc.Z << std::endl;
+  if (_node)
+    vectBomb = _node->getPosition();
+
+  if (it->getNode())
+    vectBloc = it->getNode()->getPosition();
+
   return (core::squareroot((vectBloc.X - vectBomb.X) * (vectBloc.X - vectBomb.X)) +
 			   ((vectBloc.Z - vectBomb.Z) * (vectBloc.Z - vectBomb.Z)));
 }
@@ -68,7 +69,13 @@ bool			Bomb::common(Object *it) const
   core::vector3df vectBloc;
 
   vectBomb = this->getNode()->getPosition();
-  vectBloc = it->getNode()->getPosition();
+  if (it->getNode() != NULL)
+    vectBloc = it->getNode()->getPosition();
+  else if (it->getNodeAnim() != NULL)
+    vectBloc = it->getNodeAnim()->getPosition();
+  else
+    vectBloc = core::vector3df(0, 0, 0);
+
   if (((vectBomb.X <= vectBloc.X + 0.5) || (vectBomb.Z >= vectBloc.Z - 0.5)) ||
       ((vectBomb.Z <= vectBloc.Z + 0.5) || (vectBomb.Z >= vectBloc.Z - 0.5)))
     return (true);
@@ -76,25 +83,32 @@ bool			Bomb::common(Object *it) const
     return (false);
 }
 
-void	Bomb::explode(std::list<Object*> &cList)
+void	Bomb::explode(std::list<Object*> cList)
 {
-  std::list<Object *>::iterator it;
 
+  for (std::list<Object *>::iterator it = cList.begin(); it != cList.end(); it++) {
+    f32 dist;
+    dist = getDistance(*it);
 
-  it = cList.begin();
-  while (it != cList.end())
-    {
-      std::cout << "Distance : " << getDistance(*it) << std::endl;
-      if (_device->getTimer()->getTime() - _time > 1500)
-      	{
-	  if ((*it)->getDestruct() && getDistance(*it) < 50 && common(*it))
-	    {
-	      std::cout << "DEDANT" << std::endl;
-	      (*it)->setIsdead(true);
-	    }
-	}
-      ++it;
+    if (_device->getTimer()->getTime() > _time + 5000)
+      {
+        if ((*it)->getDestruct() && dist < 10)
+          (*it)->setIsdead(true);
+        }
     }
+}
+
+void	Bomb::explode2(std::list<Object*> cList)
+{
+  for (std::list<Object *>::iterator it = cList.begin(); it != cList.end(); ++it) {
+
+    f32 dist;
+    dist = getDistance(*it);
+    if ((*it)->getDestruct() && dist < 10) {
+
+      (*it)->setIsdead(true);
+    }
+  }
 }
 
 Bomb::~Bomb() {}

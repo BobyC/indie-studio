@@ -27,9 +27,10 @@ public:
 
   void	addCollision(Object *);
   void	addCollision(std::list<Object*>);
-  void	explode(std::list<Object*> &);
-  f32	getDistance(Object *) const;
+  void	explode(std::list<Object*>);
+  f32	getDistance(Object *);
   bool	common(Object *) const;
+  void	explode2(std::list<Object*> cList);
 
 private:
 
