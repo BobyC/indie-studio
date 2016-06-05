@@ -14,6 +14,7 @@ Manager::GameManager *Manager::GameManager::_instance = NULL;
 
 void						Manager::GameManager::play()
 {
+	resetReceiver();
 	_map->doAction();
 }
 

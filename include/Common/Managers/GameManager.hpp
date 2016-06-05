@@ -38,7 +38,6 @@ namespace Manager
 			static void									killInstance();
 
 			void												play();
-			void												resetReceiver();
 
 		private:
 			static GameManager		*_instance;
@@ -47,6 +46,7 @@ namespace Manager
 			KeyReceiver			_receiver;
 
 			void							initGame(const std::vector<core::stringw> &players, const std::string &map);
+			void							resetReceiver();
 	};
 }
 

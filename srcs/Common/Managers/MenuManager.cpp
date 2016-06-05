@@ -54,8 +54,7 @@ void Manager::MenuManager::unPause()
 {
 	onPause = false;
 	_current->setVisible(false);
-	Manager::GameManager::getInstance()->resetReceiver();
-};
+}
 
 void												Manager::MenuManager::initMenus()
 {

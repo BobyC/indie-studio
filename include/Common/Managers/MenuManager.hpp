@@ -16,7 +16,6 @@
 #include "PlayMenu.hh"
 #include "PlaySubMenu.hh"
 #include "PauseMenu.hh"
-#include "GameManager.hpp"
 
 
 namespace Manager
