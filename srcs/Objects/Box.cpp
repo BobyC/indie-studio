@@ -5,12 +5,12 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Thu Jun  2 15:56:21 2016 Sacha Sacha Monderer
-// Last update Sun Jun  5 00:45:04 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 23:18:44 2016 Anaïs Foncel
 //
 
 #include "Box.hh"
 
-Box::Box(scene::ISceneNode *node) : Object(node)
+Box::Box(scene::ISceneNode * const node) : Object(node)
 {
   this->_node = node;
   if (this->_node)
@@ -21,7 +21,7 @@ Box::Box(scene::ISceneNode *node) : Object(node)
   }
 }
 
-Box::Box(scene::ISceneManager *smgr, video::IVideoDriver *driver) : Object(NULL)
+Box::Box(scene::ISceneManager * const smgr, video::IVideoDriver * const driver) : Object(NULL)
 {
   core::vector3df   size(1, 0.5f, 1);
   scene::IMesh *cube = smgr->getGeometryCreator()->createCubeMesh(size);

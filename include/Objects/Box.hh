@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Thu Jun  2 15:52:38 2016 Sacha Sacha Monderer
-// Last update Fri Jun  3 18:27:20 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 23:18:21 2016 Anaïs Foncel
 //
 
 #ifndef BOX_HH_
@@ -16,8 +16,8 @@
 class Box : public Object
 {
 public:
-  Box(scene::ISceneNode*);
-  Box(scene::ISceneManager*, video::IVideoDriver *);
+  Box(scene::ISceneNode * const);
+  Box(scene::ISceneManager *const, video::IVideoDriver * const);
   ~Box();
 };
 
