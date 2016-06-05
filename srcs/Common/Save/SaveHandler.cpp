@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Thu May 26 21:59:55 2016 Nicolas Pujol
-// Last update Sun Jun  5 01:58:16 2016 Nicolas Pujol
+// Last update Sun Jun  5 23:40:00 2016 Nicolas Pujol
 //
 
 #include "SaveHandler.hh"
@@ -18,7 +18,7 @@ SaveHandler::~SaveHandler() {
   writeSavefile();
 }
 
-std::string			SaveHandler::getCurrentTime()
+std::string			SaveHandler::getCurrentTime() const
 {
   std::stringstream ss;
 
