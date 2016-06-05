@@ -27,6 +27,7 @@ Box::Box(scene::ISceneManager *smgr, video::IVideoDriver *driver) : Object(NULL)
   scene::IMesh *cube = smgr->getGeometryCreator()->createCubeMesh(size);
   this->_node = smgr->addMeshSceneNode(cube);
   this->_node->getPosition();
+  this->_blockable = true;
   if (this->_node)
   {
     this->_node->setMaterialTexture(0, driver->getTexture("imgs/wall.bmp"));

@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-** Last update Sun Jun 05 03:03:48 2016 drozdz_b
+** Last update Sun Jun 05 05:47:23 2016 drozdz_b
 */
 
 #ifndef CHARACTER_HPP_
@@ -52,7 +52,7 @@ public:
   virtual void	setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr, core::vector3df	vect);
   virtual	void		putBomb();
   virtual void		update();
-
+  virtual bool	isAnimated() const;
 };
 
 #endif

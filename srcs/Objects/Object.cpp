@@ -12,16 +12,19 @@
 
 Object::Object(scene::ISceneNode *node)
 {
-  if (node)
-    this->_node = node;
+  this->_node = node;
+  this->_nodeAnim = NULL;
   this->_isdead = false;
+  this->_animated = false;
+  this->_blockable = false;
 }
 
 Object::Object(scene::ISceneNode *node, video::IVideoDriver *driver)
 {
   this->_node = node;
+  this->_nodeAnim = NULL;
   this->_node->getPosition();
-
+  this->_animated = false;
   _node->setPosition(core::vector3df(0,0,20));
   _node->setMaterialTexture(0, driver->getTexture("../irrlicht-1.8.3/media/wall.bmp"));
   _node->setMaterialFlag(video::EMF_LIGHTING, false);
@@ -33,9 +36,17 @@ Object::~Object()
 //    this->_node->remove();
 }
 
+bool		Object::isAnimated() const
+{
+  return (false);
+}
+
 scene::ISceneNode* Object::getNode() const
 {
-  return (this->_node);
+  if (_node)
+    return (this->_node);
+  else
+    return (NULL);
 }
 
 int	 Object::getMyType() const
@@ -76,11 +87,14 @@ void	 Object::setType(int type)
 
 void	Object::setPosition(f32 x, f32 y, f32 z)
 {
-  this->_pos = this->_node->getPosition();
-  this->_pos.X += x;
-  this->_pos.Y += y;
-  this->_pos.Z += z;
-  this->_node->setPosition(this->_pos);
+  if (_node)
+  {
+    this->_pos = this->_node->getPosition();
+    this->_pos.X += x;
+    this->_pos.Y += y;
+    this->_pos.Z += z;
+    this->_node->setPosition(this->_pos);
+  }
 }
 
 void	Object::setBlockable(bool b)
@@ -105,11 +119,14 @@ scene::IAnimatedMeshSceneNode* Object::getNodeAnim() const
 
 void    Object::setPosAnim(f32 x, f32 y, f32 z)
 {
-  this->_pos = this->_nodeAnim->getPosition();
-  this->_pos.X = x;
-  this->_pos.Y = y;
-  this->_pos.Z = z;
-  this->_nodeAnim->setPosition(this->_pos);
+  if (_nodeAnim)
+  {
+    this->_pos = this->_nodeAnim->getPosition();
+    this->_pos.X = x;
+    this->_pos.Y = y;
+    this->_pos.Z = z;
+    this->_nodeAnim->setPosition(this->_pos);
+  }
 }
 
 void    Object::setNodeAnim(scene::IAnimatedMeshSceneNode* n)
@@ -123,10 +140,11 @@ void		Object::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene
     smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
   if (selector)
   {
+    std::cout << "ok" << std::endl;
     mapNode->setTriangleSelector(selector);
     scene::ISceneNodeAnimator	*anim =
       smgr->createCollisionResponseAnimator(selector, mapNode,
-        core::vector3df(1,1,1),core::vector3df(0,0,0),
+        core::vector3df(0.5,0.5,0.5),core::vector3df(0,0,0),
         core::vector3df(0,0,0));
     selector->drop();
     _node->addAnimator(anim);

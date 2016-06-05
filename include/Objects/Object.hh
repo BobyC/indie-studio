@@ -30,14 +30,15 @@ protected:
   bool			_blockable;
   bool			_destructible;
   bool			_isdead;
+  bool			_animated;
 
 public:
   Object(scene::ISceneNode*);
   Object(scene::ISceneNode*, video::IVideoDriver *driver);
   ~Object();
 
-  void			setPosition(f32, f32, f32);
-  void			setPosAnim(f32, f32, f32);
+  virtual void			setPosition(f32, f32, f32);
+  virtual void			setPosAnim(f32, f32, f32);
   void			setType(int);
   void			setBlockable(bool);
   void			setDestruct(bool);
@@ -47,12 +48,14 @@ public:
   const core::vector3df&	getPosition() const;
   int			getMyType() const;
   scene::ISceneNode*	getNode() const;
-  scene::IAnimatedMeshSceneNode* getNodeAnim() const;    
+  scene::IAnimatedMeshSceneNode* getNodeAnim() const;
   bool			getBlockable() const;
   bool			getDestruct() const;
   bool			getIsdead() const;
   virtual void			setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr);
-virtual void  setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr, core::vector3df	vect);
+  virtual void  setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr, core::vector3df	vect);
+  virtual bool	isAnimated() const;
+
 };
-  
+
 #endif /* OBJECT_HH_ */

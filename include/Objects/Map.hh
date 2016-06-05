@@ -17,15 +17,29 @@
 class	Map
 {
   std::list<Object*>	_map;
+  Object*							_plan;
   std::list<ICharacterController*>	_controllers;
   KeyReceiver												*_receiver;
+  scene::ISceneManager							*_smgr;
+  std::string												_path;
+  video::IVideoDriver 						*_driver;
+  IrrlichtDevice 									*_device;
+  std::vector<int> 					_vect;
+
 
 public:
-    Map(scene::ISceneManager*, video::IVideoDriver*, IrrlichtDevice*, KeyReceiver*);
+  Map(scene::ISceneManager*, video::IVideoDriver*, IrrlichtDevice*, KeyReceiver*);
+  Map(scene::ISceneManager*, video::IVideoDriver*, IrrlichtDevice*, KeyReceiver*, int);
   ~Map();
 
   std::list<Object*> getMap() const;
-    void	doAction();
+  void	doAction();
+
+  void	load();
+  void	placeObjects();
+  Object*	createObject(char c, int& nbChar, int& i);
+  Object*	createCharacter(int& nbChar);
+  void		setCollisionList(Object* character, std::list<Object*>::iterator);
 };
 
 #endif /* MAP_HH_ */

@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Sun Jun 05 03:06:19 2016 drozdz_b
+** Last update Sun Jun 05 09:30:56 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -16,6 +16,7 @@
 Character::Character(scene::ISceneNode* node)
 : Object(node)
 {
+  _animated = true;
 }
 
 Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
@@ -28,6 +29,7 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
   _col = smgr->getSceneCollisionManager();
   _smgr = smgr;
   _driver = driver;
+  _animated = true;
   if (_nodeAnim)
   {
       _nodeAnim->setMaterialTexture(0, driver->getTexture("imgs/Bomber.PCX"));
@@ -49,6 +51,12 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
 Character::~Character()
 {
 }
+
+bool		Character::isAnimated() const
+{
+  return (true);
+}
+
 
 CharacterInfo&	Character::getInfo()
 {
@@ -143,10 +151,11 @@ void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, sc
     smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
   if (selector)
   {
+    std::cout << "Character collision ok : " << mapNode << std::endl;
     mapNode->setTriangleSelector(selector);
     scene::ISceneNodeAnimator	*anim =
       smgr->createCollisionResponseAnimator(selector, mapNode,
-        core::vector3df(1,1,1),core::vector3df(0,0,0),
+        core::vector3df(0.5,0.5,0.5),core::vector3df(0,0,0),
         core::vector3df(0,0,0));
     selector->drop();
     _nodeAnim->addAnimator(anim);
