@@ -17,7 +17,7 @@
 # include "Character.hpp"
 # include "ICharacterController.hpp"
 # include "KeyReceiver.hpp"
-//# include "MenuManager.hpp"
+# include "MenuManager.hpp"
 
 using namespace irr;
 
