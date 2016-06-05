@@ -5,7 +5,7 @@
 // Login   <mollon_m@epitech.net>
 //
 // Started on  Fri Jun 03 18:59:36 2016 Maxime Mollonguet
-// Last update Sun Jun  5 22:58:44 2016 Maxime Mollonguet
+// Last update Sun Jun  5 23:32:01 2016 Maxime Mollonguet
 //
 
 #include "IAController.hh"
@@ -46,7 +46,6 @@ void		IAController::doAction()
   while (1)
     {
       sum = script.launch();
-      std::cout << sum << std::endl;
       if (sum = 1)
 	_character->move(-(_speed * _frameDeltaTime), 0);
       else if (sum = 2)
