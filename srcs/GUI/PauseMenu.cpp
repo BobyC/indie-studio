@@ -32,8 +32,8 @@ void				PauseMenu::initGUIelements()
 	//	->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
 	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X, Y - 60, X + 100, (Y - 60) + 32),
 						   this,
-						   SAVE,
-						   L"Save"));
+						   EXIT,
+						   L"Quit"));
 //	 ->setImage(_driver->getTexture("Media/irrlichtlogo2.png"));
 	_currentButton = getElementFromId(CONTINUE);
 	moveSelector();
@@ -47,7 +47,7 @@ void				PauseMenu::initKeyMap()
 	_mMap[KEY_ESCAPE] = static_cast<mPtr>(&PauseMenu::onContinue);
 
 	_mMap[CONTINUE] = static_cast<mPtr>(&PauseMenu::onContinue);
-	_mMap[SAVE] = static_cast<mPtr>(&PauseMenu::onSave);
+	_mMap[EXIT] = static_cast<mPtr>(&PauseMenu::onExit);
 }
 
 void				PauseMenu::onContinue()
@@ -55,7 +55,7 @@ void				PauseMenu::onContinue()
 	Manager::MenuManager::getInstance()->unPause();
 }
 
-void PauseMenu::onSave()
+void PauseMenu::onExit()
 {
-
+	_context.device->closeDevice();
 }

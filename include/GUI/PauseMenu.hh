@@ -23,7 +23,7 @@ class PauseMenu : public AGUIMenu
 
 	private:
 		void							onContinue();
-		void							onSave();
+		void							onExit();
 		virtual void				initGUIelements();
 		virtual void				initKeyMap();
 };
