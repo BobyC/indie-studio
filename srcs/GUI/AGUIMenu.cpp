@@ -108,7 +108,6 @@ void AGUIMenu::downKeyPressed()
 {
 	core::list<gui::IGUIElement *>::Iterator it =	_selectableButtons.begin();
 
-	std::cout << "poil" << std::endl;
 	for (; it != _selectableButtons.end(); ++it)
 		{
 			gui::IGUIElement *tmp = (*it);

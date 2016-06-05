@@ -17,6 +17,11 @@ void						Manager::GameManager::play()
 	_map->doAction();
 }
 
+void Manager::GameManager::resetReceiver()
+{
+	_device->setEventReceiver(&_receiver);
+}
+
 void						Manager::GameManager::initGame(std::vector<core::stringw> const &players, std::string const &map)
 {
 	_device->setEventReceiver(&_receiver);

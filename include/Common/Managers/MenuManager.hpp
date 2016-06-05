@@ -15,6 +15,9 @@
 #include "MainMenu.hh"
 #include "PlayMenu.hh"
 #include "PlaySubMenu.hh"
+#include "PauseMenu.hh"
+#include "GameManager.hpp"
+
 
 namespace Manager
 {
@@ -39,6 +42,8 @@ namespace Manager
 
 			void												render() const;
 			void												switchMenu(MenuType type);
+			void												pause();
+			void												unPause();
 
 			AGUIMenu									*getCurrent() const;
 			IrrlichtDevice								*getDevice() const;

@@ -30,7 +30,7 @@ enum MenuType
 
 enum ButtonType
 	{
-	PLAY = -15,
+	PLAY = -16,
 	OPTION,
 	LEADER_BOARD,
 	EXIT,
@@ -38,7 +38,9 @@ enum ButtonType
 	NEW_GAME,
 	LOAD_SAVE,
 	INC,
-	DEC
+	DEC,
+	SAVE,
+	CONTINUE
 	};
 
 typedef struct			SAppContext

@@ -11,4 +11,21 @@
 #ifndef PAUSEMENU_HH_
 # define PAUSEMENU_HH_
 
+#include "AGUIMenu.hh"
+
+extern bool onPause;
+
+class PauseMenu : public AGUIMenu
+{
+	public:
+		explicit PauseMenu(SAppContext const &context);
+		~PauseMenu();
+
+	private:
+		void							onContinue();
+		void							onSave();
+		virtual void				initGUIelements();
+		virtual void				initKeyMap();
+};
+
 #endif // !PAUSEMENU_HH_

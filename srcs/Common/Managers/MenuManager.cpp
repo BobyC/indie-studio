@@ -41,6 +41,20 @@ void											Manager::MenuManager::switchMenu(MenuType type)
 
 	_current->setVisible(true);
 	_previous->setVisible(false);
+}
+
+void Manager::MenuManager::pause()
+{
+	onPause = true;
+	_current->setVisible(true);
+	_device->setEventReceiver(_current);
+}
+
+void Manager::MenuManager::unPause()
+{
+	onPause = false;
+	_current->setVisible(false);
+	Manager::GameManager::getInstance()->resetReceiver();
 };
 
 void												Manager::MenuManager::initMenus()
@@ -75,9 +89,12 @@ void												Manager::MenuManager::initMenus()
 	context.id = PLAY_SUB_MENU;
 	_menuMap[PLAY_SUB_MENU] = new PlaySubMenu(context);
 
+	context.id = PAUSE_MENU;
+	_menuMap[PAUSE_MENU] = new PauseMenu(context);
+
 	for (std::map<MenuType, AGUIMenu*>::iterator it = _menuMap.begin();
 		 it != _menuMap.end(); ++it)
-		it->second->setVisible(false);
+	it->second->setVisible(false);
 
 	_current->setVisible(true);
 	_device->setEventReceiver(_current);

@@ -12,7 +12,6 @@
 # define GAMEMANAGER_HPP_
 
 #include "irrlicht.h"
-//#include "MenuManager.hpp"
 #include "Map.hh"
 #include "KeyReceiver.hpp"
 
@@ -39,11 +38,13 @@ namespace Manager
 			static void									killInstance();
 
 			void												play();
+			void												resetReceiver();
+
 		private:
 			static GameManager		*_instance;
 			IrrlichtDevice			*_device;
 			Map							*_map;
-			KeyReceiver				_receiver;
+			KeyReceiver			_receiver;
 
 			void							initGame(const std::vector<core::stringw> &players, const std::string &map);
 	};
