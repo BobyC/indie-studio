@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Thu May 26 21:59:55 2016 Nicolas Pujol
-// Last update Sat Jun  4 15:16:31 2016 Rigolat Sébastien
+// Last update Sun Jun  5 01:58:16 2016 Nicolas Pujol
 //
 
 #include "SaveHandler.hh"
@@ -44,7 +44,8 @@ void				SaveHandler::save(Save &save)
 }
 
 
-nlohmann::json SaveHandler::saveToJson(Save* save) {
+nlohmann::json SaveHandler::saveToJson(Save* save)
+{
   nlohmann::json j;
 
   j["player"] = save->getName();
