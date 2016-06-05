@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Thu May 26 22:00:34 2016 Nicolas Pujol
-// Last update Sat Jun  4 15:11:41 2016 Rigolat Sébastien
+// Last update Sun Jun  5 23:40:18 2016 Rigolat Sébastien
 //
 
 #pragma once
@@ -28,7 +28,7 @@ public:
   SaveHandler();
   ~SaveHandler();
 
-  static  std::string			getCurrentTime();
+  static  std::string			getCurrentTime() const;
   void					          save(Save&);
   Save					          *operator[](const std::string &);
   void					          preload();
