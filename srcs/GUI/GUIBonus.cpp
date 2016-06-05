@@ -5,12 +5,12 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:44:01 2016 Anaïs Foncel
-// Last update Fri May  6 13:20:08 2016 Anaïs Foncel
+// Last update Sun Jun  5 22:29:27 2016 Anaïs Foncel
 //
 
 #include "GUIBonus.hh"
 
-GUIBonus::GUIBonus(video::IVideoDriver *driver)
+GUIBonus::GUIBonus(video::IVideoDriver * const driver)
 {
   _driver = driver;
   _img = NULL;
