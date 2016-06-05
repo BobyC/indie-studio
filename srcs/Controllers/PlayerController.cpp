@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Sun Jun 05 10:22:57 2016 drozdz_b
+** Last update Sun Jun 05 10:52:14 2016 drozdz_b
 */
 
 #include "PlayerController.hpp"
@@ -118,5 +118,7 @@ void		PlayerController::doAction()
     _character->move(0, 0, (_speed * _frameDeltaTime));
   else
     _character->stati();
+  if (_receiver->KeyIsDown(_map[ACTION]))
+    _character->putBomb(_device);
   _character->updateAnim();
 }

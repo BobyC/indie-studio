@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Sun Jun 05 10:10:46 2016 drozdz_b
+** Last update Sun Jun 05 10:49:59 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -126,9 +126,9 @@ void	Character::updateAnim()
   }
 }
 
-void	Character::putBomb()
+void	Character::putBomb(IrrlichtDevice *device)
 {
-  Bomb	*bomb = new Bomb(_smgr, _driver);
+  Bomb	*bomb = new Bomb(_smgr, _driver, device);
   core::vector3df	pos;
 
   if (bomb)

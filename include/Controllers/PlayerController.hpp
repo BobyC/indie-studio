@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:48:26 2016 drozdz_b
-** Last update Sun Jun 05 03:13:44 2016 drozdz_b
+** Last update Sun Jun 05 10:51:31 2016 drozdz_b
 */
 
 #ifndef PLAYERCONTROLLER_HPP_
@@ -28,6 +28,7 @@ enum e_action_player
     MOVE_YN,
     MOVE_ZP,
     MOVE_ZN,
+    ACTION,
     NONE
 };
 
