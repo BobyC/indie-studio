@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Sun Jun  5 01:11:23 2016 Sacha Sacha Monderer
+## Last update Sun Jun  5 05:08:13 2016 Rigolat Sébastien
 ##
 
 NAME		=	indie_studio
@@ -48,6 +48,7 @@ LDLIBS		+=	-lpthread
 
 SRC		=	main_core_test.cpp			\
 			Common/Managers/MenuManager.cpp		\
+			Common/Managers/GameManager.cpp		\
 			Common/Error/Errors.cpp			\
 			GUI/HUD.cpp				\
 			GUI/OptionMenu.cpp			\
