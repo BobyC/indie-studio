@@ -19,8 +19,10 @@ void						Manager::GameManager::play()
 
 void						Manager::GameManager::initGame(std::vector<core::stringw> const &players, std::string const &map)
 {
-	  _device->setEventReceiver(&_receiver);
+	_device->setEventReceiver(&_receiver);
 	_map = new Map(_device->getSceneManager(), _device->getVideoDriver(), _device, &_receiver);
+	_map->load();
+	_map->placeObjects();
 	(void)players;
 	(void)map;
 }

@@ -34,7 +34,7 @@ public:
   std::list<Object*> getMap() const;
   void	doAction();
 
-  void	load(const std::string& path = "map.txt")
+  void	load(const std::string& path = "map.txt");
   void	placeObjects();
   Object*	createObject(char c, int& nbChar, int& i);
   Object*	createCharacter(int& nbChar);
