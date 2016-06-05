@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-// Last update Sun Jun  5 22:23:34 2016 Maxime Mollonguet
+// Last update Sun Jun  5 22:50:23 2016 Maxime Mollonguet
 */
 
 #include "Character.hpp"
@@ -158,11 +158,6 @@ void	Character::putBomb(IrrlichtDevice *device)
 	    }
 	  bomb->addCollision(_charList);
 	}
-    }
-  if (_bombList.front()->getPosition() < core::vector3df(0.f, 0.f, 0.f))
-    {
-      _nb_bomb = 1;
-      putBomb(device);
     }
 }
 
