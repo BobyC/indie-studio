@@ -1,11 +1,11 @@
 //
 // MenuManager.cpp for Manager in /home/rigola_s/test_repo/test_irrlicht/test_indie/srcs/Manager
-// 
+//
 // Made by Rigolat Sébastien
 // Login   <rigola_s@epitech.net>
-// 
+//
 // Started on  Fri May  6 15:07:53 2016 Rigolat Sébastien
-// Last update Fri May  6 15:07:53 2016 Rigolat Sébastien
+// Last update Sun Jun  5 23:33:56 2016 Rigolat Sébastien
 //
 
 #include "MenuManager.hpp"
@@ -22,23 +22,22 @@ IrrlichtDevice *Manager::MenuManager::getDevice() const
 	return (_device);
 }
 
-void											Manager::MenuManager::killInstance()
+void			Manager::MenuManager::killInstance()
 {
 	delete (_instance);
 }
 
-void											Manager::MenuManager::render() const
+void			Manager::MenuManager::render() const
 {
 	_current->draw();
 }
 
-void											Manager::MenuManager::switchMenu(MenuType type)
+void			Manager::MenuManager::switchMenu(MenuType type)
 {
 	_previous = _current;
 	_current = _menuMap[type];
 
 	_device->setEventReceiver(_current);
-	std::cout << "current id : " << _current->getID() << " type : "  << type << std::endl;
 	_current->setVisible(true);
 	_previous->setVisible(false);
 }
@@ -46,7 +45,6 @@ void											Manager::MenuManager::switchMenu(MenuType type)
 void Manager::MenuManager::pause()
 {
 	onPause = true;
-	std::cout << "current id : " << _current->getID() << " pause menu type " << PAUSE_MENU << " sub " << PLAY_SUB_MENU << std::endl;
 	_current = _menuMap.at(PAUSE_MENU);
 	_current->setVisible(true);
 	_device->setEventReceiver(_current);
@@ -59,18 +57,8 @@ void Manager::MenuManager::unPause()
 	_current->setVisible(false);
 }
 
-void												Manager::MenuManager::initMenus()
+void			Manager::MenuManager::initMenus()
 {
-	/*
-	 menu type :
-
-			MAIN_MENU,
-			PLAY_MENU,
-			OPTION_MENU,
-			PLAY_SUB_MENU,
-			LEADER_BOARD_MENU,
-			PAUSE_MENU
-	*/
 	SAppContext context(_device, gui::EGUIET_ELEMENT,
 						MAIN_MENU, _device->getGUIEnvironment()->getRootGUIElement(), core::rect<s32>(0, 0, 1024, 980));
 
@@ -79,11 +67,6 @@ void												Manager::MenuManager::initMenus()
 
 	context.id = OPTION_MENU;
 	_menuMap[OPTION_MENU] = new MainMenu(context);
-
-	/*
-	context.id = LEADER_BOARD_MENU;
-	_menuMap[LEADER_BOARD_MENU] = new MainMenu(context);
-	*/
 
 	context.id = PLAY_MENU;
 	_menuMap[PLAY_MENU] = new PlayMenu(context);
