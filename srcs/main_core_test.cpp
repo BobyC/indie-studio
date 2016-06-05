@@ -78,7 +78,7 @@ int			main()
   //     node->setMaterialTexture(0, driver->getTexture("WoodChips01_D.tga"));
   //   }
 
-   Map	map(smgr, driver);
+   Map	map(smgr, driver, device, &receiver);
 
    //smgr->addCameraSceneNodeFPS();
   driver->setTextureCreationFlag(ETCF_CREATE_MIP_MAPS, false);
@@ -102,6 +102,7 @@ int			main()
   while (device->run())
     {
       driver->beginScene(true, true, 0);
+      map.doAction();
       //player.doAction();
       smgr->drawAll();
       guienv->drawAll();

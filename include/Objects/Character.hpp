@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-// Last update Sun Jun  5 00:49:43 2016 Sacha Sacha Monderer
+** Last update Sun Jun 05 03:03:48 2016 drozdz_b
 */
 
 #ifndef CHARACTER_HPP_
@@ -40,7 +40,7 @@ public:
   Character(scene::ISceneNode* node);
   Character(scene::ISceneNode* node, video::IVideoDriver *driver);
   Character(scene::ISceneManager* smgr, video::IVideoDriver * driver);
-  ~Character();
+  virtual ~Character();
 
   CharacterInfo&					getInfo();
 

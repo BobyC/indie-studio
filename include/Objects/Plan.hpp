@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed Jun 01 16:08:51 2016 drozdz_b
-// Last update Fri Jun  3 18:10:51 2016 Sacha Sacha Monderer
+** Last update Fri Jun 03 17:25:02 2016 drozdz_b
 */
 
 #ifndef PLAN_HPP_
@@ -19,6 +19,7 @@ class Plan : public Object
 {
 protected:
   scene::ISceneManager		*_smgr;
+  std::list<Object*>			_objects;
 
 public:
   Plan(scene::ISceneNode *, scene::ISceneManager *);

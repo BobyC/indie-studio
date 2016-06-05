@@ -1,9 +1,9 @@
 //
 // Map.cpp for indie_studio in /home/monder_s/C++/cpp_indie_studio/srcs
-// 
+//
 // Made by Sacha Sacha Monderer
 // Login   <monder_s@epitech.net>
-// 
+//
 // Started on  Fri Jun  3 16:46:32 2016 Sacha Sacha Monderer
 // Last update Sun Jun  5 01:26:19 2016 Sacha Sacha Monderer
 //
@@ -12,8 +12,11 @@
 #include "Plan.hpp"
 #include "Box.hh"
 #include "Character.hpp"
+#include "PlayerController.hpp"
+#include "KeyReceiver.hpp"
 
-Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
+Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver, IrrlichtDevice *device,
+KeyReceiver* receiver)
 {
   int           y;
   int           x;
@@ -21,7 +24,9 @@ Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
   char          c;
   std::string	str;
   int		n;
+  int		nbChar = 0;
 
+  _receiver = receiver;
   if (file)
     {
       x = 0;
@@ -42,8 +47,27 @@ Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver)
 	  if (str[x] == '1' || str[x] == '2')
 	    this->_map.push_back(new Box(smgr, driver));
 	  else if (str[x] == '3')
-	    this->_map.push_back(new Character(smgr, driver));
-	  x++;
+    {
+      Character*			character = new Character(smgr, driver);
+      /*while (character->getNode() == NULL)
+      {
+        character = new Character(smgr, driver);
+      }*/
+      std::cout << "node char = " << character->getNode() << std::endl;
+	    this->_map.push_back(character);
+      if (nbChar == 0)
+      {
+        _controllers.push_back(new PlayerController(character, _receiver, device));
+      }
+      if (nbChar == 1)
+      {
+        ICharacterController	*player = new PlayerController(character, _receiver, device, nbChar);
+        _controllers.push_back(player);
+      }
+      nbChar++;
+
+    }
+    x++;
 	}
       x = 0;
       std::list<Object*>::iterator it = this->_map.begin();
@@ -86,4 +110,16 @@ Map::~Map()
 std::list<Object*>	Map::getMap() const
 {
   return (this->_map);
+}
+
+void	Map::doAction()
+{
+  std::list<ICharacterController*>::iterator	it;
+
+  it = _controllers.begin();
+  while (it != _controllers.end())
+  {
+    (*it)->doAction();
+    ++it;
+  }
 }

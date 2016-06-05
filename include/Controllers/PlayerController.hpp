@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:48:26 2016 drozdz_b
-// Last update Sat Jun  4 03:05:59 2016 Rigolat Sébastien
+** Last update Sun Jun 05 03:13:44 2016 drozdz_b
 */
 
 #ifndef PLAYERCONTROLLER_HPP_
@@ -48,7 +48,9 @@ private:
 public:
   PlayerController();
   PlayerController(Character*, KeyReceiver*, IrrlichtDevice*);
-  ~PlayerController();
+  PlayerController(Character* character,
+    KeyReceiver* receiver, IrrlichtDevice* device, int id);
+  virtual ~PlayerController();
 
   void	setAxisControleX(EKEY_CODE, EKEY_CODE);
   void	setAxisControleY(EKEY_CODE, EKEY_CODE);

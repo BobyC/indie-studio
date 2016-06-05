@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-// Last update Sun Jun  5 01:28:14 2016 Sacha Sacha Monderer
+** Last update Sun Jun 05 03:06:19 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -106,15 +106,15 @@ void	Character::stati()
 
 void	Character::updateAnim()
 {
-  if (_moving && _movingPreced == false)
+  if (_nodeAnim && _moving && _movingPreced == false)
   {
-    _node->setFrameLoop(160, 180);
-    _node->setAnimationSpeed(100);
+    _nodeAnim->setFrameLoop(160, 180);
+    _nodeAnim->setAnimationSpeed(100);
   }
-  else if (!_moving && _movingPreced)
+  else if (_nodeAnim && !_moving && _movingPreced)
   {
-      _node->setFrameLoop(400, 600);
-      _node->setAnimationSpeed(30);
+      _nodeAnim->setFrameLoop(400, 600);
+      _nodeAnim->setAnimationSpeed(30);
   }
 }
 
@@ -126,7 +126,7 @@ void	Character::putBomb()
   if (bomb)
   {
     _bombList.push_back(bomb);
-    bomb->getNode()->setPosition(_node->getPosition() + core::vector3df(5, -2, 5));
+    bomb->getNode()->setPosition(_nodeAnim->getPosition() + core::vector3df(5, -2, 5));
     bomb->addCollision(this);
   }
 }
@@ -149,7 +149,7 @@ void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, sc
         core::vector3df(1,1,1),core::vector3df(0,0,0),
         core::vector3df(0,0,0));
     selector->drop();
-    _node->addAnimator(anim);
+    _nodeAnim->addAnimator(anim);
     anim->drop();
   }
 }
@@ -166,7 +166,7 @@ void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, sc
         vect,core::vector3df(0,0,0),
         core::vector3df(0,0,0));
     selector->drop();
-    _node->addAnimator(anim);
+    _nodeAnim->addAnimator(anim);
     anim->drop();
   }
 }
