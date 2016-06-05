@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri Jun  3 16:46:32 2016 Sacha Sacha Monderer
-// Last update Sun Jun  5 01:26:19 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 10:03:13 2016 drozdz_b
 //
 
 #include "Map.hh"
@@ -14,76 +14,6 @@
 #include "Character.hpp"
 #include "PlayerController.hpp"
 #include "KeyReceiver.hpp"
-
-Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver, IrrlichtDevice *device,
-KeyReceiver* receiver, int a)
-{
-  int           y;
-  int           x;
-  std::ifstream file("imgs/map.txt", std::ios::in);
-  char          c;
-  std::string	str;
-  int		n;
-  int		nbChar = 0;
-
-  _receiver = receiver;
-  if (file)
-    {
-      x = 0;
-      y = 0;
-      n = 0;
-      while (file.get(c))
-        {
-          if (c != '\n')
-            {
-	      str += c;
-	      x++;
-            }
-        }
-      x = 0;
-      this->_map.push_back(new Plan(smgr, driver));
-      while (str[x] != '\0')
-	{
-	  if (str[x] == '1' || str[x] == '2')
-	    this->_map.push_back(new Box(smgr, driver));
-	  else if (str[x] == '3')
-    {
-
-    }
-    x++;
-	}
-      x = 0;
-      std::list<Object*>::iterator it = this->_map.begin();
-      it++;
-      while (y != 10)
-        {
-          while (x != 10)
-            {
-	      if (str[n] != '0')
-		{
-		  if (str[n] == '3')
-		    {
-		      (*it)->setPosAnim(x, 1, y);
-		    }
-		  else
-		    (*it)->setPosition(x, 0.5f, y);
-		  (*it)->setType(str[n] - 48);
-		  if (str[n] == '2')
-		    {
-		      (*it)->setDestruct(true);
-		    }
-		  it++;
-		}
-              x++;
-	      n++;
-            }
-          x = 0;
-          y++;
-        }
-      std::cout << "here" << std::endl;
-      smgr->addCameraSceneNode(0, core::vector3df(5, 9, -2), core::vector3df(5,0, 5), true);
-    }
-}
 
 Map::Map(scene::ISceneManager* smgr, video::IVideoDriver *driver, IrrlichtDevice *device,
 KeyReceiver* receiver)
@@ -119,8 +49,6 @@ Object*		Map::createObject(char c, int& nbChar, int& i)
 {
   Object	*obj;
 
-  std::cout << "c = " << c << std::endl;
-
   if (c == '0')
   {
     obj = new Object(NULL);
@@ -145,9 +73,9 @@ Object*		Map::createObject(char c, int& nbChar, int& i)
   return (obj);
 }
 
-void	Map::load()
+void	Map::load(const std::string& path)
 {
-  std::ifstream file("map.txt", std::ios::in);
+  std::ifstream file(path.c_str(), std::ios::in);
   char	c;
   Object	*obj;
   int			nbChar;
@@ -171,7 +99,6 @@ void	Map::load()
       }
     }
   }
-  std::cout << "j =" << j << std::endl;
   _smgr->addCameraSceneNode(0, core::vector3df(5, 9, -2), core::vector3df(5,0, 5), true);
 }
 
@@ -185,22 +112,14 @@ void	Map::setCollisionList(Object* character, std::list<Object*>::iterator sup)
   {
       if (it != sup)
         {
-          std::cout << "block = " << (*it)->getNode() << std::endl;
           if ((*it)->getNode() && (*it)->getBlockable())
           {
             character->setCollision((*it)->getNode(), _smgr->getGeometryCreator()->createCubeMesh(core::vector3df(1, 1, 1)), _smgr);
             c++;
           }
         }
-      /*else if ((*it)->getNodeAnim() != NULL)
-        {
-          character->setCollision((*it)->getNodeAnim(), _smgr->getGeometryCreator()->createCubeMesh(),
-        _smgr);
-      }
-      else;*/
     ++it;
   }
-  std::cout << "c col = " << c << std::endl;
 }
 
 void	Map::placeObjects()
@@ -214,7 +133,6 @@ void	Map::placeObjects()
   x = 0;
   z = 0;
   i = 0;
-  std::cout << "nb = " << _map.size() << std::endl;
   while (i < 100 && it != _map.end() && z < 10)
   {
     while (i < 100 && it != _map.end() && x < 10)

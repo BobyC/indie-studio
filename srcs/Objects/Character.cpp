@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Sun Jun 05 09:30:56 2016 drozdz_b
+** Last update Sun Jun 05 10:10:46 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -151,7 +151,6 @@ void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, sc
     smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
   if (selector)
   {
-    std::cout << "Character collision ok : " << mapNode << std::endl;
     mapNode->setTriangleSelector(selector);
     scene::ISceneNodeAnimator	*anim =
       smgr->createCollisionResponseAnimator(selector, mapNode,

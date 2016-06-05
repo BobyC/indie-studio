@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri Jun  3 16:42:32 2016 Sacha Sacha Monderer
-// Last update Sat Jun  4 18:29:03 2016 Sacha Sacha Monderer
+// Last update Sun Jun  5 10:03:39 2016 drozdz_b
 //
 
 #ifndef MAP_HH_
@@ -29,13 +29,12 @@ class	Map
 
 public:
   Map(scene::ISceneManager*, video::IVideoDriver*, IrrlichtDevice*, KeyReceiver*);
-  Map(scene::ISceneManager*, video::IVideoDriver*, IrrlichtDevice*, KeyReceiver*, int);
   ~Map();
 
   std::list<Object*> getMap() const;
   void	doAction();
 
-  void	load();
+  void	load(const std::string& path = "map.txt")
   void	placeObjects();
   Object*	createObject(char c, int& nbChar, int& i);
   Object*	createCharacter(int& nbChar);
