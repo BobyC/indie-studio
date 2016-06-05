@@ -5,7 +5,7 @@
 // Login   <rigola_s@epitech.net>
 //
 // Started on  Mon May  2 17:42:08 2016 Rigolat Sébastien
-// Last update Thu May  5 16:46:43 2016 Rigolat Sébastien
+// Last update Sun Jun  5 23:34:28 2016 Nicolas Pujol
 //
 
 #include "MenuManager.hpp"
@@ -33,11 +33,6 @@ void MainMenu::initGUIelements()
 	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 100, X + 110, (Y + 100) + 30),
 						   this,
 						   OPTION));
-	/*
-	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 150, X + 110, (Y + 150) + 30),
-						   this,
-						   LEADER_BOARD));
-						   */
 	_selectableButtons.push_back(Environment->addButton(core::rect<s32>(X - 50, Y + 150, X + 110, (Y + 150) + 30),
 						   this,
 						   EXIT));
