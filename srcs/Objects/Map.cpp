@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri Jun  3 16:46:32 2016 Sacha Sacha Monderer
-// Last update Sun Jun  5 21:37:51 2016 Maxime Mollonguet
+// Last update Sun Jun  5 22:48:57 2016 Nicolas Pujol
 //
 
 #include "Map.hh"
@@ -38,6 +38,7 @@ Object*		Map::createCharacter(int& nbChar)
     _controllers.push_back(new PlayerController(character, _receiver, _device));
   if (nbChar == 1)
   {
+    character->getNodeAnim()->setMaterialTexture(0, _driver->getTexture("imgs/Mexican.pcx"));
     ICharacterController	*player = new PlayerController(character, _receiver, _device, nbChar);
     _controllers.push_back(player);
   }
