@@ -61,6 +61,7 @@ Object*		Map::createObject(char c, int& nbChar, int& i)
   else if (c == '2')
   {
     obj = new Box(_smgr, _driver);
+    obj->setTexture(*_driver, "imgs/Wood_wall.jpg");
     obj->setDestruct(true);
   }
   else if (c == '3')
