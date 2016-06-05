@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Sun Jun 05 10:52:14 2016 drozdz_b
+** Last update Sun Jun 05 11:56:28 2016 drozdz_b
 */
 
 #include "PlayerController.hpp"
@@ -40,6 +40,8 @@ PlayerController::PlayerController(Character* character,
   this->_map[MOVE_YP] = KEY_KEY_CODES_COUNT;
   this->_map[MOVE_ZN] = KEY_KEY_S;
   this->_map[MOVE_ZP] = KEY_KEY_Z;
+  this->_map[ACTION] = KEY_KEY_G;
+    this->_map[MENU] = KEY_ESCAPE;
   _speed = 10.f;
 }
 
@@ -59,6 +61,8 @@ PlayerController::PlayerController(Character* character,
     this->_map[MOVE_YP] = KEY_KEY_CODES_COUNT;
     this->_map[MOVE_ZN] = KEY_KEY_S;
     this->_map[MOVE_ZP] = KEY_KEY_Z;
+    this->_map[ACTION] = KEY_KEY_G;
+    this->_map[MENU] = KEY_ESCAPE;
   }
   else
   {
@@ -68,7 +72,9 @@ PlayerController::PlayerController(Character* character,
     this->_map[MOVE_YP] = KEY_KEY_CODES_COUNT;
     this->_map[MOVE_ZN] = KEY_DOWN;
     this->_map[MOVE_ZP] = KEY_UP;
-  }
+    this->_map[ACTION] = KEY_KEY_M;
+    this->_map[MENU] = KEY_ESCAPE;
+    }
   _speed = 10.f;
 }
 
@@ -109,9 +115,9 @@ void		PlayerController::doAction()
   _last = _now;
 
   if (_receiver->KeyIsDown(_map[MOVE_XN]))
-    _character->move(-(_speed * _frameDeltaTime), 0);
+    _character->move(-(_speed * _frameDeltaTime), 0, 0);
   else if (_receiver->KeyIsDown(_map[MOVE_XP]))
-    _character->move((_speed * _frameDeltaTime), 0);
+    _character->move((_speed * _frameDeltaTime), 0, 0);
   else if (_receiver->KeyIsDown(_map[MOVE_ZN]))
     _character->move(0, 0, -(_speed * _frameDeltaTime));
   else if (_receiver->KeyIsDown(_map[MOVE_ZP]))
@@ -120,5 +126,7 @@ void		PlayerController::doAction()
     _character->stati();
   if (_receiver->KeyIsDown(_map[ACTION]))
     _character->putBomb(_device);
+  if (_receiver->KeyIsDown(_map[MENU]))
+    Manager::MenuManager::getInstance()->pause();  
   _character->updateAnim();
 }

@@ -25,7 +25,7 @@ class	Map
   video::IVideoDriver 						*_driver;
   IrrlichtDevice 									*_device;
   std::vector<int> 					_vect;
-
+  std::list<Object*>				_charList;
 
 public:
   Map(scene::ISceneManager*, video::IVideoDriver*, IrrlichtDevice*, KeyReceiver*);
@@ -39,6 +39,7 @@ public:
   Object*	createObject(char c, int& nbChar, int& i);
   Object*	createCharacter(int& nbChar);
   void		setCollisionList(Object* character, std::list<Object*>::iterator);
+  void		setCharList();
 };
 
 #endif /* MAP_HH_ */

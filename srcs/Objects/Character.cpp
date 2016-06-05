@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-** Last update Sun Jun 05 10:49:59 2016 drozdz_b
+** Last update Sun Jun 05 11:52:21 2016 drozdz_b
 */
 
 #include "Character.hpp"
@@ -30,6 +30,7 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
   _smgr = smgr;
   _driver = driver;
   _animated = true;
+  _vectorBomb = core::vector3df(1, -0.2f, 0);
   if (_nodeAnim)
   {
       _nodeAnim->setMaterialTexture(0, driver->getTexture("imgs/Bomber.PCX"));
@@ -86,23 +87,42 @@ void	Character::move(f32 x, f32 y)
 void	Character::move(f32 x, f32 y, f32 z)
 {
     if (x > 0)
-      _nodeAnim->setRotation(core::vector3df(0, -30, 0));
+    {
+      if (_nodeAnim)
+        _nodeAnim->setRotation(core::vector3df(0, -30, 0));
+      _vectorBomb = core::vector3df(1, -0.2f, 0);
+    }
     if (x < 0)
-      _nodeAnim->setRotation(core::vector3df(0, 30, 0));
+    {
+      if (_nodeAnim)
+        _nodeAnim->setRotation(core::vector3df(0, 150, 0));
+      _vectorBomb = core::vector3df(-1, -0.2f, 0);
+    }
     if (z > 0)
-      _nodeAnim->setRotation(core::vector3df(0, -60, 0));
+    {
+      if (_nodeAnim)
+        _nodeAnim->setRotation(core::vector3df(0, -60, 0));
+      _vectorBomb = core::vector3df(0, -0.2f, 1);
+    }
     if (z < 0)
-      _nodeAnim->setRotation(core::vector3df(0, 60, 0));
+    {
+      if (_nodeAnim)
+        _nodeAnim->setRotation(core::vector3df(0, 60, 0));
+      _vectorBomb = core::vector3df(0, -0.2f, -1);
+    }
 
     if (_moving)
       _movingPreced = true;
     _moving = true;
 
-    this->_pos = this->_nodeAnim->getPosition();
-    this->_pos.X += x;
-    this->_pos.Y += y;
-    this->_pos.Z += z;
-    this->_nodeAnim->setPosition(this->_pos);
+    if (_nodeAnim)
+    {
+      this->_pos = this->_nodeAnim->getPosition();
+      this->_pos.X += x;
+      this->_pos.Y += y;
+      this->_pos.Z += z;
+      this->_nodeAnim->setPosition(this->_pos);
+    }
 }
 
 void	Character::stati()
@@ -134,8 +154,9 @@ void	Character::putBomb(IrrlichtDevice *device)
   if (bomb)
   {
     _bombList.push_back(bomb);
-    bomb->getNode()->setPosition(_nodeAnim->getPosition() + core::vector3df(5, -2, 5));
-    bomb->addCollision(this);
+    if (bomb->getNode())
+    bomb->getNode()->setPosition(_nodeAnim->getPosition() + _vectorBomb);
+    bomb->addCollision(_charList);
   }
 }
 
@@ -166,7 +187,7 @@ void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, sc
 {
   scene::ITriangleSelector *selector =
     smgr->createOctreeTriangleSelector(mesh, mapNode, 128);
-  if (selector)
+  if (selector && mapNode)
   {
     mapNode->setTriangleSelector(selector);
     scene::ISceneNodeAnimator	*anim =
@@ -177,4 +198,9 @@ void		Character::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, sc
     _nodeAnim->addAnimator(anim);
     anim->drop();
   }
+}
+
+void		Character::setCharacterList(std::list<Object*> list)
+{
+  _charList = list;
 }

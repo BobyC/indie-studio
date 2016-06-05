@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-** Last update Sun Jun 05 10:50:23 2016 drozdz_b
+** Last update Sun Jun 05 11:44:41 2016 drozdz_b
 */
 
 #ifndef CHARACTER_HPP_
@@ -25,7 +25,7 @@ class Character : public Object
 {
 
 private:
-  scene::IAnimatedMeshSceneNode*	_node;
+  //scene::IAnimatedMeshSceneNode*	_node;
   //core::vector3df			_pos;
   CharacterInfo				_info;
   core::vector3d<f32>			_size;
@@ -35,6 +35,7 @@ private:
   std::list<Bomb*>							_bombList;
   scene::ISceneManager									*_smgr;
   video::IVideoDriver										*_driver;
+  core::vector3df	_vectorBomb;
 
 public:
   Character(scene::ISceneNode* node);
@@ -53,6 +54,7 @@ public:
   virtual	void		putBomb(IrrlichtDevice *device);
   virtual void		update();
   virtual bool	isAnimated() const;
+  virtual void	setCharacterList(std::list<Object*> list);
 };
 
 #endif

@@ -42,6 +42,7 @@ Object*		Map::createCharacter(int& nbChar)
     _controllers.push_back(player);
   }
   nbChar++;
+  _charList.push_back(character);
   return ((Object*)character);
 }
 
@@ -73,6 +74,18 @@ Object*		Map::createObject(char c, int& nbChar, int& i)
   return (obj);
 }
 
+void		Map::setCharList()
+{
+  std::list<Object *>::iterator	it;
+
+  it = _charList.begin();
+  while (it != _charList.end())
+  {
+    (*it)->setCharacterList(_charList);
+    ++it;
+  }
+}
+
 void	Map::load(const std::string& path)
 {
   std::ifstream file(path.c_str(), std::ios::in);
@@ -80,7 +93,7 @@ void	Map::load(const std::string& path)
   Object	*obj;
   int			nbChar;
   int			i;
-  int			j = 0;
+
   i = 0;
   nbChar = 0;
   if (file)
@@ -95,9 +108,9 @@ void	Map::load(const std::string& path)
         {
           this->_map.push_back(obj);
         }
-        ++j;
       }
     }
+    setCharList();
   }
   _smgr->addCameraSceneNode(0, core::vector3df(5, 9, -2), core::vector3df(5,0, 5), true);
 }
@@ -114,7 +127,8 @@ void	Map::setCollisionList(Object* character, std::list<Object*>::iterator sup)
         {
           if ((*it)->getNode() && (*it)->getBlockable())
           {
-            character->setCollision((*it)->getNode(), _smgr->getGeometryCreator()->createCubeMesh(core::vector3df(1, 1, 1)), _smgr);
+            character->setCollision((*it)->getNode(),
+            _smgr->getGeometryCreator()->createCubeMesh(core::vector3df(1, 1, 1)), _smgr);
             c++;
           }
         }

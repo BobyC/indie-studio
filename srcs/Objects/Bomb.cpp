@@ -15,7 +15,7 @@ Bomb::Bomb(scene::ISceneNode *node) : Object(node) {}
 Bomb::Bomb(scene::ISceneManager *smgr, video::IVideoDriver *driver, IrrlichtDevice *device) :
   Object(NULL)
 {
-  _mesh = smgr->getMesh("Dynamite/dinamite.obj");
+  _mesh = smgr->getMesh("imgs/Dynamite/dinamite.obj");
   _node = smgr->addMeshSceneNode(_mesh);
   _size = core::vector3df(1, 1, 1);
   _smgr = smgr;
@@ -23,16 +23,17 @@ Bomb::Bomb(scene::ISceneManager *smgr, video::IVideoDriver *driver, IrrlichtDevi
   _time = _device->getTimer()->getTime();
   if (_node)
     {
-      _node->setMaterialTexture(0, driver->getTexture("Dynamite/D.png"));
+      _node->setMaterialTexture(0, driver->getTexture("imgs/Dynamite/D.png"));
       _node->setMaterialFlag(video::EMF_LIGHTING, false);
-      _node->setScale(core::vector3df(2, 2, 2));
+      _node->setScale(core::vector3df(0.5, 0.5, 0.5));
 //      _node->setPosition(core::vector3df(-10, 5, -10));
     }
 }
 
 void	Bomb::addCollision(Object *character)
 {
-  character->setCollision(_node, _smgr->getGeometryCreator()->createCubeMesh(),
+  character->setCollision(_node,
+    _smgr->getGeometryCreator()->createCubeMesh(core::vector3df(1, 1, 1)),
   _smgr, core::vector3df(0.2,0.2,0.2));
 }
 

@@ -18,6 +18,8 @@
 #include <string>
 #include <fstream>
 
+#include <list>
+
 using namespace irr;
 
 class Object
@@ -31,6 +33,7 @@ protected:
   bool			_destructible;
   bool			_isdead;
   bool			_animated;
+  std::list<Object*> _charList;
 
 public:
   Object(scene::ISceneNode*);
@@ -55,7 +58,7 @@ public:
   virtual void			setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr);
   virtual void  setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene::ISceneManager *smgr, core::vector3df	vect);
   virtual bool	isAnimated() const;
-
+  virtual void	setCharacterList(std::list<Object*> list);
 };
 
 #endif /* OBJECT_HH_ */

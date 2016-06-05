@@ -168,3 +168,8 @@ void		Object::setCollision(scene::ISceneNode *mapNode, scene::IMesh *mesh, scene
     anim->drop();
   }
 }
+
+void		Object::setCharacterList(std::list<Object*> list)
+{
+  _charList = list;
+}
