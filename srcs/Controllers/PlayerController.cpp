@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Wed May 25 14:49:38 2016 drozdz_b
-** Last update Sun Jun 05 03:13:17 2016 drozdz_b
+** Last update Sun Jun 05 10:22:57 2016 drozdz_b
 */
 
 #include "PlayerController.hpp"
@@ -109,10 +109,7 @@ void		PlayerController::doAction()
   _last = _now;
 
   if (_receiver->KeyIsDown(_map[MOVE_XN]))
-  {
-    std::cout << "up" << std::endl;
-     _character->move(-(_speed * _frameDeltaTime), 0);
-  }
+    _character->move(-(_speed * _frameDeltaTime), 0);
   else if (_receiver->KeyIsDown(_map[MOVE_XP]))
     _character->move((_speed * _frameDeltaTime), 0);
   else if (_receiver->KeyIsDown(_map[MOVE_ZN]))
