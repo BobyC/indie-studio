@@ -5,7 +5,7 @@
 // Login   <mollon_m@epitech.net>
 //
 // Started on  Fri Jun 03 18:59:36 2016 Maxime Mollonguet
-// Last update Fri Jun  3 22:06:35 2016 Maxime Mollonguet
+// Last update Sun Jun  5 22:58:44 2016 Maxime Mollonguet
 //
 
 #include "IAController.hh"
@@ -16,8 +16,7 @@ IAController::IAController()
   _speed = 10.f;
 }
 
-IAController::IAController(Character* character, KeyReceiver* receiver,
-			   IrrlichtDevice* device)
+IAController::IAController()
 {
   this->_action_player = NONE;
   this->_character = character;
@@ -44,17 +43,20 @@ void		IAController::doAction()
   _now = _device->getTimer()->getTime();
   _frameDeltaTime = (f32)(_now - _last) / 1000.f;
   _last = _now;
-  sum = script.launch();
-
-  if (sum = 1)
-    _character->move(-(_speed * _frameDeltaTime), 0);
-  else if (sum = 2)
-    _character->move((_speed * _frameDeltaTime), 0);
-  else if (sum = 3)
-    _character->move(0, 0, -(_speed * _frameDeltaTime));
-  else if (sum = 4)
-    _character->move(0, 0, (_speed * _frameDeltaTime));
-  else
-    _character->stati();
-  _character->updateAnim();
+  while (1)
+    {
+      sum = script.launch();
+      std::cout << sum << std::endl;
+      if (sum = 1)
+	_character->move(-(_speed * _frameDeltaTime), 0);
+      else if (sum = 2)
+	_character->move((_speed * _frameDeltaTime), 0);
+      else if (sum = 3)
+	_character->move(0, 0, -(_speed * _frameDeltaTime));
+      else if (sum = 4)
+	_character->move(0, 0, (_speed * _frameDeltaTime));
+      else
+	_character->stati();
+      _character->updateAnim();
+    }
 }

@@ -5,7 +5,7 @@
 // Login   <mollon_m@epitech.net>
 //
 // Started on  Fri Jun 03 18:59:36 2016 Maxime Mollonguet
-// Last update Fri Jun  3 22:05:41 2016 Maxime Mollonguet
+// Last update Sun Jun  5 22:58:56 2016 Maxime Mollonguet
 //
 
 #ifndef IACONTROLLER_HH_
@@ -15,7 +15,7 @@
 # include "ICharacterController.hpp"
 # include "LuaScript.hh"
 
-class		IAController : public	ICharacterController
+class		IAController
 {
 private:
   Character*					_character;
@@ -28,12 +28,10 @@ private:
 public:
   IAController();
   ~IAController();
-  IAController(Character* character, KeyReceiver* receiver,
-	       IrrlichtDevice* device);
+  IAController();
 
 public:
   IAController		&operator=(const IAController &) const;
-  void			result();
   virtual void		doAction();
 
 };

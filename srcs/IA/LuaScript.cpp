@@ -5,7 +5,7 @@
 // Login   <mollon_m@epitech.net>
 //
 // Started on  Thu Jun 02 16:27:18 2016 Maxime Mollonguet
-// Last update Fri Jun  3 19:35:15 2016 Maxime Mollonguet
+// Last update Sat Jun  4 16:28:45 2016 Maxime Mollonguet
 //
 
 #include "LuaScript.hh"
@@ -22,6 +22,7 @@ LuaScript::LuaScript(const char *filename)
 
 LuaScript::LuaScript(const LuaScript &other)
 {
+  (void)other;
 }
 
 LuaScript::~LuaScript()
