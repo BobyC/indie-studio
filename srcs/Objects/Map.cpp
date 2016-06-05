@@ -5,7 +5,7 @@
 // Login   <monder_s@epitech.net>
 //
 // Started on  Fri Jun  3 16:46:32 2016 Sacha Sacha Monderer
-// Last update Sun Jun  5 10:03:13 2016 drozdz_b
+// Last update Sun Jun  5 21:37:51 2016 Maxime Mollonguet
 //
 
 #include "Map.hh"

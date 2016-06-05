@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:18:39 2016 drozdz_b
-** Last update Sun Jun 05 12:42:18 2016 drozdz_b
+// Last update Sun Jun  5 22:20:15 2016 Maxime Mollonguet
 */
 
 #ifndef CHARACTER_HPP_
@@ -36,7 +36,7 @@ private:
   scene::ISceneManager									*_smgr;
   video::IVideoDriver										*_driver;
   core::vector3df	_vectorBomb;
-
+  int				_nb_bomb;
 public:
   Character(scene::ISceneNode* node);
   Character(scene::ISceneNode* node, video::IVideoDriver *driver);
@@ -57,7 +57,10 @@ public:
   virtual void	setCharacterList(std::list<Object*> list);
   virtual Bomb*	getBomb() const;
   virtual std::list<Object*>	getObjectList() const;
-  virtual	void	setObjectList(std::list<Object*> list);
+  virtual void	setObjectList(std::list<Object*> list);
+  virtual void	setNbBomb(int nb);
+  virtual int	getNbBomb() const;
+
 };
 
 #endif

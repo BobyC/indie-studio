@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Fri Jun  3 16:12:24 2016 Nicolas Pujol
-// Last update Sun Jun  5 11:05:18 2016 Nicolas Pujol
+// Last update Sun Jun  5 22:10:10 2016 Maxime Mollonguet
 //
 
 #ifndef BOMB_HH_

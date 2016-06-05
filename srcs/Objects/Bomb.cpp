@@ -5,7 +5,7 @@
 // Login   <pujol_n@epitech.net>
 //
 // Started on  Fri Jun  3 16:00:42 2016 Nicolas Pujol
-// Last update Sun Jun  5 21:00:38 2016 Nicolas Pujol
+// Last update Sun Jun  5 22:38:57 2016 Maxime Mollonguet
 //
 
 #include "Bomb.hh"
@@ -85,30 +85,36 @@ bool			Bomb::common(Object *it) const
 
 void	Bomb::explode(std::list<Object*> cList)
 {
+  std::list<Object *> list;
 
-  for (std::list<Object *>::iterator it = cList.begin(); it != cList.end(); it++) {
-    f32 dist;
-    dist = getDistance(*it);
+  for (std::list<Object *>::iterator it = cList.begin(); it != cList.end(); it++)
+    {
+      f32 dist;
+      dist = getDistance(*it);
 
-    if (_device->getTimer()->getTime() > _time + 5000)
-      {
-        if ((*it)->getDestruct() && dist < 10)
-          (*it)->setIsdead(true);
-        }
+      if ((*it)->getDestruct() && dist < 2)
+	list.push_back(*it);
+    }
+  if (_device->getTimer()->getTime() > _time + 1500)
+    {
+      for (std::list<Object *>::iterator it = list.begin(); it != list.end(); it++)
+	{
+	      this->_node->setPosition(core::vector3df(-12.f, -12.f, -12.f));
+	      (*it)->setIsdead(true);
+	}
     }
 }
-
 void	Bomb::explode2(std::list<Object*> cList)
 {
-  for (std::list<Object *>::iterator it = cList.begin(); it != cList.end(); ++it) {
-
-    f32 dist;
-    dist = getDistance(*it);
-    if ((*it)->getDestruct() && dist < 10) {
-
-      (*it)->setIsdead(true);
+  for (std::list<Object *>::iterator it = cList.begin(); it != cList.end(); ++it)
+    {
+      f32 dist;
+      dist = getDistance(*it);
+      if ((*it)->getDestruct() && dist < 5)
+	{
+	  (*it)->setIsdead(true);
+	}
     }
-  }
 }
 
 Bomb::~Bomb() {}

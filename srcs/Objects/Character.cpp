@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Thu May 26 15:17:50 2016 drozdz_b
-// Last update Sun Jun  5 21:02:20 2016 Nicolas Pujol
+// Last update Sun Jun  5 22:23:34 2016 Maxime Mollonguet
 */
 
 #include "Character.hpp"
@@ -31,6 +31,7 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
   _driver = driver;
   _animated = true;
   _vectorBomb = core::vector3df(1, -0.2f, 0);
+  _nb_bomb = 1;
   if (_nodeAnim)
   {
       _nodeAnim->setMaterialTexture(0, driver->getTexture("imgs/Bomber.PCX"));
@@ -42,12 +43,6 @@ Character::Character(scene::ISceneManager* smgr, video::IVideoDriver * driver)
       _movingPreced = false;
   }
 }
-
-/*Character::Character(scene::ISceneNode* node, video::IVideoDriver * driver)
-: Object(node, driver)
-{
-
-}*/
 
 Character::~Character()
 {
@@ -148,18 +143,27 @@ void	Character::updateAnim()
 
 void	Character::putBomb(IrrlichtDevice *device)
 {
-  Bomb	*bomb = new Bomb(_smgr, _driver, device);
-  core::vector3df	pos;
+  if (_nb_bomb > 0)
+    {
+      Bomb	*bomb = new Bomb(_smgr, _driver, device);
+      core::vector3df	pos;
 
-  if (bomb)
-  {
-    _bombList.push_back(bomb);
-    if (bomb->getNode()) {
-
-      bomb->getNode()->setPosition(_nodeAnim->getPosition() + _vectorBomb);
+      if (bomb)
+	{
+	  _bombList.push_back(bomb);
+	  if (bomb->getNode())
+	    {
+	      _nb_bomb--;
+	      bomb->getNode()->setPosition(_nodeAnim->getPosition() + _vectorBomb);
+	    }
+	  bomb->addCollision(_charList);
+	}
     }
-    bomb->addCollision(_charList);
-  }
+  if (_bombList.front()->getPosition() < core::vector3df(0.f, 0.f, 0.f))
+    {
+      _nb_bomb = 1;
+      putBomb(device);
+    }
 }
 
 void	Character::update()
@@ -220,4 +224,14 @@ std::list<Object*>		Character::getObjectList() const
 void		Character::setObjectList(std::list<Object*> list)
 {
   _objList = list;
+}
+
+void		Character::setNbBomb(int nb)
+{
+  _nb_bomb = nb;
+}
+
+int		Character::getNbBomb() const
+{
+  return (_nb_bomb);
 }
