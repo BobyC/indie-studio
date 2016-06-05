@@ -21,11 +21,15 @@ AGUIMenu::~AGUIMenu()
 
 bool				AGUIMenu::OnEvent(const SEvent& event)
 {
-	if (event.EventType == EET_GUI_EVENT)
-		return (onGUIEvent(event));
-	else if (event.EventType == EET_KEY_INPUT_EVENT)
-		return (keyInputTreatment(event));
-	return false;
+	if (event.EventType == EET_GUI_EVENT
+			|| event.EventType == EET_KEY_INPUT_EVENT)
+		{
+			onGUIEvent(event);
+			if (event.EventType == EET_KEY_INPUT_EVENT)
+						return (keyInputTreatment(event));
+			return (true);
+		}
+return false;
 }
 
 void				AGUIMenu::draw()
@@ -61,16 +65,20 @@ void					AGUIMenu::setBackgroundImage(video::ITexture * const t)
 bool AGUIMenu::onGUIEvent(const SEvent &e)
 {
 	if (e.GUIEvent.EventType == gui::EGET_ELEMENT_HOVERED)
-		return (onButtonHover(e.GUIEvent.Caller));
+		onButtonHover(e.GUIEvent.Caller);
 	else if (e.GUIEvent.EventType == gui::EGET_BUTTON_CLICKED)
-		return (onButtonClicked(e.GUIEvent.Caller->getID()));
+		{
+			return (onButtonClicked(e.GUIEvent.Caller->getID()));
+		}
 	return false;
 }
 
 bool AGUIMenu::onButtonClicked(s32 ID)
 {
-	if (_mMap.find(ID) != _mMap.end())
+	if (_mMap.count(ID) != 0)
 		{
+			_context.device->setEventReceiver(NULL);
+			_currentButton = getElementFromId(ID, true);
 			(this->*_mMap[ID])();
 			return true;
 		}

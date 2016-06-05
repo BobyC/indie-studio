@@ -38,7 +38,7 @@ void											Manager::MenuManager::switchMenu(MenuType type)
 	_current = _menuMap[type];
 
 	_device->setEventReceiver(_current);
-
+	std::cout << "current id : " << _current->getID() << " type : "  << type << std::endl;
 	_current->setVisible(true);
 	_previous->setVisible(false);
 }
@@ -46,12 +46,15 @@ void											Manager::MenuManager::switchMenu(MenuType type)
 void Manager::MenuManager::pause()
 {
 	onPause = true;
+	std::cout << "current id : " << _current->getID() << " pause menu type " << PAUSE_MENU << " sub " << PLAY_SUB_MENU << std::endl;
+	_current = _menuMap.at(PAUSE_MENU);
 	_current->setVisible(true);
 	_device->setEventReceiver(_current);
 }
 
 void Manager::MenuManager::unPause()
 {
+	_current = _menuMap.at(PAUSE_MENU);
 	onPause = false;
 	_current->setVisible(false);
 }
@@ -77,8 +80,10 @@ void												Manager::MenuManager::initMenus()
 	context.id = OPTION_MENU;
 	_menuMap[OPTION_MENU] = new MainMenu(context);
 
+	/*
 	context.id = LEADER_BOARD_MENU;
 	_menuMap[LEADER_BOARD_MENU] = new MainMenu(context);
+	*/
 
 	context.id = PLAY_MENU;
 	_menuMap[PLAY_MENU] = new PlayMenu(context);
@@ -91,7 +96,9 @@ void												Manager::MenuManager::initMenus()
 
 	for (std::map<MenuType, AGUIMenu*>::iterator it = _menuMap.begin();
 		 it != _menuMap.end(); ++it)
-	it->second->setVisible(false);
+		{
+			it->second->setVisible(false);
+		}
 
 	_current->setVisible(true);
 	_device->setEventReceiver(_current);

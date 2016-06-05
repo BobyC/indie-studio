@@ -41,7 +41,8 @@ enum ButtonType
 	DEC,
 	SAVE,
 	CONTINUE,
-	BACKGROUND
+	BACKGROUND,
+	GET_MAP
 	};
 
 typedef struct			SAppContext

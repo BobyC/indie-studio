@@ -35,14 +35,13 @@ void PlayMenu::initGUIelements()
 						   BACK));
 	setButtonImage(LOAD_SAVE, "imgs/CONTINUE.png");
 	setButtonImage(NEW_GAME, "imgs/NEW_GAME.png");
-	setButtonImage(BACK, "imgs/EXIT.png");
+	setButtonImage(BACK, "imgs/RETURN.png");
 	_currentButton = getElementFromId(NEW_GAME);
 	moveSelector();
 }
 
 void				PlayMenu::initKeyMap()
 {
-
 	_mMap[KEY_UP] = &PlayMenu::upKeyPressed;
 	_mMap[KEY_DOWN] = &PlayMenu::downKeyPressed;
 	_mMap[KEY_RETURN] = &PlayMenu::enterKeyPressed;
