@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Sun May 29 00:16:41 2016 drozdz_b
-// Last update Sat Jun  4 03:04:52 2016 Rigolat Sébastien
+// Last update Sun Jun  5 23:28:28 2016 Sacha Sacha Monderer
 */
 
 #ifndef KEYRECEIVER_HPP_
@@ -26,8 +26,8 @@ public:
   ~KeyReceiver();
 
   virtual bool	OnEvent(const SEvent& event);
-  virtual bool					KeyIsDown(EKEY_CODE keyCode) const;
-  void							setFalse();
+  virtual bool	KeyIsDown(EKEY_CODE const keyCode) const;
+  void 		setFalse();
 };
 
 #endif

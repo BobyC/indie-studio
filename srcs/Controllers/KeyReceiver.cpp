@@ -5,7 +5,7 @@
 ** Login   <drozdz_b@epitech.net>
 **
 ** Started on  Sun May 29 01:02:54 2016 drozdz_b
-// Last update Sat Jun  4 03:17:20 2016 Rigolat Sébastien
+// Last update Sun Jun  5 23:27:50 2016 Sacha Sacha Monderer
 */
 
 #include "KeyReceiver.hpp"
@@ -41,7 +41,7 @@ bool 			KeyReceiver::OnEvent(const SEvent& event)
   return (false);
 }
 
-bool			KeyReceiver::KeyIsDown(EKEY_CODE keyCode) const
+bool			KeyReceiver::KeyIsDown(EKEY_CODE const keyCode) const
 {
     return (this->_keyIsDown[keyCode]);
 }
