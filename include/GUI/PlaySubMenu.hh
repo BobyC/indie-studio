@@ -14,6 +14,8 @@
 #include "AGUIMenu.hh"
 #include <vector>
 
+extern bool onPause;
+
 class PlaySubMenu : public AGUIMenu
 {
 	public:
@@ -25,6 +27,7 @@ class PlaySubMenu : public AGUIMenu
 		gui::IGUIStaticText	*_nbTxt;
 		std::vector<gui::IGUIEditBox *> _names;
 
+		void							onStart();
 		void							onReturn();
 		void							incPlayerNb();
 		void							decPlayerNb();

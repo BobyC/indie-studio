@@ -108,6 +108,7 @@ void AGUIMenu::downKeyPressed()
 {
 	core::list<gui::IGUIElement *>::Iterator it =	_selectableButtons.begin();
 
+	std::cout << "poil" << std::endl;
 	for (; it != _selectableButtons.end(); ++it)
 		{
 			gui::IGUIElement *tmp = (*it);
@@ -180,6 +181,6 @@ inline bool			AGUIMenu::keyInputTreatment(const SEvent &e)
 inline void			AGUIMenu::initGUIelements()
 {
 	_driver = _context.device->getVideoDriver();
-	_background = Environment->addImage(_driver->getTexture("Media/fire.bmp"), core::position2di(0, 0), true, this);
-	_selector = Environment->addImage(_driver->getTexture("Media/cursor_tmp.png"), core::position2di(0, 0), true, this);
+	_background = Environment->addImage(_driver->getTexture("imgs/fire.bmp"), core::position2di(0, 0), true, this);
+	_selector = Environment->addImage(_driver->getTexture("imgs/cursor_tmp.png"), core::position2di(0, 0), true, this);
 }

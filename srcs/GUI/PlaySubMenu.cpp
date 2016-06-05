@@ -9,6 +9,7 @@
 //
 
 #include "MenuManager.hpp"
+#include "GameManager.hpp"
 
 PlaySubMenu::PlaySubMenu(SAppContext const &context)
 	: AGUIMenu(context)
@@ -68,9 +69,24 @@ void				PlaySubMenu::initKeyMap()
 	_mMap[KEY_RETURN] = &PlaySubMenu::enterKeyPressed;
 	_mMap[KEY_ESCAPE] = static_cast<mPtr>(&PlaySubMenu::onReturn);
 
+	_mMap[PLAY] = static_cast<mPtr>(&PlaySubMenu::onStart);
 	_mMap[BACK] = static_cast<mPtr>(&PlaySubMenu::onReturn);
 	_mMap[INC] = static_cast<mPtr>(&PlaySubMenu::incPlayerNb);
 	_mMap[DEC] = static_cast<mPtr>(&PlaySubMenu::decPlayerNb);
+}
+
+void				PlaySubMenu::onStart()
+{
+	std::vector<core::stringw>		names;
+	IrrlichtDevice								*device;
+
+	device = Manager::MenuManager::getInstance()->getDevice();
+	names.push_back(_names.at(0)->getText());
+	names.push_back(_names.at(1)->getText());
+
+	Manager::GameManager::generateGame(device, names, "lol");
+	onPause = false;
+	this->setVisible(false);
 }
 
 void				PlaySubMenu::incPlayerNb()

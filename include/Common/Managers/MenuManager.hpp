@@ -30,20 +30,24 @@ namespace Manager
 			~MenuManager() { }
 
 		public:
-			static void									createManager(IrrlichtDevice *device) { _instance = new MenuManager(device); }
+			static void									createManager(IrrlichtDevice *device)
+			{
+				_instance = new MenuManager(device);
+			}
 			static MenuManager					*getInstance() { return _instance; }
 			static void									killInstance();
 
 			void												render() const;
 			void												switchMenu(MenuType type);
 
-			AGUIMenu*								getCurrent() const;
+			AGUIMenu									*getCurrent() const;
+			IrrlichtDevice								*getDevice() const;
 
 		protected:
 			static Manager::MenuManager				*_instance;
 			AGUIMenu													*_previous;
 			AGUIMenu													*_current;
-			std::map<MenuType, AGUIMenu *>					_menuMap;
+			std::map<MenuType, AGUIMenu *>		_menuMap;
 			IrrlichtDevice												*_device;
 
 			void												initMenus();

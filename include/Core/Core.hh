@@ -11,11 +11,44 @@
 #ifndef CORE_HH__
 # define CORE_HH__
 
+#include <iostream>
+#include "GameManager.hpp"
+#include "MenuManager.hpp"
+#include "irrlicht.h"
+#include "Character.hpp"
+#include "KeyReceiver.hpp"
+#include "PlayerController.hpp"
+#include "Plan.hpp"
+#include "Object.hh"
+#include "Box.hh"
+#include "Map.hh"
+//#include "Bomb.hh"
+
+using namespace irr;
+using namespace core;
+using namespace scene;
+using namespace video;
+using namespace io;
+using namespace gui;
+
+extern bool onPause;
+
 class		Core
 {
 public:
-  Core();
+  Core(IrrlichtDevice	 * const device);
   ~Core();
+
+  void			run();
+
+private:
+	IrrlichtDevice						*_device;
+	video::IVideoDriver			*_driver;
+	scene::ISceneManager		*_smgr;
+	gui::IGUIEnvironment		*_env;
+
+	void			initData();
+	void			initScene();
 };
 
 #endif /* !CORE_HH__ */

@@ -17,6 +17,11 @@ AGUIMenu *Manager::MenuManager::getCurrent() const
 	return (_current);
 }
 
+IrrlichtDevice *Manager::MenuManager::getDevice() const
+{
+	return (_device);
+}
+
 void											Manager::MenuManager::killInstance()
 {
 	delete (_instance);
