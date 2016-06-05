@@ -5,7 +5,7 @@
 ## Login   <rigola_s@epitech.net>
 ## 
 ## Started on  Mon May  2 00:01:51 2016 Rigolat Sébastien
-## Last update Sun Jun  5 23:11:49 2016 Anaïs Foncel
+## Last update Sun Jun  5 23:38:19 2016 Rigolat Sébastien
 ##
 
 NAME		=	indie_studio
@@ -19,9 +19,8 @@ PATH_SRCS	=	./srcs/
 CFLAGS		+=	-W
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
-##CFLAGS		+=	-Werror
+CFLAGS		+=	-Werror
 CFLAGS		+=	-std=gnu++11
-CFLAGS		+=	-g
 
 LDFLAGS		+=	-I./include/
 LDFLAGS		+=	-I./include/Common/Managers
@@ -82,7 +81,6 @@ OBJS		=	$(SRCS:.cpp=.o)
 $(NAME):	$(OBJS)
 		@$(CXX) -o $(NAME) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS)
 		@echo -e "g++ -o $(NAME)"
-		@echo -e "\e[1;31mDON'T FORGET TO REMOVE THE DEBUG FLAG BEFORE LAST PUSH !\e[0;m"
 
 all:		$(NAME)
 
