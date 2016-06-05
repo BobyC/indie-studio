@@ -5,7 +5,7 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:28:07 2016 Anaïs Foncel
-// Last update Tue May 10 18:54:48 2016 Anaïs Foncel
+// Last update Sun Jun  5 22:15:00 2016 Anaïs Foncel
 //
 
 #ifndef HUD_HH__
@@ -23,7 +23,7 @@
 
 using namespace irr;
 
-class		HUD// : public GUIElement
+class		HUD
 {
 private:
   IrrlichtDevice		*_device;
@@ -35,17 +35,17 @@ private:
   int				_size_HUD_Y;
   int				_size_mHUD_X;
 
-  void			displayScore(CharacterInfo const character) const;
-  void			displayName(CharacterInfo const character) const;
+  void			displayScore(CharacterInfo const &character) const;
+  void			displayName(CharacterInfo const &character) const;
 
-  void			displayBonusBomb(CharacterInfo const character) const;
-  void			displayBonusDeflagration(CharacterInfo const character) const;
-  void			displayBonusThird(CharacterInfo const character) const;
+  void			displayBonusBomb(CharacterInfo const &character) const;
+  void			displayBonusDeflagration(CharacterInfo const &character) const;
+  void			displayBonusThird(CharacterInfo const &character) const;
 
-  void			displayBonus(CharacterInfo const character) const;
+  void			displayBonus(CharacterInfo const &character) const;
 
 public:
-  HUD(video::IVideoDriver *driver, IrrlichtDevice *device, std::vector<int> const &size);
+  HUD(video::IVideoDriver * const driver, IrrlichtDevice * const device, std::vector<int> const &size);
   ~HUD();
 
   void			display() const;

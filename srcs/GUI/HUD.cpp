@@ -5,16 +5,15 @@
 // Login   <foncel_a@epitech.net>
 // 
 // Started on  Mon May  2 18:32:39 2016 Anaïs Foncel
-// Last update Tue May 10 19:00:22 2016 Anaïs Foncel
+// Last update Sun Jun  5 22:16:02 2016 Anaïs Foncel
 //
 
 #include "HUD.hh"
 
-HUD::HUD(video::IVideoDriver *driver, IrrlichtDevice *device, std::vector<int> const &size)
+HUD::HUD(video::IVideoDriver * const driver, IrrlichtDevice * const device, std::vector<int> const &size)
 {
   _driver = driver;
   _device = device;
-  //  _characters = NULL;
   _bonus = new GUIBonus(_driver);
   _size_winX = size[0];
   _size_winY = size[1];
@@ -27,10 +26,7 @@ HUD::~HUD()
 
 }
 
-/*
-** DISPLAY SCORE
-*/
-void		HUD::displayScore(CharacterInfo const character) const
+void		HUD::displayScore(CharacterInfo const &character) const
 {
   gui::IGUIFont	*font;
   std::string	inter;
@@ -52,11 +48,7 @@ void		HUD::displayScore(CharacterInfo const character) const
   font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-
-/*
-** DISPLAY NAME
-*/
-void		HUD::displayName(CharacterInfo const character) const
+void		HUD::displayName(CharacterInfo const &character) const
 {
   gui::IGUIFont	*font;
   core::stringw	res;
@@ -74,11 +66,7 @@ void		HUD::displayName(CharacterInfo const character) const
   font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-
-/*
-** DISPLAY TYPE OF BONUS
-*/
-void		HUD::displayBonusBomb(CharacterInfo const character) const
+void		HUD::displayBonusBomb(CharacterInfo const &character) const
 {
   gui::IGUIFont	*font;
   std::string	inter;
@@ -107,7 +95,7 @@ void		HUD::displayBonusBomb(CharacterInfo const character) const
   font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-void		HUD::displayBonusDeflagration(CharacterInfo const character) const
+void		HUD::displayBonusDeflagration(CharacterInfo const &character) const
 {
   gui::IGUIFont	*font;
   std::string	inter;
@@ -135,7 +123,7 @@ void		HUD::displayBonusDeflagration(CharacterInfo const character) const
   font->draw(res, core::rect<s32>(posX, posY, 300, 50), video::SColor(255, 255, 255, 255));
 }
 
-void		HUD::displayBonusThird(CharacterInfo const character) const
+void		HUD::displayBonusThird(CharacterInfo const &character) const
 {
   int		posX_Image;
   int		posY_Image;
@@ -147,11 +135,7 @@ void		HUD::displayBonusThird(CharacterInfo const character) const
   _bonus->displayImage(posX_Image, posY_Image, SIZE_IMAGE);
 }
 
-
-/*
-** DISPLAY BONUS
-*/
-void		HUD::displayBonus(CharacterInfo const character) const
+void		HUD::displayBonus(CharacterInfo const &character) const
 {
   displayBonusBomb(character);
   displayBonusDeflagration(character);
@@ -159,10 +143,6 @@ void		HUD::displayBonus(CharacterInfo const character) const
     displayBonusThird(character);
 }
 
-
-/*
-** GENERAL DISPLAY
-*/
 void		HUD::display() const
 {
   for (unsigned int i = 0; i < _characters.size(); ++i)

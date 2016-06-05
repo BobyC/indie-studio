@@ -5,14 +5,11 @@
 // Login   <foncel_a@epitech.net>
 //
 // Started on  Mon May  2 18:32:50 2016 Anaïs Foncel
-// Last update Sat Jun  4 03:13:06 2016 Rigolat Sébastien
+// Last update Sun Jun  5 22:23:58 2016 Anaïs Foncel
 //
 
 #include "CharacterInfo.hh"
 
-/*
-** CONSTRUTOR
-*/
 CharacterInfo::CharacterInfo()
 {
   _id = 0;
@@ -26,17 +23,11 @@ CharacterInfo::CharacterInfo()
   _countbomb = 1;
 }
 
-/*
-** DESTRUCTOR
-*/
 CharacterInfo::~CharacterInfo()
 {
 
 }
 
-/*
-** SETTER
-*/
 void			CharacterInfo::setId(int const &id)
 {
   _id = id;
@@ -57,9 +48,6 @@ void			CharacterInfo::setScore(int const &score)
   _score = score;
 }
 
-/*
-** FOR BONUS
-*/
 void			CharacterInfo::setShield(bool const &available)
 {
   _shield = available;
@@ -85,9 +73,6 @@ void			CharacterInfo::setCountBomb(int const &number)
   _countbomb = number;
 }
 
-/*
-** GETTER
-*/
 int			CharacterInfo::getId() const
 {
 return (_id);
@@ -108,9 +93,6 @@ int			CharacterInfo::getScore() const
   return (_score);
 }
 
-/*
-** FOR BONUS
-*/
 bool			CharacterInfo::getShield() const
 {
   return (_shield);
